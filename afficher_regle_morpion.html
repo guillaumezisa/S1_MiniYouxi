@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8"/>
+	<title>Regles Morpion</title>
+</head>
+<body>
+Les joueurs inscrivent tour à tour leur symbole sur une grille. <br>
+Le premier qui parvient à aligner trois de ses symboles horizontalement,
+verticalement ou en
+diagonale gagne un point.
+
+<br> 
+<br> 
+
+<form action="req_jouer_morpion" method="GET">
+	<input type="hidden" name="pseudo" value="{pseudo}">
+    <input type="submit" name="bouton" value="jouer au morpion">
+</form>
+<form action="req_quitter_regle_morpion" method="GET">
+	<input type="hidden" name="pseudo" value="{pseudo}">
+    <input type="submit" name="bouton" value="retour a l'accueil">
+</form>
+
+
+</body>
+</html>

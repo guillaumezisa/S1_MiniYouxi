@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8"/>
+	<title>Jeu Morpion</title>
+</head>
+<body>
+<form action="req_joueur_pose_pion_morpion" method="GET">
+
+    <input type="hidden" name="pseudo" value="{pseudo}">
+    <input type="hidden" name="gagnant" value="{winer}">
+
+	<input type=image src="{case00}" name="place00" value="{val00}">
+	<input type=image src="{case10}" name="place10" value="{val10}">
+	<input type=image src="{case20}" name="place20" value="{val20}">
+	<br>
+	<input type=image src="{case01}" name="place01" value="{val01}">
+	<input type=image src="{case11}" name="place11" value="{val11}">
+	<input type=image src="{case21}" name="place21" value="{val21}">
+	<br>
+	<input type=image src="{case02}" name="place02" value="{val02}">
+	<input type=image src="{case12}" name="place12" value="{val12}">
+	<input type=image src="{case22}" name="place22" value="{val22}">
+
+</form>
+
+<br>
+
+<form action="req_abandonner_morpion" method="GET">
+    <input type="hidden" name="pseudo" value="{pseudo}">
+    <input type="submit" name="bouton" value="abandonner">
+</form> 
