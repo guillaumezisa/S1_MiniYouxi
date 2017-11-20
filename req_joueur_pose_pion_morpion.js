@@ -156,58 +156,64 @@ var trait = function (req, res, query) {
 	    for (var index = 0; index < position[idx].length ; index += 1) {
 		    if (position[idx][index] === "rien") {
 			    value = "false";
+				
 			}
 		}
 	}
 
-    var verif = []
+    var gagnant
 
 	if (
-	    position[0][0] !== "rien" &&
+        position[0][0] !== "rien" &&
 		position[0][0] === position[0][1] &&
 		position[0][0] === position[0][2]
-	) { verif[verif.length] = "true"
-	} else { verif.length = "false"}
+	) {gagnant = position[0][0]}
 	if (
-	    position[1][0] !== "rien" &&
-	    position[1][0] === position[1][1] &&
+		position[1][0] !== "rien" &&
+		position[1][0] === position[1][1] &&
 		position[1][0] === position[1][2]
-	) { verif[verif.length] = "true"
-	} else { verif.length = "false"}
+	) {gagnant = position[1][0]}
 	if (
-	    position[2][0] !== "rien" &&
-	    position[2][0] === position[2][1] &&
+		position[2][0] !== "rien" &&
+		position[2][0] === position[2][1] &&
 		position[2][0] === position[2][2]
-	) {verif.length = "true"
-	} else { verif.length = "false"}
+	) {gagnant = position[2][0]}
 //les lignes
-    if (		
-	    position[0][0] !== "rien" &&
-	    position[0][0] === position[1][0] &&
+	if (
+		position[0][0] !== "rien" &&
+		position[0][0] === position[1][0] &&
 		position[0][0] === position[2][0]
-	) { verif.length = "true"
-	} else } verif.length = "false"
-	    position[0][1] !== "rien" &&
-	    position[0][1] === position[1][1] &&
+	) {gagnant = position[0][0]}
+    if (
+		position[0][1] !== "rien" &&
+		position[0][1] === position[1][1] &&
 		position[0][1] === position[2][1]
-		||
-	    position[0][2] !== "rien" &&
+	) {gagnant = position[0][1]}
+	if (
+        position[0][2] !== "rien" &&
 	    position[0][2] === position[1][2] &&
-		position[0][2] === position[2][2]
-		//les colones
-		||
-	    position[0][0] !== "rien" &&
+	    position[0][2] === position[2][2]
+	) {gagnant = position[0][2]}
+//les colones
+	if (
+		position[0][0] !== "rien" &&
 		position[0][0] === position[1][1] &&
-		position[0][0] === position[2][2] 
-		||
-	    position[0][2] !== "rien" &&
+		position[0][0] === position[2][2]
+	) {gagnant = position[0][0]}
+    if (
+		position[0][2] !== "rien" &&
 		position[0][2] === position[1][1]&&
 		position[0][2] === position[2][0]
-		//les diagonales
-		||
+	) {gagnant = [0][2]}
+//les diagonales
+	if (
 		value === "true"
+	) {gagnant = "nul, il n'y a pas de de gagnant"}
 
-	) {
+	if (gagnant !== undefined) {
+
+		marqueur.winer = gagnant
+
 	    page = fs.readFileSync("resultat_morpion.html", "UTF-8");
 		page = page.supplant(marqueur);
 
