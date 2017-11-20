@@ -25,7 +25,7 @@ var req_pendu = function(req, res, query, pathname) {
 
 	}
 
-	page = fs.readFileSync("pendu_main.html", "UTF-8");
+	page = fs.readFileSync("pendu.html", "UTF-8");
 
 	pendu = JSON.parse(fs.readFileSync("pendu.json", "UTF-8"));
 
