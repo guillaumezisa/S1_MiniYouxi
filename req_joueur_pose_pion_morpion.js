@@ -101,19 +101,6 @@ var trait = function (req, res, query) {
 		}
 	}
 
-
-// on regarde si il y a un gagnant
-
-	var value = "true";
-	for (var idx = 0; idx < position.length ; idx += 1) {
-	    for (var index = 0; index < position[idx].length ; index += 1) {
-		    if (position[idx][index] === "rien") {
-			    value = "false";
-				
-			}
-		}
-	}
-
     var gagnant
 
 	if (
@@ -173,7 +160,7 @@ var trait = function (req, res, query) {
 		position[0][2] !== "rien" &&
 		position[0][2] === position[1][1]&&
 		position[0][2] === position[2][0]
-	) {gagnant = [0][2]
+	) {gagnant = position[0][2]
 	console.log("8A")}
 	//les diagonales
 
@@ -311,7 +298,7 @@ var trait = function (req, res, query) {
 		position[0][2] !== "rien" &&
 		position[0][2] === position[1][1]&&
 		position[0][2] === position[2][0]
-	) {gagnant = [0][2]
+	) {gagnant = position[0][2]
 	console.log("8B")}
 	//les diagonales
 
