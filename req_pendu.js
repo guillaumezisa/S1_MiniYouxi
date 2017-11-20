@@ -13,7 +13,7 @@ var req_pendu = function(req, res, query, pathname) {
 	var pendu;
 	var membres;
 	var joueur;
-	console.log(pathname)
+	var victoire;
 	membres = JSON.parse(fs.readFileSync("membres.json", "UTF-8"));
 	for(i = 0;i < membres.length; i++) {
 
@@ -46,7 +46,6 @@ var req_pendu = function(req, res, query, pathname) {
 		var présence = false;
 
 		pendu = joueur.pendu;
-		console.log(pendu.motSec);
 
 		for(i = 0; i < pendu.lettre.length; i++) {
 
@@ -75,17 +74,23 @@ var req_pendu = function(req, res, query, pathname) {
 
 		}
 
+		if(pendu.motAff.join("") === pendu.motSec) {
+
+			victoire = true;
+
+		} else if(pendu.erreurs === 11) {
+
+			victoire = false;
+
+		}
+
 	}
 
 	marqueurs = {};
 	marqueurs.pendu = pendu.image[pendu.erreurs];
 	marqueurs.joueur = query.pseudo;
-	marqueurs.motSec = pendu.motAff.join("");
+	marqueurs.motSec = pendu.motAff.join(" ");
 	page = page.supplant(marqueurs);
-
-	res.writeHead(200, {'Content-Type': 'text/html'});
-	res.write(page);
-	res.write("<html><form action = '/req_jouer_pendu' method = 'GET'>");
 
 	joueur.pendu = pendu
 
@@ -94,24 +99,53 @@ var req_pendu = function(req, res, query, pathname) {
 		if(query.pseudo === membres[i].pseudo) {
 
 			membres[i] = joueur;
-			console.log(membres[i].pendu.motSec);
 
 		}
 
 	}
 	fs.writeFileSync("membres.json", JSON.stringify(membres), "UTF-8");
 
-	for(i = 0; i < pendu.lettre.length; i++) {
+	res.writeHead(200, {'Content-Type': 'text/html'});
+	res.write(page);
 
-		if(pendu.lettre[i].use === false) {
+	if(victoire !== true && victoire !== false) {
 
-			res.write("<button name = 'lettre' value = " + pendu.lettre[i].l + ">" + pendu.lettre[i].l + "</button>");
+		res.write("<html><br><br><form action = '/req_jouer_pendu' method = 'GET'>");
+		for(i = 0; i < pendu.lettre.length; i++) {
+
+			if(pendu.lettre[i].use === false) {
+
+				res.write("<button name = 'lettre' value = " + pendu.lettre[i].l + ">" + pendu.lettre[i].l + "</button>");
+
+			}
+
+		}
+		res.write("<input type = 'hidden'  name = 'pseudo' value = '" + query.pseudo + "'></form>");
+		res.write("<br><br><form action = '/req_pendu' method = 'GET'>");
+		res.write("<button name = 'abandonner' value = 'pendu'>abandonner</button>");
+		res.write("<input type = 'hidden'  name = 'pseudo' value = '" + query.pseudo + "'></form>");
+
+	} else {
+		
+		if(victoire === true) {
+			
+			res.write("<html><br><br>Vous avez gagner")
+
+		} else {
+
+			res.write("<html><br><br>Vous avez perdue")
 
 		}
 
+		res.write("<html><br><br><form action = '/req_pendu' method = 'GET'>");
+		res.write("<button name = 'rejouer' value = 'pendu'>rejouer</button>");
+		res.write("<input type = 'hidden'  name = 'pseudo' value = '" + query.pseudo + "'></form>");
+
 	}
-	res.write("<input type = 'hidden'  name = 'pseudo' value = '" + query.pseudo + "'>");
-	res.write("</form></html>");
+
+	res.write("<br><br><form action = '/req_accueil' method = 'GET'>");
+	res.write("<button name = 'quitter' value = 'vtff'>quitter</button>");
+	res.write("<input type = 'hidden'  name = 'pseudo' value = '" + query.pseudo + "'></form>");
 	res.end();
 
 }
