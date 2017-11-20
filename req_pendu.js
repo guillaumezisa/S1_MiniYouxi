@@ -143,7 +143,7 @@ var req_pendu = function(req, res, query, pathname) {
 
 	}
 
-	res.write("<br><br><form action = '/req_accueil' method = 'GET'>");
+	res.write("<br><br><form action = '/req_quitter_morpion' method = 'GET'>");
 	res.write("<button name = 'quitter' value = 'vtff'>quitter</button>");
 	res.write("<input type = 'hidden'  name = 'pseudo' value = '" + query.pseudo + "'></form>");
 	res.end();
