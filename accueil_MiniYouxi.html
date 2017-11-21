@@ -1,34 +1,38 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
-	<title>Accueil Mini Youxi</title>
-</head>
-<body>
-
-<script>NekoType="white"</script>
-<h1 id=nl><script src="http://webneko.net/n200504.js"></script><a
-href="http://webneko.net">Neko</a></h1>
-<br>
-
-<h1>Mini Youxi</h1>
-
-{erreur}
-
-<p/>
-
-<form action="/req_identifier" method="GET"> 
-    <input type="text" name="pseudo" value="{pseudo}"> 
-    <br>
-    <input type="password" name="password" value="">
-    <br>
-    <input type="submit" name="action" value="Se connecter">
-</form>
-
-<br>
-
-<form action="/req_afficher_formulaire_inscription" method="GET">
-    <button name="action" value="creer">Créer compte</button>
-</form>
-</body>
+	<head>
+    	<link rel="stylesheet" href="style.css"/>
+    	<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+    	<title>Accueil Mini Youxi</title>
+	</head>
+	<body>
+		<script>NekoType="white"</script>
+		<h1 id=nl><script src="http://webneko.net/n200504.js"></script>
+		<a href="http://webneko.net">Neko</a></h1>
+		<div id ="header">
+			<div id="connexion"><br>
+				<form action="/req_identifier" method="GET"> 
+    				Login : <br>
+    				<input type="text" name="pseudo" value="{pseudo}"><br>
+    				Mot de passe :<br>
+    				<input type="password" name="password" value=""><br>
+    				<div id="minifont">{erreur}</div><br>
+    				<button class="button" name="action" value="Se connecter"><span>Se connecter</span></button><br>
+				</form>
+				<form action="/req_afficher_formulaire_inscription" method="GET">
+    				<button class="button"name="action" value="creer"><span>Créer compte</span></button>
+				</form></br>
+			</div>
+		</div>
+	</div><br>
+	<center><div id="arti">
+		<br><br><br>
+		<h2>Bienvenue sur Mini Youxi !<br>
+		Mini Youxi est un site de mini jeu <br>
+		Pour acceder aux jeux vous devez vous inscrire .<br>
+		</h2>
+		<br><br><br>
+		</h2>
+	</div></center>
+	</body>
 </html>
