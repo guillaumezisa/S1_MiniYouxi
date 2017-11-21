@@ -14,19 +14,9 @@ var req_pendu = function(req, res, query, pathname) {
 	var page3;
 	var i;
 	var pendu;
-	var membres;
 	var joueur;
 	var victoire;
-	membres = JSON.parse(fs.readFileSync("membres.json", "UTF-8"));
-	for(i = 0;i < membres.length; i++) {
-
-		if(query.pseudo === membres[i].pseudo) {
-
-			joueur = membres[i]
-
-		}
-
-	}
+	joueur = JSON.parse(fs.readFileSync("ntm.json", "UTF-8"));
 
 	page = fs.readFileSync("pendu.html", "UTF-8");
 	page1 = fs.readFileSync("pendu_mot.html", "UTF-8");
@@ -106,17 +96,7 @@ var req_pendu = function(req, res, query, pathname) {
 	page1 = page1.supplant(marqueurs);
 
 	joueur.pendu = pendu;
-
-	for(i = 0; i < membres.length; i++) {
-
-		if(query.pseudo === membres[i].pseudo) {
-
-			membres[i] = joueur;
-
-		}
-
-	}
-	fs.writeFileSync("membres.json", JSON.stringify(membres), "UTF-8");
+	fs.writeFileSync("ntm.json", JSON.stringify(joueur), "UTF-8");
 	
 	res.write(page1);
 
