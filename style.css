@@ -33,6 +33,21 @@ html{
 }
 #minifont{
 	font-size : 9px;
+	color : orange;
+}
+#minifont1{
+	font-size : 12px;
+	color ; orange;
+}
+#boite_inscription{
+border : 2px solid black;
+}
+#boite_inscription1{
+border : 2px solid black;
+font-size : 18px;
+}
+#formulaire_inscription{
+text-align : center;
 }
 .button {
 	display: inline-block;

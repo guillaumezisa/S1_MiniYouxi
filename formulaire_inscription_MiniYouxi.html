@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
-	<title>Formulaire d'inscription</title>
-</head>
-<body>
-<script>NekoType="calico"</script>
-<h1 id=nl><script src="http://webneko.net/n200504.js"></script><a 
-href="http://webneko.net">Neko</a></h1>
-<br>
-
-<h1>Crée votre compte chez Mini Youxi !</h1>
-
-{erreur}
-<p>
-
-<form action="/req_inscrire" method="GET">
-    <label>Pseudo : </label><input type="text" name="pseudo" value="{pseudo}">
-    <br>
-    <label>Password : </label><input type="password" name="password" value="">
-    <br/>
-    <label>Confirmation du password : </label><input type="password" name="password2" value="">
-    <br/>
-    <button name="action" value="creer">Créer compte</button>
-</form>
-</body>
+	<head>
+		<link rel="stylesheet" href="style.css"/>
+		<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+		<title>Formulaire d'inscription</title>
+	</head>
+	<body>
+		<script>NekoType="calico"</script>
+		<h1 id=nl><script src="http://webneko.net/n200504.js"></script>
+		<a href="http://webneko.net">Neko</a></h1><br>
+		<div id="formulaire_inscription">
+			<h1>Créez votre compte Mini Youxi !</h1><br>
+			<div id="boite_inscription"><br>	
+				<center><form action="/req_inscrire" method="GET"><br>
+					Pseudo : <br><br>
+					<input type="text" name="pseudo" value="{pseudo}"><br><br>
+					Mot de passe : <br><br>
+					<input type="password" name="password" value=""><br/><br>
+					Confirmation du mot de passe :<br><br>
+					<input type="password" name="password2" value=""><br/><br>
+					<div id="minifont1">{erreur}</div>
+					<button class="button"name="action" value="creer">Créer compte</button><br><br>
+				</form></center>
+			</div>
+		</div>
+	</body>
 </html>
