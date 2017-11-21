@@ -9,6 +9,9 @@ var req_pendu = function(req, res, query, pathname) {
 
 	var marqueurs;
 	var page;
+	var page1;
+	var page2;
+	var page3;
 	var i;
 	var pendu;
 	var membres;
@@ -26,6 +29,8 @@ var req_pendu = function(req, res, query, pathname) {
 	}
 
 	page = fs.readFileSync("pendu.html", "UTF-8");
+	page1 = fs.readFileSync("pendu_mot.html", "UTF-8");
+	page3 = fs.readFileSync("pendu_bouton.html", "UTF-8");
 
 	pendu = JSON.parse(fs.readFileSync("pendu.json", "UTF-8"));
 
@@ -87,12 +92,20 @@ var req_pendu = function(req, res, query, pathname) {
 	}
 
 	marqueurs = {};
-	marqueurs.pendu = pendu.image[pendu.erreurs];
-	marqueurs.joueur = query.pseudo;
-	marqueurs.motSec = pendu.motAff.join(" ");
-	page = page.supplant(marqueurs);
+	res.writeHead(200, {'Content-Type': 'text/html'});
 
-	joueur.pendu = pendu
+	if(victoire !== true) {
+		marqueurs.pendu = pendu.image[pendu.erreurs];
+		marqueurs.motSec = pendu.motAff.join(" ");
+		page = page.supplant(marqueurs);
+		res.write(page);
+	} else {
+		marqueurs.motSec = pendu.motAff.join("");
+	}
+	marqueurs.joueur = query.pseudo;
+	page1 = page1.supplant(marqueurs);
+
+	joueur.pendu = pendu;
 
 	for(i = 0; i < membres.length; i++) {
 
@@ -104,9 +117,8 @@ var req_pendu = function(req, res, query, pathname) {
 
 	}
 	fs.writeFileSync("membres.json", JSON.stringify(membres), "UTF-8");
-
-	res.writeHead(200, {'Content-Type': 'text/html'});
-	res.write(page);
+	
+	res.write(page1);
 
 	if(victoire !== true && victoire !== false) {
 
@@ -115,15 +127,17 @@ var req_pendu = function(req, res, query, pathname) {
 
 			if(pendu.lettre[i].use === false) {
 
-				res.write("<button name = 'lettre' value = " + pendu.lettre[i].l + ">" + pendu.lettre[i].l + "</button>");
+				page2 = fs.readFileSync("pendu_lettre.html", "UTF-8");
+				marqueurs.lettre = pendu.lettre[i].l;
+				page2 = page2.supplant(marqueurs);
+				res.write(page2);
 
 			}
 
 		}
 		res.write("<input type = 'hidden'  name = 'pseudo' value = '" + query.pseudo + "'></form>");
-		res.write("<br><br><form action = '/req_pendu' method = 'GET'>");
-		res.write("<button name = 'abandonner' value = 'pendu'>abandonner</button>");
-		res.write("<input type = 'hidden'  name = 'pseudo' value = '" + query.pseudo + "'></form>");
+		marqueurs.action = "abandonner";
+
 
 	} else {
 		
@@ -137,15 +151,12 @@ var req_pendu = function(req, res, query, pathname) {
 
 		}
 
-		res.write("<html><br><br><form action = '/req_pendu' method = 'GET'>");
-		res.write("<button name = 'rejouer' value = 'pendu'>rejouer</button>");
-		res.write("<input type = 'hidden'  name = 'pseudo' value = '" + query.pseudo + "'></form>");
+		marqueurs.action = "rejouer";
 
 	}
 
-	res.write("<br><br><form action = '/req_quitter_morpion' method = 'GET'>");
-	res.write("<button name = 'quitter' value = 'vtff'>quitter</button>");
-	res.write("<input type = 'hidden'  name = 'pseudo' value = '" + query.pseudo + "'></form>");
+	page3 = page3.supplant(marqueurs);
+	res.write(page3);
 	res.end();
 
 }
