@@ -111,57 +111,57 @@ var trait = function (req, res, query) {
         position[0][0] !== "rien" &&
 		position[0][0] === position[0][1] &&
 		position[0][0] === position[0][2]
-	) {gagnant = position[0][0] 
-	console.log("1A")}
+	) {gagnant = position[0][0]}
+	//console.log("1A")}
 
 	if (
 		position[1][0] !== "rien" &&
 		position[1][0] === position[1][1] &&
 		position[1][0] === position[1][2]
-	) {gagnant = position[1][0]
-	console.log("2A")}
+	) {gagnant = position[1][0]}
+	//console.log("2A")}
 	if (
 		position[2][0] !== "rien" &&
 		position[2][0] === position[2][1] &&
 		position[2][0] === position[2][2]
-	) {gagnant = position[2][0]
-	console.log("3A")}
+	) {gagnant = position[2][0]}
+	//console.log("3A")}
 
 	//les lignes
 	if (
 		position[0][0] !== "rien" &&
 		position[0][0] === position[1][0] &&
 		position[0][0] === position[2][0]
-	) {gagnant = position[0][0]
-	console.log("4A")}
+	) {gagnant = position[0][0]}
+	//console.log("4A")}
 
     if (
 		position[0][1] !== "rien" &&
 		position[0][1] === position[1][1] &&
 		position[0][1] === position[2][1]
-	) {gagnant = position[0][1]
-	console.log("5A")}
+	) {gagnant = position[0][1]}
+	//console.log("5A")}
 
 	if (
         position[0][2] !== "rien" &&
 	    position[0][2] === position[1][2] &&
 	    position[0][2] === position[2][2]
-	) {gagnant = position[0][2]
-	console.log("6A")}
+	) {gagnant = position[0][2]}
+	//console.log("6A")}
 
 	//les colones
 	if (
 		position[0][0] !== "rien" &&
 		position[0][0] === position[1][1] &&
 		position[0][0] === position[2][2]
-	) {gagnant = position[0][0]
-	console.log("7A")}
+	) {gagnant = position[0][0]}
+	//console.log("7A")}
     if (
 		position[0][2] !== "rien" &&
 		position[0][2] === position[1][1]&&
 		position[0][2] === position[2][0]
-	) {gagnant = position[0][2]
-	console.log("8A")}
+	) {gagnant = position[0][2]}
+	//console.log("8A")}
 	//les diagonales
 
 // le gagnan est déterminé
@@ -254,60 +254,64 @@ var trait = function (req, res, query) {
         position[0][0] !== "rien" &&
 		position[0][0] === position[0][1] &&
 		position[0][0] === position[0][2]
-	) {gagnant = position[0][0]
-	console.log("1B")}
+	) {gagnant = position[0][0]}
+	//console.log("1B")}
 	if (
 		position[1][0] !== "rien" &&
 		position[1][0] === position[1][1] &&
 		position[1][0] === position[1][2]
-	) {gagnant = position[1][0]
-	console.log("2B")}
+	) {gagnant = position[1][0]}
+	//console.log("2B")}
 	if (
 		position[2][0] !== "rien" &&
 		position[2][0] === position[2][1] &&
 		position[2][0] === position[2][2]
-	) {gagnant = position[2][0]
-	console.log("3B")}
+	) {gagnant = position[2][0]}
+	//console.log("3B")}
 	//les lignes
 	if (
 		position[0][0] !== "rien" &&
 		position[0][0] === position[1][0] &&
 		position[0][0] === position[2][0]
-	) {gagnant = position[0][0]
-	console.log("4B")}
+	) {gagnant = position[0][0]}
+	//console.log("4B")}
     if (
 		position[0][1] !== "rien" &&
 		position[0][1] === position[1][1] &&
 		position[0][1] === position[2][1]
-	) {gagnant = position[0][1]
-	console.log("5B")}
+	) {gagnant = position[0][1]}
+	//console.log("5B")}
 	if (
         position[0][2] !== "rien" &&
 	    position[0][2] === position[1][2] &&
 	    position[0][2] === position[2][2]
-	) {gagnant = position[0][2]
-	console.log("6B")}
+	) {gagnant = position[0][2]}
+	//console.log("6B")}
 	//les colones
 	if (
 		position[0][0] !== "rien" &&
 		position[0][0] === position[1][1] &&
 		position[0][0] === position[2][2]
-	) {gagnant = position[0][0]
-	console.log("7B")}
+	) {gagnant = position[0][0]}
+	//console.log("7B")}
     if (
 		position[0][2] !== "rien" &&
 		position[0][2] === position[1][1]&&
 		position[0][2] === position[2][0]
-	) {gagnant = position[0][2]
-	console.log("8B")}
+	) {gagnant = position[0][2]}
+	//console.log("8B")}
 	//les diagonales
-
 // le gagnan est déterminé
 
-	if (gagnant !== undefined || value === "true") {
+	if (gagnant !== undefined ) {
 	// si il y a un gagnant
 
-		marqueur.winer = gagnant
+	
+		if (gagnant === "joueur" || gagnant === "ordi") {
+			marqueur.winer = "Le gagnant est : " + gagnant
+		} else if (value === "true") {
+		    marqueur.winer = "Match nul"
+		}
 
 	    page = fs.readFileSync("resultat_morpion.html", "UTF-8");
 		page = page.supplant(marqueur);
@@ -339,7 +343,6 @@ var trait = function (req, res, query) {
 
 	}
 
-console.log(position)
 
 
 	res.writeHead(200, {'Content-Type': 'text/html'});
