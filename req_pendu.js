@@ -9,6 +9,7 @@ var req_pendu = function(req, res, query, pathname) {
 
 	var marqueurs;
 	var page;
+	var page1;
 	var page2;
 	var page3;
 	var i;
@@ -27,7 +28,7 @@ var req_pendu = function(req, res, query, pathname) {
 
 	}
 
-	page = fs.readFileSync("pendu.html", "UTF-8");
+	page1 = fs.readFileSync("pendu.html", "UTF-8");
 	page3 = fs.readFileSync("pendu_bouton.html", "UTF-8");
 
 	pendu = JSON.parse(fs.readFileSync("pendu.json", "UTF-8"));
@@ -90,10 +91,15 @@ var req_pendu = function(req, res, query, pathname) {
 	}
 
 	marqueurs = {};
-	marqueurs.pendu = pendu.image[pendu.erreurs];
+	if(victoire !== true) {
+		marqueurs.pendu = pendu.image[pendu.erreurs];
+		marqueurs.motSec = pendu.motAff.join(" ");
+		page = page.supplant(marqueurs);
+	} else {
+		marqueurs.motSec = pendu.motAff.join("");
+	}
 	marqueurs.joueur = query.pseudo;
-	marqueurs.motSec = pendu.motAff.join(" ");
-	page = page.supplant(marqueurs);
+	page1 = page1.supplant(marqueurs);
 
 	joueur.pendu = pendu
 
@@ -146,7 +152,6 @@ var req_pendu = function(req, res, query, pathname) {
 
 	}
 
-	marqueurs.pseudo = query.pseudo;
 	page3 = page3.supplant(marqueurs);
 	res.write(page3);
 	res.end();
