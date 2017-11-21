@@ -25,7 +25,7 @@ var req_abandonner_morpion = require("./req_abandonner_morpion.js");
 var req_joueur_pose_pion_morpion = require("./req_joueur_pose_pion_morpion.js");
 var req_quitter_morpion = require("./req_quitter_morpion.js");
 
-var req_pendu = require("./req_pendu.js");
+
 //-------------------------------------------------------------------------
 // FONCTION DE CALLBACK APPELLEE POUR CHAQUE REQUETE
 //-------------------------------------------------------------------------
@@ -76,12 +76,6 @@ var traite_requete = function (req, res) {
 				break;
 			case "/req_quitter_morpion":
 			    req_quitter_morpion(req, res, query);
-				break;
-			case "/req_pendu":
-				req_pendu(req, res, query, pathname);
-				break;
-			case "/req_jouer_pendu":
-				req_pendu(req, res, query, pathname);
 				break;
 			default:
 				req_static(req, res, query);
