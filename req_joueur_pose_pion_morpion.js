@@ -307,7 +307,9 @@ var trait = function (req, res, query) {
 	// si il y a un gagnant
 
 	
-		if (gagnant === "joueur" || gagnant === "ordi") {
+		if (gagnant === "joueur") {
+		    marqueur.winer = "Le gagnant est : " + query.pseudo
+		} else if (gagnant === "ordi") {
 			marqueur.winer = "Le gagnant est : " + gagnant
 		} else if (value === "true") {
 		    marqueur.winer = "Match nul"
