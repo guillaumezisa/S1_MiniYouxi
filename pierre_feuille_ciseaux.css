@@ -1,0 +1,15 @@
+
+
+li {
+display: inline-block;
+		 text-align: center;
+}
+img {
+padding: 10px;
+		 box-shadow: -2px -2px 15px #bbb;
+display: block;
+margin: 15px;
+}
+audio {
+width: 150px;
+}
