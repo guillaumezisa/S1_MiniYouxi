@@ -1,33 +1,29 @@
 <!DOCTYPE html>
 
 <html>
-<head>
-    <meta charset="UTF-8"/>
-	<title>Regles Morpion</title>
-</head>
-<body>
-<script>NekoType="colourful"</script>
-<h1 id=nl><script src="http://webneko.net/n200504.js"></script><a 
-href="http://webneko.net">Neko</a></h1>
-<br>
-<br>
-Les joueurs inscrivent tour à tour leur symbole sur une grille. <br>
-Le premier qui parvient à aligner trois de ses symboles horizontalement,
-verticalement ou en
-diagonale gagne un point.
-
-<br> 
-<br> 
-
-<form action="req_jouer_morpion" method="GET">
-	<input type="hidden" name="pseudo" value="{pseudo}">
-    <input type="submit" name="bouton" value="jouer au morpion">
-</form>
-<form action="req_quitter_regle_morpion" method="GET">
-	<input type="hidden" name="pseudo" value="{pseudo}">
-    <input type="submit" name="bouton" value="retour a l'accueil">
-</form>
-
-
-</body>
+	<head>
+  		<link rel ="stylesheet" href="style.css"/>
+		<meta charset="UTF-8"/>
+		<title>Regles Morpion</title>
+	</head>
+	<body>
+		<form action="req_quitter_regle_morpion" method="GET">
+			<input type="hidden" name="pseudo" value="{pseudo}">
+    		<button class="button1" type="submit" name="bouton" value="retour a l'accueil">Retour a l'accueil</button>
+		</form>
+		<script>NekoType="colourful"</script>
+		<h1 id=nl><script src="http://webneko.net/n200504.js"></script>
+		<a href="http://webneko.net">Neko</a></h1><br>
+		<form action="req_quitter_regle_morpion" method="GET">
+		<br><br>
+		<div id="fatfont">Le Morpion</div><br><br><br>
+		<h3><center>Les joueurs inscrivent tour à tour leur symbole sur une grille. <br>
+		Le premier qui parvient à aligner trois de ses symboles horizontalement,
+		verticalement ou en diagonale gagne un point.</center></h3>
+		<br> 
+		<center>form action="req_jouer_morpion" method="GET">
+			<input type="hidden" name="pseudo" value="{pseudo}">
+    		<button class="button2" type="submit" name="bouton" value="jouer au morpion">Jouer</button>
+		</center></form>
+	</body>
 </html>

@@ -31,6 +31,10 @@ html{
 	border : solid black 1px;
 	width : 800px;
 }
+#fatfont{
+	font-size : 50px;
+	text-align : center;
+}
 #minifont{
 	font-size : 9px;
 	color : orange;
@@ -62,8 +66,9 @@ text-align : center;
 	transition: all 0.5s;
 	cursor: pointer;
 	margin: 5px;
+	border : 1px;
+	float : left;
 }
-
 .button span {
 	cursor: pointer;
 	display: inline-block;
@@ -87,4 +92,81 @@ text-align : center;
 	opacity: 1;
 	right: 0;
 }
+.button1 {
+	display: inline-block;
+	border-radius: 4px;
+	background-color: #740900;
+	border: none;
+	color: #FE9C20;
+	text-align: center;
+	font-size: 12px;
+	padding: 7px;
+	width: 120px;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 5px;
+	border : 1px;
+	float : left;
+}
+.button1 span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
 
+.button1 span:after {
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	transition: 0.5s;
+}
+
+.button1:hover span {
+	padding-right: 10px;
+}
+
+.button1:hover span:after {
+	opacity: 1;
+	right: 0;
+}
+.button2 {
+	display: inline-block;
+	border-radius: 4px;
+	background-color: #740900;
+	border: none;
+	color: #FE9C20;
+	text-align: center;
+	font-size: 16px;
+	padding: 7px;
+	width: 120px;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 5px;
+	border : 1px;
+	float : left;
+}
+.button2 span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+
+.button2 span:after {
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	transition: 0.5s;
+}
+
+.button2:hover span {
+	padding-right: 10px;
+}
+
+.button2:hover span:after {
+	opacity: 1;
+	right: 0;
+}
