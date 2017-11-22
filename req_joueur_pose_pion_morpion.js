@@ -1,4 +1,4 @@
-// traitement de /req_jouer_morpion
+// traitement de /req_joueur_pose_pion_morpion
 
 "use strict";
 
@@ -231,82 +231,83 @@ var trait = function (req, res, query) {
 		}
 		
 	// l'ordi a jouer
-	}
-// on regarde si il y a un gagnant
 
-	var value = "true";
-	for (var idx = 0; idx < position.length ; idx += 1) {
-	    for (var index = 0; index < position[idx].length ; index += 1) {
-		    if (position[idx][index] === "rien") {
-			    value = "false";
-				
+	// on regarde si il y a un gagnant
+
+		var value = "true";
+		for (var idx = 0; idx < position.length ; idx += 1) {
+			for (var index = 0; index < position[idx].length ; index += 1) {
+				if (position[idx][index] === "rien") {
+					value = "false";
+					
+				}
 			}
 		}
+
+		var gagnant
+
+		if (
+		// On regarde si toutes les places sont prise
+			value === "true"
+		) {gagnant = "nul, il n'y a pas de de gagnant"}
+		if (
+			position[0][0] !== "rien" &&
+			position[0][0] === position[0][1] &&
+			position[0][0] === position[0][2]
+		) {gagnant = position[0][0]}
+		//console.log("1B")}
+		if (
+			position[1][0] !== "rien" &&
+			position[1][0] === position[1][1] &&
+			position[1][0] === position[1][2]
+		) {gagnant = position[1][0]}
+		//console.log("2B")}
+		if (
+			position[2][0] !== "rien" &&
+			position[2][0] === position[2][1] &&
+			position[2][0] === position[2][2]
+		) {gagnant = position[2][0]}
+		//console.log("3B")}
+		//les lignes
+		if (
+			position[0][0] !== "rien" &&
+			position[0][0] === position[1][0] &&
+			position[0][0] === position[2][0]
+		) {gagnant = position[0][0]}
+		//console.log("4B")}
+		if (
+			position[0][1] !== "rien" &&
+			position[0][1] === position[1][1] &&
+			position[0][1] === position[2][1]
+		) {gagnant = position[0][1]}
+		//console.log("5B")}
+		if (
+			position[0][2] !== "rien" &&
+			position[0][2] === position[1][2] &&
+			position[0][2] === position[2][2]
+		) {gagnant = position[0][2]}
+		//console.log("6B")}
+		//les colones
+		if (
+			position[0][0] !== "rien" &&
+			position[0][0] === position[1][1] &&
+			position[0][0] === position[2][2]
+		) {gagnant = position[0][0]}
+		//console.log("7B")}
+		if (
+			position[0][2] !== "rien" &&
+			position[0][2] === position[1][1]&&
+			position[0][2] === position[2][0]
+		) {gagnant = position[0][2]}
+		//console.log("8B")}
+		//les diagonales
+	// le gagnan est déterminé
 	}
-
-    var gagnant
-
-	if (
-	// On regarde si toutes les places sont prise
-		value === "true"
-	) {gagnant = "nul, il n'y a pas de de gagnant"}
-	if (
-        position[0][0] !== "rien" &&
-		position[0][0] === position[0][1] &&
-		position[0][0] === position[0][2]
-	) {gagnant = position[0][0]}
-	//console.log("1B")}
-	if (
-		position[1][0] !== "rien" &&
-		position[1][0] === position[1][1] &&
-		position[1][0] === position[1][2]
-	) {gagnant = position[1][0]}
-	//console.log("2B")}
-	if (
-		position[2][0] !== "rien" &&
-		position[2][0] === position[2][1] &&
-		position[2][0] === position[2][2]
-	) {gagnant = position[2][0]}
-	//console.log("3B")}
-	//les lignes
-	if (
-		position[0][0] !== "rien" &&
-		position[0][0] === position[1][0] &&
-		position[0][0] === position[2][0]
-	) {gagnant = position[0][0]}
-	//console.log("4B")}
-    if (
-		position[0][1] !== "rien" &&
-		position[0][1] === position[1][1] &&
-		position[0][1] === position[2][1]
-	) {gagnant = position[0][1]}
-	//console.log("5B")}
-	if (
-        position[0][2] !== "rien" &&
-	    position[0][2] === position[1][2] &&
-	    position[0][2] === position[2][2]
-	) {gagnant = position[0][2]}
-	//console.log("6B")}
-	//les colones
-	if (
-		position[0][0] !== "rien" &&
-		position[0][0] === position[1][1] &&
-		position[0][0] === position[2][2]
-	) {gagnant = position[0][0]}
-	//console.log("7B")}
-    if (
-		position[0][2] !== "rien" &&
-		position[0][2] === position[1][1]&&
-		position[0][2] === position[2][0]
-	) {gagnant = position[0][2]}
-	//console.log("8B")}
-	//les diagonales
-// le gagnan est déterminé
 
 	if (gagnant !== undefined ) {
 	// si il y a un gagnant
 
-	
+		// On prépare les marqueurs pour la page puis on renvoie la page
 		if (gagnant === "joueur") {
 		    marqueur.winer = "Le gagnant est : " + query.pseudo
 		} else if (gagnant === "ordi") {
@@ -316,9 +317,23 @@ var trait = function (req, res, query) {
 		}
 
 	    page = fs.readFileSync("resultat_morpion.html", "UTF-8");
+		var plateau = fs.readFileSync("information_plateau_morpion.json", "UTF-8");
+
+		marqueur.place00 = plateau.case00;
+		marqueur.place10 = plateau.case10;
+		marqueur.place20 = plateau.case20;
+		marqueur.place01 = plateau.case01;
+		marqueur.place11 = plateau.case11;
+		marqueur.place21 = plateau.case21;
+		marqueur.place02 = plateau.case02;
+		marqueur.place12 = plateau.case12;
+		marqueur.place22 = plateau.case22;
+
+		console.log(marqueur.winer)
+
 		page = page.supplant(marqueur);
 
-
+		// On remet le morpion comme avant "on range le jeu"
 		var origine_marqueur = fs.readFileSync("information_plateau_morpion_origine.json", "UTF-8");
 		var origine_places = fs.readFileSync("places_disponible_morpion_origine.json", "UTF-8");
 		var origine_position = fs.readFileSync("position_morpion_origine.json", "UTF-8");
