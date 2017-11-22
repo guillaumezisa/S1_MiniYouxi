@@ -26,13 +26,14 @@ var req_pendu = function(req, res, query, pathname) {
 
 	if(pathname === "/req_pendu") {
 		
-		pendu.motAff = []
+		pendu.motAff = [];
 
-		pendu.motSec = pendu.mots[Math.floor(Math.random() * pendu.mots.length)]
+		pendu.motSec = pendu.mots[Math.floor(Math.random() * pendu.mots.length)];
 
-		for(i = 0; i < pendu.motSec.length; i++) {
+		pendu.motAff[0] = pendu.motSec[0];
+		for(i = 1; i < pendu.motSec.length; i++) {
 
-			pendu.motAff[i] = "_"
+			pendu.motAff[i] = "_";
 
 		}
 
@@ -89,16 +90,14 @@ var req_pendu = function(req, res, query, pathname) {
 		marqueurs.motSec = pendu.motAff.join(" ");
 		page = page.supplant(marqueurs);
 		res.write(page);
-	} else {
-		marqueurs.motSec = pendu.motAff.join("");
+		page1 = page1.supplant(marqueurs);
+		res.write(page1);
 	}
+
 	marqueurs.joueur = query.pseudo;
-	page1 = page1.supplant(marqueurs);
 
 	joueur.pendu = pendu;
 	fs.writeFileSync("ntm.json", JSON.stringify(joueur), "UTF-8");
-	
-	res.write(page1);
 
 	if(victoire !== true && victoire !== false) {
 
@@ -123,11 +122,11 @@ var req_pendu = function(req, res, query, pathname) {
 		
 		if(victoire === true) {
 			
-			res.write("<html><br><br>Vous avez gagner")
+			res.write("<html><br><br>Vous avez gagner, le mot secret etait : " + pendu.motSec + ".");
 
 		} else {
 
-			res.write("<html><br><br>Vous avez perdue")
+			res.write("<html><br><br>Vous avez perdue, le mot secret etait : " + pendu.motSec + ".");
 
 		}
 
