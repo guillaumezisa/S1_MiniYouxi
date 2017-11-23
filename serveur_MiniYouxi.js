@@ -21,6 +21,7 @@ var req_erreur = require("./req_erreur.js");
 var req_regle_morpion = require("./req_regle_morpion.js");
 var req_quitter_regle_morpion = require("./req_quitter_regle_morpion.js");
 var req_jouer_morpion = require("./req_jouer_morpion.js");
+var req_easter_egg = require("./easter_egg.js");
 var req_abandonner_morpion = require("./req_abandonner_morpion.js");
 var req_joueur_pose_pion_morpion = require("./req_joueur_pose_pion_morpion.js");
 var req_quitter_morpion = require("./req_quitter_morpion.js");
@@ -75,6 +76,9 @@ var traite_requete = function (req, res) {
 				break;
 			case "/req_jouer_morpion":
 			    req_jouer_morpion(req, res, query);
+				break;
+			case "/easter_egg":
+			    req_easter_egg(req, res, query);
 				break;
 			case "/req_abandonner_morpion":
 			    req_abandonner_morpion(req, res, query);
