@@ -1,4 +1,4 @@
-// traitement de /req_tempo_regle
+// traitement de /req_tempo_afficher
 "use strict";
 
 var fs = require("fs");
@@ -8,7 +8,7 @@ var marqueur;
 
 var trait = function (req, res, query) {
     
-	page = fs.readFileSync("tempo_regle.html", "UTF-8");
+	page = fs.readFileSync("tempo_afficher.html", "UTF-8");
 
 	marqueur = {}
 	marqueur.pseudo = query.pseudo

@@ -24,7 +24,16 @@ var req_jouer_morpion = require("./req_jouer_morpion.js");
 var req_abandonner_morpion = require("./req_abandonner_morpion.js");
 var req_joueur_pose_pion_morpion = require("./req_joueur_pose_pion_morpion.js");
 var req_quitter_morpion = require("./req_quitter_morpion.js");
+
 var req_pendu = require("./req_pendu.js");
+
+var req_tempo_regle = require("./req_tempo_regle.js");
+var req_tempo_afficher = require("./req_tempo_afficher.js");
+var req_tempo_jouer = require("./req_tempo_jouer.js");
+var req_tempo_fin = require("./req_tempo_fin.js");
+var req_tempo_rejouer = require("./req_tempo_rejouer.js");
+var req_tempo_quitter = require("./req_tempo_quitter.js");
+
 //-------------------------------------------------------------------------
 // FONCTION DE CALLBACK APPELLEE POUR CHAQUE REQUETE
 //-------------------------------------------------------------------------
@@ -81,6 +90,25 @@ var traite_requete = function (req, res) {
 				break;
 			case "/req_jouer_pendu":
 				req_pendu(req, res, query, pathname);
+				break;
+			//TEMPO
+			case "/req_tempo_regle":
+				req_tempo_regle( req,res,query,pathname);
+				break;
+			case "/req_tempo_afficher":
+				req_tempo_afficher( req,res,query,pathname);
+				break;
+			case "/req_tempo_jouer":
+				req_tempo_jouer( req,res,query,pathname);
+				break;
+			case "/req_tempo_fin":
+				req_tempo_fin(req ,req,query,pathname);
+				break;
+			case "/req_tempo_rejouer":
+				req_tempo_rejouer( req,res,query,pathname);
+				break;
+			case "/req_tempo_quitter":
+				req_tempo_quitter( req,res,query,pathname);
 				break;
 			default:
 				req_static(req, res, query);

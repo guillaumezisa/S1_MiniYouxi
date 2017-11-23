@@ -1,4 +1,4 @@
-// traitement de /req_tempo_regle
+// traitement de /req_tempo_quitter
 "use strict";
 
 var fs = require("fs");
@@ -8,7 +8,7 @@ var marqueur;
 
 var trait = function (req, res, query) {
     
-	page = fs.readFileSync("tempo_regle.html", "UTF-8");
+	page = fs.readFileSync("accueil_membre_MiniYouxi.html", "UTF-8");
 
 	marqueur = {}
 	marqueur.pseudo = query.pseudo

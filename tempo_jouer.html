@@ -1,8 +1,24 @@
 <!DOCTYPEhtml>
 <html>
 	<head>
+		<link rel="stylesheet" href="style.css"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Jeu du tempo</title>
 	</head>
 	<body>
-		jouer au jeu dynamiquement
+		<form action="/req_tempo_quitter" method="GET">
+			<input type="hidden"name="pseudo"value="{pseudo}">
+			<button class="button"type="submit"name="bouton"value="quitter"><span>Retour</span></button>
+		</form>
+		<h1>Le jeu du Tempo</h1><br>
+		<div id="tempo">
+			<br><br><br><br><br>
+			boite du jeu jouable
+			<form action="/req_tempo_fin" method="GET">
+				<input type="hidden"name="pseudo"value="{pseudo}">
+				<button class="button1"type="submit"name="bouton"value="stop"><span>STOP</span></button>
+		</form>
+			<br><br><br><br><br>
+		</div>
 	</body>
 </html>
