@@ -102,7 +102,7 @@ var traite_requete = function (req, res) {
 				req_tempo_jouer( req,res,query,pathname);
 				break;
 			case "/req_tempo_fin":
-				req_tempo_fin(req ,req,query,pathname);
+				req_tempo_fin(req ,res,query,pathname);
 				break;
 			case "/req_tempo_rejouer":
 				req_tempo_rejouer( req,res,query,pathname);
