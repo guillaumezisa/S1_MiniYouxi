@@ -22,7 +22,7 @@ html{
 	margin-top:20px;
 	margin-left : 30px;
 	float:right;
-	width:130px;
+	width:170px;
 	height:100%;
 	padding:20px;
 	margin-left:740px;
@@ -44,14 +44,17 @@ html{
 	color ; orange;
 }
 #boite_inscription{
-border : 2px solid black;
+	border : 2px solid black;
 }
 #boite_inscription1{
-border : 2px solid black;
-font-size : 18px;
+	border : 2px solid black;
+	font-size : 18px;
 }
 #formulaire_inscription{
-text-align : center;
+	text-align : center;
+}
+#tempo{
+	border : 1px solid black;	
 }
 .button {
 	display: inline-block;
