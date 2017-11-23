@@ -84,6 +84,7 @@ var req_pendu = function(req, res, query, pathname) {
 
 	marqueurs = {};
 	res.writeHead(200, {'Content-Type': 'text/html'});
+	res.write("<html><head><title>Pendu</title></head><body>");
 
 	if(victoire !== true) {
 		marqueurs.pendu = pendu.image[pendu.erreurs];
@@ -101,7 +102,7 @@ var req_pendu = function(req, res, query, pathname) {
 
 	if(victoire !== true && victoire !== false) {
 
-		res.write("<html><br><br><form action = '/req_jouer_pendu' method = 'GET'>");
+		res.write("<br><br><form action = '/req_jouer_pendu' method = 'GET'>");
 		for(i = 0; i < pendu.lettre.length; i++) {
 
 			if(pendu.lettre[i].use === false) {
@@ -122,11 +123,11 @@ var req_pendu = function(req, res, query, pathname) {
 		
 		if(victoire === true) {
 			
-			res.write("<html><br><br>Vous avez gagner, le mot secret etait : " + pendu.motSec + ".");
+			res.write("<br><br>Vous avez gagner, le mot secret etait : " + pendu.motSec + ".");
 
 		} else {
 
-			res.write("<html><br><br>Vous avez perdue, le mot secret etait : " + pendu.motSec + ".");
+			res.write("<br><br>Vous avez perdue, le mot secret etait : " + pendu.motSec + ".");
 
 		}
 
@@ -136,6 +137,7 @@ var req_pendu = function(req, res, query, pathname) {
 
 	page3 = page3.supplant(marqueurs);
 	res.write(page3);
+	res.write("</body></html>");
 	res.end();
 
 }
