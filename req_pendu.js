@@ -16,7 +16,7 @@ var req_pendu = function(req, res, query, pathname) {
 	var pendu;
 	var joueur;
 	var victoire;
-	joueur = JSON.parse(fs.readFileSync("ntm.json", "UTF-8"));
+	joueur = JSON.parse(fs.readFileSync("pendu_partie.json", "UTF-8"));
 
 	page = fs.readFileSync("pendu.html", "UTF-8");
 	page1 = fs.readFileSync("pendu_mot.html", "UTF-8");
@@ -98,7 +98,7 @@ var req_pendu = function(req, res, query, pathname) {
 	marqueurs.joueur = query.pseudo;
 
 	joueur.pendu = pendu;
-	fs.writeFileSync("ntm.json", JSON.stringify(joueur), "UTF-8");
+	fs.writeFileSync("pendu_partie.json", JSON.stringify(joueur), "UTF-8");
 
 	if(victoire !== true && victoire !== false) {
 
