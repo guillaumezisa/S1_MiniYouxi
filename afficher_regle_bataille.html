@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	    <meta charset="UTF-8"/>
+		<title>Regles Bataille</title>
+	</head>
+	<body>
+	    <h1>La bataille</h1>
+
+		La bataille est un jeu qui se joue généralement a deux.
+		<br>
+		Chaque joueure possède une parti d'un jeu de carte préalablement mélangé.
+		<br>
+		Vous devez retourner la carte que est sur le dessus de votr paquet.
+		<br>
+		Le joueur qui pose la carte avec la plus grande valeur emporte les
+		cartes restantes et les remets en dessous de son paquet.
+		<br>
+		Si un joueur n'as plus de carte il est éliminé. Un joueur l'emporte s'il possède toutes les cartes du paquets.
+		<br>
+		<br>
+
+		<form action="/req_quitter_regle_bataille" method="GET">
+		    <input type="hidden" name="pseudo" value="{pseudo}">
+			<input type="submit" name="bouton_quiter" value="Retour à l'accueil">
+		</form>
+
+		<form action="/req_commencer_bataille" method="GET">
+		    <input type="hidden" name="pseudo" value="{pseudo}">
+			<input type="submit" name="bouton_jouer" value="Jouer">
+		</form>
+	</body>
+</html>
