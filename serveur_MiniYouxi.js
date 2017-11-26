@@ -26,6 +26,9 @@ var req_abandonner_morpion = require("./req_abandonner_morpion.js");
 var req_joueur_pose_pion_morpion = require("./req_joueur_pose_pion_morpion.js");
 var req_quitter_morpion = require("./req_quitter_morpion.js");
 var req_regle_bataille = require("./req_regle_bataille.js");
+var req_quitter_regle_bataille = require("./req_quitter_regle_bataille.js");
+var req_commencer_bataille = require("./req_commencer_bataille.js");
+//var req_pose_carte_bataille = require("./req_pose_carte_bataille.js");
 
 
 
@@ -100,6 +103,12 @@ var traite_requete = function (req, res) {
 			   break;
 		   case "/req_quitter_regle_bataille":
 		       req_quitter_regle_bataille(req, res, query);
+			   break;
+		   case "/req_commencer_bataille":
+		       req_commencer_bataille(req, res, query);
+			   break;
+		   case "/req_pose_carte_bataille":
+		       req_pose_carte_bataille(req, res, query);
 			   break;
 
 
