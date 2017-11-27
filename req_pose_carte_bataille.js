@@ -18,7 +18,7 @@ var trait = function(req, res, query) {
 	mains = JSON.parse(mains);
 
 	pose_joueur = mains.joueur[0];
-	mains.joueur.splice(0, 1);
+mains.joueur.splice(0, 1);
 	pose_ordi = mains.ordi[0];
 	mains.ordi.splice(0, 1);
 
