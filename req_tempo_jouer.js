@@ -12,7 +12,7 @@ var trait = function (req, res, query) {
 	var y = Math.floor(Date.now()/1000);
 	var z =Number(x)+ Number(y);
 
-	partie = [{ nbgagnant : z },{nbjouer : ""}];
+	partie = [{ nbgagnant : z }];
 	partie = JSON.stringify(partie);
 	fs.writeFileSync("tempo_partie.json",partie,"utf-8");
 	page = fs.readFileSync("tempo_jouer.html", "UTF-8");

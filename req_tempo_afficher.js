@@ -7,7 +7,6 @@ var page;
 var marqueur;
 
 var trait = function (req, res, query) {
-    
 	page = fs.readFileSync("tempo_afficher.html", "UTF-8");
 
 	marqueur = {}
