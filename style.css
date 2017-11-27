@@ -4,7 +4,7 @@ html{
 	background-repeat:no-repeat;
 	background-position:center;
 	height : 100%;
-	color : white;
+	color : #424242;
 }
 #header{
 	height:100%;
@@ -59,9 +59,9 @@ html{
 .button {
 	display: inline-block;
 	border-radius: 4px;
-	background-color: #740900;
+	background-color: #D02628;
 	border: none;
-	color: #FE9C20;
+	color: black;
 	text-align: center;
 	font-size: 10px;
 	padding: 5px;
@@ -98,7 +98,7 @@ html{
 .button1 {
 	display: inline-block;
 	border-radius: 4px;
-	background-color: #740900;
+	background-color: #D02628;
 	border: none;
 	color: #FE9C20;
 	text-align: center;
@@ -137,7 +137,7 @@ html{
 .button2 {
 	display: inline-block;
 	border-radius: 4px;
-	background-color: #740900;
+	background-color: #D02628;
 	border: none;
 	color: #FE9C20;
 	text-align: center;
