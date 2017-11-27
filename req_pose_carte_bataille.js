@@ -52,7 +52,6 @@ var trait = function(req, res, query) {
 	}
     
 	
-	console.log(mains.joueur.length, mains.ordi.length)
 	if (mains.joueur.length === 0 || mains.ordi.length == 0) {
 	// Si un des deux joueurs a perdu
 
