@@ -5,4 +5,25 @@
 		<title>Resultat du tour</title>
 	</head>
 	<body>
-	    
+	ordi:{ordi}
+	joueur:{joueur}
+	resultat:{resultat}
+
+	<form action="/req_pose_carte_bataille" method="GET">
+		<input type="hidden" name="pseudo" value="{pseudo}">
+		<button name="carte_face_cache" value="pose_carte">pose carte</button>
+	</form>
+
+	<form action="/req_abandonner_bataille" method="GET">
+	    <input type="hidden" name="pseudo" value="{pseudo}">
+		<input type="submit" name="abandonner" value="abandon">
+	</form>
+
+	<form action="/req_resultat_bataille" method="GET">
+	    <input type="hidden" name="pseudo" value="{pseudo}">
+		<input type="submit" name="resultat" value="afficher les resultats">
+	</form>
+
+	</body>
+</html>
+

@@ -44,11 +44,13 @@ var trait = function (req, res, query) {
 	}
 
 	// On sauvegarde les mains des joueurs dans un JSON a son nom
-	mains = JSON.stringify(mains)
+	mains = JSON.stringify(mains);
 	fs.writeFileSync("mains_bataille_" + query.pseudo + ".json", mains, "UTF-8");
 
     // On va afficher la page de jeu
 	page = fs.readFileSync("table_bataille.html", "UTF-8");
+
+    marqueur.pseudo = query.pseudo
 
     page = page.supplant(marqueur)
     
