@@ -4,8 +4,9 @@
 
 var fs = require("fs");
 require("remedial");
+var url = require("url");
 
-var req_pendu = function(req, res, query, pathname) {
+var req_pendu = function(req, res, query) {
 
 	var marqueurs;
 	var page;
@@ -16,6 +17,8 @@ var req_pendu = function(req, res, query, pathname) {
 	var pendu;
 	var joueur;
 	var victoire;
+	var requete = url.parse(req.url, true);
+	var pathname = requete.pathname;
 	joueur = JSON.parse(fs.readFileSync("pendu_partie.json", "UTF-8"));
 
 	page = fs.readFileSync("pendu.html", "UTF-8");
@@ -89,7 +92,6 @@ var req_pendu = function(req, res, query, pathname) {
 	if(victoire !== true) {
 		marqueurs.pendu = pendu.image[pendu.erreurs];
 		marqueurs.motSec = pendu.motAff.join(" ");
-		page = page.supplant(marqueurs);
 		res.write(page);
 		page1 = page1.supplant(marqueurs);
 		res.write(page1);

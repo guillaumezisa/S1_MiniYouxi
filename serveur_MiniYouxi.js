@@ -33,7 +33,8 @@ var req_abandonner_bataille = require("./req_abandonner_bataille.js");
 var req_resultat_bataille = require("./req_resultat_bataille.js");
 var req_quitter_bataille = require("./req_quitter_bataille.js");
 
-
+var req_regle_pfc = require("./req_regle_pfc.js");
+var req_lancer_pfc = require("./req_lancer_pfc.js");
 
 
 var req_pendu = require("./req_pendu.js");
@@ -122,32 +123,38 @@ var traite_requete = function (req, res) {
 		   case "/req_quitter_bataille":
 		       req_quitter_bataille(req, res, query);
 			   break;
-
+			//pfc
+			case "/req_regle_pfc":
+				req_regle_pfc(req, res, query);
+				break;
+			case "/req_lancer_pfc":
+				req_lancer_pfc(req, res, query);
+				break;
 
 			case "/req_pendu":
-				req_pendu(req, res, query, pathname);
+				req_pendu(req, res, query);
 				break;
 			case "/req_jouer_pendu":
-				req_pendu(req, res, query, pathname);
+				req_pendu(req, res, query);
 				break;
 			//TEMPO
 			case "/req_tempo_regle":
-				req_tempo_regle( req,res,query,pathname);
+				req_tempo_regle( req,res,query);
 				break;
 			case "/req_tempo_afficher":
-				req_tempo_afficher( req,res,query,pathname);
+				req_tempo_afficher( req,res,query);
 				break;
 			case "/req_tempo_jouer":
-				req_tempo_jouer( req,res,query,pathname);
+				req_tempo_jouer( req,res,query);
 				break;
 			case "/req_tempo_fin":
-				req_tempo_fin(req ,res,query,pathname);
+				req_tempo_fin(req ,res,query);
 				break;
 			case "/req_tempo_rejouer":
-				req_tempo_rejouer( req,res,query,pathname);
+				req_tempo_rejouer( req,res,query);
 				break;
 			case "/req_tempo_quitter":
-				req_tempo_quitter( req,res,query,pathname);
+				req_tempo_quitter( req,res,query);
 				break;
 			default:
 				req_static(req, res, query);
