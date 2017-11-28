@@ -35,6 +35,10 @@ html{
 	font-size : 50px;
 	text-align : center;
 }
+#font1{
+	color : yellow ;
+	font-size : 18px;
+}
 #minifont{
 	font-size : 9px;
 	color : orange;
@@ -54,7 +58,12 @@ html{
 	text-align : center;
 }
 #tempo{
-	border : 1px solid black;	
+	border : 1px solid black;
+	background : url("stargate.png");
+	background-color ; blue;
+	background-repeat:no-repeat;
+	background-position:center;
+	
 }
 .button {
 	display: inline-block;
@@ -170,6 +179,43 @@ html{
 }
 
 .button2:hover span:after {
+	opacity: 1;
+	right: 0;
+}
+.button3 {
+	border-radius: 4px;
+	background-color: #D02628;
+	border: none;
+	color: #FE9C20;
+	text-align: center;
+	font-size: 18px;
+	padding: 7px;
+	width: 120px;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 5px;
+	border : 1px;
+}
+.button3 span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+
+.button3 span:after {
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	transition: 0.5s;
+}
+
+.button3:hover span {
+	padding-right: 10px;
+}
+
+.button3:hover span:after {
 	opacity: 1;
 	right: 0;
 }

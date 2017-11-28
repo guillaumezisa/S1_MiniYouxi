@@ -12,13 +12,15 @@
 		</form>
 		<h1>Le jeu du Tempo</h1><br>
 		<div id="tempo">
-			<br><br><br><br><br>
-			Appuyez sur jouer quand vous êtes prêt .
-			<br><br><br><br><br>
+			<center><br><br><br><br><br><br><br><br>
+			<b>Appuyez sur jouer quand vous êtes prêt .</b>
+			<br><br><br>
+			<form action="/req_tempo_jouer" method="GET">
+				<input type="hidden"name="pseudo"value="{pseudo}">
+				<button class="button3"name="action"value=Quitter"><span>Jouer</span></button><br>
+			</form>
+			<br><br><br><br><br><br><br><br><br><br><br></center>
+			</div>
 		</div>
-		<form action="/req_tempo_jouer" method="GET">
-			<input type="hidden"name="pseudo"value="{pseudo}">
-			<button class="button"name="action"value=Quitter"><span>Jouer</span></button><br>
-		</form>
 	</body>
 </html>
