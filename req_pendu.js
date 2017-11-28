@@ -87,7 +87,7 @@ var req_pendu = function(req, res, query) {
 
 	marqueurs = {};
 	res.writeHead(200, {'Content-Type': 'text/html'});
-	res.write("<html><head><link rel='stylesheet'href='style.css'/><meta http-equiv='Content-Type'content='text/html; charset)utf-8/><title>Pendu</title></head><body>");
+	res.write("<html><head><link rel='stylesheet'href='style.css'/><title>Pendu</title></head><body>");
 
 	if(victoire !== true) {
 		marqueurs.pendu = pendu.image[pendu.erreurs];
