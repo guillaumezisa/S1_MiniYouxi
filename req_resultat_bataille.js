@@ -26,11 +26,9 @@ var trait = function(req, res, query) {
 	    marqueur.winer = "le gagnant est ordi"
 	}
 
-	// effacer le fichier mains_mataille_ + query.pseudo + .json
-
 	// On va renvoyé la page
 	page = fs.readFileSync("resultat_bataille.html", "UTF-8");
-	page = page.supplant(marqueur)
+	page = page.supplant(marqueur);
 
 	res.writeHead(200, {"Content-Type": "text/html"});
 	res.write(page);
