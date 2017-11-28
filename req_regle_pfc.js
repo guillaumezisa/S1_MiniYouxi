@@ -5,11 +5,11 @@
 var fs= require("fs");
 require ("remedial")
 var page;
-var marquer;
+var marqueur;
 
 var trait = function (req, res, query) {
 
-	//page = fs.readFileSync("
+	page = fs.readFileSync("afficher_regle_pfc.html", "UTF-8")
 
 	marqueur = {}
 	marqueur.pseudo = query.pseudo
