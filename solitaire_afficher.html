@@ -1,0 +1,26 @@
+<!DOCTYPEhtml>
+<html>
+	<head>
+		<link rel="stylesheet" href="style.css"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Jeu du tempo</title>
+	</head>
+	<body>
+		<form action="/req_tempo_quitter" method="GET">
+			<input type="hidden"name="pseudo"value="{pseudo}">
+			<button class="button"name="action"value=Quitter"><span>Retour</span></button><br>
+		</form>
+		<center><h1>Le jeu du Tempo</h1></center><br>
+		<div id="tempo">
+			<center>
+			<div id="font1"><b>Appuyez sur jouer quand vous êtes prêt .</b></div>
+			<br><br><br><br><br><br><br><br><br><br><br>
+			<form action="/req_tempo_jouer" method="GET">
+				<input type="hidden"name="pseudo"value="{pseudo}">
+				<button class="button3"name="action"value=Quitter"><span>Jouer</span></button><br>
+			</form>
+			<br><br><br><br><br><br><br><br><br><br><br></center>
+			</div>
+		</div>
+	</body>
+</html>

@@ -9,17 +9,18 @@
 		<form action="/req_tempo_quitter" method="GET">
 			<input type="hidden"name="pseudo"value="{pseudo}">
 			<button class="button"type="submit"name="bouton"value="quitter"><span>Retour</span></button>
-		</form>
-		<h1>Le jeu du Tempo</h1><br>
-		<div id="tempo">
-			<br><br><br><br><br>
-			<h2>Resultat de la partie !</h2><br>						{fin}<br>
+		</form><br>
+		<center><h1>Le jeu du Tempo</h1></center><br>
+		<div id="tempo_fin">
+			<br>
+			<center><h2>Resultat de la partie !</h2></center>						
+			{fin}<br>
 			{com}<br>
-			<form action="/req_tempo_rejouer" method="GET">
+			<center><form action="/req_tempo_rejouer" method="GET">
 				<input type="hidden"name="pseudo"value="{pseudo}">
-				<button class="button1"type="submit"name="bouton"value="stop"><span>Rejouer</span></button>
-			</form>
-			<br><br><br><br><br>
+				<button class="button3"type="submit"name="bouton"value="stop"><span>Rejouer</span></button>
+			</form></center>
+			<br><br><br>
 		</div>
 	</body>
 </html>
