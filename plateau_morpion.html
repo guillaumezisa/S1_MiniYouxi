@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
 <head>
 	<link rel="stylesheet" href="style.css"/>
@@ -7,28 +6,30 @@
 	<title>Jeu Morpion</title>
 </head>
 <body>
-<form action="req_joueur_pose_pion_morpion" method="GET">
+<center><form action="req_joueur_pose_pion_morpion" method="GET">
 
     <input type="hidden" name="pseudo" value="{pseudo}">
     <input type="hidden" name="gagnant" value="{winer}">
 
-	<button name="place00" value="{val00}"><img src="{case00}"></button>
-	<button name="place10" value="{val10}"><img src="{case10}"></button>
-	<button name="place20" value="{val20}"><img src="{case20}"></button>
+	<button class="bmorpion"name="place00" value="{val00}"><img src="{case00}"></button>
+	<button class="bmorpion"name="place10" value="{val10}"><img src="{case10}"></button>
+	<button class="bmorpion"name="place20" value="{val20}"><img src="{case20}"></button>
 	<br>
-	<button name="place01" value="{val01}"><img src="{case01}"></button>
-	<button name="place11" value="{val11}"><img src="{case11}"></button>
-	<button name="place21" value="{val21}"><img src="{case21}"></button>
+	<button class="bmorpion"name="place01" value="{val01}"><img src="{case01}"></button>
+	<button class="bmorpion"name="place11" value="{val11}"><img src="{case11}"></button>
+	<button class="bmorpion"name="place21" value="{val21}"><img src="{case21}"></button>
 	<br>
-	<button name="place02" value="{val02}"><img src="{case02}"></button>
-	<button name="place12" value="{val12}"><img src="{case12}"></button>
-	<button name="place22" value="{val22}"><img src="{case22}"></button>
+	<button class="bmorpion"name="place02" value="{val02}"><img src="{case02}"></button>
+	<button class="bmorpion"name="place12" value="{val12}"><img src="{case12}"></button>
+	<button class="bmorpion"name="place22" value="{val22}"><img src="{case22}"></button>
 
-</form>
+</form></center>
 
 <br>
 
 <form action="req_abandonner_morpion" method="GET">
     <input type="hidden" name="pseudo" value="{pseudo}">
-    <input type="submit" name="bouton" value="abandonner">
-</form> 
+    <button class="button1" type="submit" name="bouton" value="abandonner"><span>Abandonner</span></button>
+</form>
+</body>
+</html>

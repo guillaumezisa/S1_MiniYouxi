@@ -18,16 +18,17 @@ var trait = function (req, res, query) {
 	marqueur = {}
 	marqueur.pseudo = query.pseudo
 	if ( x === nb ) {
-		marqueur.fin = " Vous avez gagner !";
+		marqueur.fin = "<center>Vous avez gagner !<br><br><img src='tempo_win.png'width='250'></center>";
+		marqueur.com ="";
 	}else{
 		if ( x < nb ){
 			var calc = nb-x ;
-			marqueur.com = " Vous avez attendu "+calc+" secondes de trop !";	
-			marqueur.fin = " Vous avez perdu !";
+			marqueur.com = "<center>Vous avez attendu "+calc+" secondes de trop !</center>";	
+			marqueur.fin = "<center>Vous avez perdu !<br><br><img src='tempo_loose.jpg'width='350'></center>";
 		}else if ( x > nb){
 			var calc = x-nb ;
-			marqueur.com = " Vous avez été trop rapide de "+calc+" secondes";
-			marqueur.fin = " Vous avez perdu !";
+			marqueur.com = "<center>Vous avez été trop rapide de "+calc+" secondes </center>";
+			marqueur.fin = "<center>Vous avez perdu !<br><br><img src='tempo_loose.jpg'width='350'></center>";
 		}
 	}
 	marqueur.nb = nb;
@@ -36,7 +37,7 @@ var trait = function (req, res, query) {
 
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	res.write(page);
-	res.end(); 
+	res.end();
 }
 
 module.exports = trait;

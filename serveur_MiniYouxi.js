@@ -46,6 +46,8 @@ var req_tempo_fin = require("./req_tempo_fin.js");
 var req_tempo_rejouer = require("./req_tempo_rejouer.js");
 var req_tempo_quitter = require("./req_tempo_quitter.js");
 
+var req_solitaire_regle = require("./req_solitaire_regle.js");
+
 //-------------------------------------------------------------------------
 // FONCTION DE CALLBACK APPELLEE POUR CHAQUE REQUETE
 //-------------------------------------------------------------------------
@@ -155,6 +157,10 @@ var traite_requete = function (req, res) {
 				break;
 			case "/req_tempo_quitter":
 				req_tempo_quitter( req,res,query);
+				break;
+			//Solitaire
+			case "/req_solitaire_regle":
+				req_solitaire_regle( req,res,query);
 				break;
 			default:
 				req_static(req, res, query);

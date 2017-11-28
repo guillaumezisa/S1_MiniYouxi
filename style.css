@@ -36,8 +36,8 @@ html{
 	text-align : center;
 }
 #font1{
-	color : yellow ;
-	font-size : 18px;
+	color : red;
+	font-size : 22px;
 }
 #minifont{
 	font-size : 9px;
@@ -62,8 +62,13 @@ html{
 	background : url("stargate.png");
 	background-color ; blue;
 	background-repeat:no-repeat;
-	background-position:center;
-	
+	background-position:center;	
+}
+#tempo_fin{
+	border : 1px solid black;
+}
+#bmorpion{
+	border : solid black 0px;
 }
 .button {
 	display: inline-block;
@@ -109,7 +114,7 @@ html{
 	border-radius: 4px;
 	background-color: #D02628;
 	border: none;
-	color: #FE9C20;
+	color: black;
 	text-align: center;
 	font-size: 12px;
 	padding: 7px;
@@ -148,7 +153,7 @@ html{
 	border-radius: 4px;
 	background-color: #D02628;
 	border: none;
-	color: #FE9C20;
+	color: black;
 	text-align: center;
 	font-size: 16px;
 	padding: 7px;
@@ -186,7 +191,7 @@ html{
 	border-radius: 4px;
 	background-color: #D02628;
 	border: none;
-	color: #FE9C20;
+	color: black;
 	text-align: center;
 	font-size: 18px;
 	padding: 7px;
