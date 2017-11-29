@@ -7,7 +7,7 @@ require("remedial")
 var page;
 var marqueur;
 var trait = function (req, res, query) {
-	var extract = fs.readFileSync("tempo_partie.json","UTF-8");
+	var extract = fs.readFileSync("tempo_"+query.pseudo+".json","UTF-8");
 	var load = JSON.parse(extract);
 	console.log(load);
 	var x = load[0].nbgagnant;

@@ -14,7 +14,7 @@ var trait = function (req, res, query) {
 
 	partie = [{ nbgagnant : z }];
 	partie = JSON.stringify(partie);
-	fs.writeFileSync("tempo_partie.json",partie,"utf-8");
+	fs.writeFileSync("tempo_"+query.pseudo+".json",partie,"utf-8");
 	page = fs.readFileSync("tempo_jouer.html", "UTF-8");
 	
 	marqueur = {}
