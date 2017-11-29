@@ -2,6 +2,11 @@
 
 "use strict";
 
+var definir_valeur_jouer = function (e) {
+    .
+}
+
+
 var jeu = function () {
     
 	var body;
@@ -14,6 +19,7 @@ var jeu = function () {
 
 	for (var idx = 0; idx < liste_image.length; idx += 1) {
 		image = document.createElement("img");
+		image.setAttribute("id", idx);
 		image.setAttribute("src", liste_image[idx]);
 		body.appendChild(image)
 		image.addEventListener("click", inserer une fonction);
