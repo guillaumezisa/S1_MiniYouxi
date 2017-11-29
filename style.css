@@ -16,6 +16,8 @@ html{
 	padding:25px;
 	font:18px arial;
 	overflow:hidden;
+	background : url("banniere.png");
+	background-repeat:no-repeat;
 }
 #connexion{
 	border : solid black 1px;
