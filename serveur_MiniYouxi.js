@@ -164,7 +164,7 @@ var traite_requete = function (req, res) {
 				req_solitaire_regle( req,res,query);
 				break;
 			case "/req_solitaire_afficher":
-				req_solitaire_regle(req,res,query);
+				req_solitaire_afficher(req,res,query);
 				break;
 			case "/req_solitaire_quitter":
 				req_solitaire_quitter(req,res,query);

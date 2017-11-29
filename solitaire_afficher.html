@@ -2,25 +2,76 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="style.css"/>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Jeu du tempo</title>
+		<meta http-equiv="Content-Type" content ="text/html ; charset=utf-8"/>
+		<title>Jeu du Solitaire</title>
 	</head>
 	<body>
-		<form action="/req_tempo_quitter" method="GET">
-			<input type="hidden"name="pseudo"value="{pseudo}">
-			<button class="button"name="action"value=Quitter"><span>Retour</span></button><br>
+		<form action="/req_solitaire_quitter" method="GET">
+			<input type ="hidden" name="pseudo" value ="{pseudo}">
+			<button class="button"name="action"value="Quitter"><span>Retour</span></button><br>
 		</form>
-		<center><h1>Le jeu du Tempo</h1></center><br>
-		<div id="tempo">
-			<center>
-			<div id="font1"><b>Appuyez sur jouer quand vous êtes prêt .</b></div>
-			<br><br><br><br><br><br><br><br><br><br><br>
-			<form action="/req_tempo_jouer" method="GET">
-				<input type="hidden"name="pseudo"value="{pseudo}">
-				<button class="button3"name="action"value=Quitter"><span>Jouer</span></button><br>
-			</form>
-			<br><br><br><br><br><br><br><br><br><br><br></center>
-			</div>
-		</div>
+		<center>	
+			<h1> Le jeu du Solitaire </h1><br>
+			<center><form action="req_solitaire_joue" method="GET">
+				<input type="hidden" name="pseudo" value="{pseudo}">
+				<input type="hidden" name="gagnant" value="{win}">
+
+				<button class="bsolitaire"name="place00"value="{val00}"><img src="{case00}"></button>
+				<button class="bsolitaire"name="place01"value="{val01}"><img src="{case01}"></button>
+				<button class="bsolitaire"name="place02"value="{val02}"><img src="{case02}"></button>
+				<button class="bsolitaire"name="place03"value="{val03}"><img src="{case03}"></button>
+				<button class="bsolitaire"name="place04"value="{val04}"><img src="{case04}"></button>
+				<button class="bsolitaire"name="place05"value="{val05}"><img src="{case05}"></button>
+				<button class="bsolitaire"name="place06"value="{val06}"><img src="{case06}"></button>
+				<br>			
+				<button class="bsolitaire"name="place10"value="{val10}"><img src="{case10}"></button>
+				<button class="bsolitaire"name="place11"value="{val11}"><img src="{case11}"></button>
+				<button class="bsolitaire"name="place12"value="{val12}"><img src="{case12}"></button>
+				<button class="bsolitaire"name="place13"value="{val13}"><img src="{case13}"></button>
+				<button class="bsolitaire"name="place14"value="{val14}"><img src="{case14}"></button>
+				<button class="bsolitaire"name="place15"value="{val15}"><img src="{case15}"></button>
+				<button class="bsolitaire"name="place16"value="{val16}"><img src="{case16}"></button>
+				<br>
+				<button class="bsolitaire"name="place20"value="{val20}"><img src="{case20}"></button>
+				<button class="bsolitaire"name="place21"value="{val21}"><img src="{case21}"></button>
+				<button class="bsolitaire"name="place22"value="{val22}"><img src="{case22}"></button>
+				<button class="bsolitaire"name="place23"value="{val23}"><img src="{case23}"></button>
+				<button class="bsolitaire"name="place24"value="{val24}"><img src="{case24}"></button>
+				<button class="bsolitaire"name="place25"value="{val25}"><img src="{case25}"></button>
+				<button class="bsolitaire"name="place26"value="{val26}"><img src="{case26}"></button>
+				<br>
+				<button class="bsolitaire"name="place30"value="{val30}"><img src="{case30}"></button>
+				<button class="bsolitaire"name="place31"value="{val31}"><img src="{case31}"></button>
+				<button class="bsolitaire"name="place32"value="{val32}"><img src="{case32}"></button>
+				<button class="bsolitaire"name="place33"value="{val33}"><img src="{case33}"></button>
+				<button class="bsolitaire"name="place34"value="{val34}"><img src="{case34}"></button>
+				<button class="bsolitaire"name="place35"value="{val35}"><img src="{case35}"></button>
+				<button class="bsolitaire"name="place36"value="{val36}"><img src="{case36}"></button>
+				<br>
+				<button class="bsolitaire"name="place40"value="{val40}"><img src="{case40}"></button>
+				<button class="bsolitaire"name="place41"value="{val41}"><img src="{case41}"></button>
+				<button class="bsolitaire"name="place42"value="{val42}"><img src="{case42}"></button>
+				<button class="bsolitaire"name="place43"value="{val43}"><img src="{case43}"></button>
+				<button class="bsolitaire"name="place44"value="{val44}"><img src="{case44}"></button>
+				<button class="bsolitaire"name="place45"value="{val45}"><img src="{case45}"></button>
+				<button class="bsolitaire"name="place46"value="{val46}"><img src="{case46}"></button>
+				<br>
+				<button class="bsolitaire"name="place50"value="{val50}"><img src="{case50}"></button>
+				<button class="bsolitaire"name="place51"value="{val51}"><img src="{case51}"></button>
+				<button class="bsolitaire"name="place52"value="{val52}"><img src="{case52}"></button>
+				<button class="bsolitaire"name="place53"value="{val53}"><img src="{case53}"></button>
+				<button class="bsolitaire"name="place54"value="{val54}"><img src="{case54}"></button>
+				<button class="bsolitaire"name="place55"value="{val55}"><img src="{case55}"></button>
+				<button class="bsolitaire"name="place56"value="{val56}"><img src="{case56}"></button>
+				<br>
+				<button class="bsolitaire"name="place60"value="{val60}"><img src="{case60}"></button>
+				<button class="bsolitaire"name="place61"value="{val61}"><img src="{case61}"></button>
+				<button class="bsolitaire"name="place62"value="{val62}"><img src="{case62}"></button>
+				<button class="bsolitaire"name="place63"value="{val63}"><img src="{case63}"></button>
+				<button class="bsolitaire"name="place64"value="{val64}"><img src="{case64}"></button>
+				<button class="bsolitaire"name="place65"value="{val65}"><img src="{case65}"></button>
+				<button class="bsolitaire"name="place66"value="{val66}"><img src="{case66}"></button>
+	
+		</center>
 	</body>
 </html>
