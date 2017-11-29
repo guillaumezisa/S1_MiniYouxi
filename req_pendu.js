@@ -15,11 +15,9 @@ var req_pendu = function(req, res, query) {
 	var page3;
 	var i;
 	var pendu;
-	var joueur;
 	var victoire;
 	var requete = url.parse(req.url, true);
 	var pathname = requete.pathname;
-	joueur = JSON.parse(fs.readFileSync("pendu_partie.json", "UTF-8"));
 
 	page = fs.readFileSync("pendu.html", "UTF-8");
 	page1 = fs.readFileSync("pendu_mot.html", "UTF-8");
@@ -44,7 +42,7 @@ var req_pendu = function(req, res, query) {
 
 		var présence = false;
 
-		pendu = joueur.pendu;
+		pendu = JSON.parse(fs.readFileSync("pendu_partie" + query.pseudo + ".json", "UTF-8"));
 
 		for(i = 0; i < pendu.lettre.length; i++) {
 
@@ -99,8 +97,7 @@ var req_pendu = function(req, res, query) {
 
 	marqueurs.joueur = query.pseudo;
 
-	joueur.pendu = pendu;
-	fs.writeFileSync("pendu_partie.json", JSON.stringify(joueur), "UTF-8");
+	fs.writeFileSync("pendu_partie" + query.pseudo + ".json", JSON.stringify(pendu), "UTF-8");
 
 	if(victoire !== true && victoire !== false) {
 
