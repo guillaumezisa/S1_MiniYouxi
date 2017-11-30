@@ -69,8 +69,8 @@ html{
 #tempo_fin{
 	border : 1px solid black;
 }
-#bmorpion{
-	border : solid black 0px;
+#solitaire{
+	border : solid black 1px;
 }
 .button {
 	display: inline-block;
