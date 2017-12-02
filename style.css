@@ -49,6 +49,9 @@ html{
 	font-size : 12px;
 	color ; orange;
 }
+#morpion{
+	display : inline-table;
+}
 #boite_inscription{
 	border : 2px solid black;
 }
@@ -71,6 +74,9 @@ html{
 }
 #solitaire{
 	border : solid black 1px;
+}
+#panel {
+	border : solid black 2px
 }
 .button {
 	display: inline-block;

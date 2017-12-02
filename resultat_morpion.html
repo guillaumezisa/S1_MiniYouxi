@@ -5,47 +5,39 @@
 	<meta charset="UTF-8"/>
 	<title>Resultat Morpion</title>
 </head>
-<body>
-<script>NekoType="rainbow"</script>
-<h1 id=nl><script src="http://webneko.net/n200504.js"></script><a 
-href="http://webneko.net">Neko</a></h1>
-<br>
-<br>
-Les résultats
-<br>
-{winer}
-<br>
-<form action="req_quitter_morpion" method="GET">
-    <input type="hidden" name="pseudo" value="{pseudo}">
-	<button class="button3" type="submit" name="bouton"
-	value="accueil"><span>Accueil</span></button>
-</form>
-<form action="req_jouer_morpion" method="GET">
-    <input type="hidden" name="pseudo" value="{pseudo}">
-	<button class="button3" type="submit" name="bouton" value="rejouer"><span>Rejouer</span></button>
-</form>
-
-<table border=1>
-    <tr>
-	    <td><img src="{case00}"></td>
-		<td><img src="{case10}"></td>
-		<td><img src="{case20}"></td>
-	</tr>
-	<tr>
-	    <td><img src="{case01}"></td>
-		<td><img src="{case11}"></td>
-		<td><img src="{case21}"></td>
-	</tr>
-	<tr>
-	    <td><img src="{case02}"></td>
-		<td><img src="{case12}"></td>
-		<td><img src="{case22}"></td>
-	</tr>
-</table>
-
-
-
-
-
-</body>
+	<body>
+		<script>NekoType="rainbow"</script>
+		<h1 id=nl><script src="http://webneko.net/n200504.js"></script>
+		<a href="http://webneko.net">Neko</a></h1>
+	<form action="req_quitter_morpion" method="GET">
+		<input type="hidden" name="pseudo" value="{pseudo}">
+		<button class="button" type="submit" name="bouton"value="accueil"><span>Accueil</span></button>
+	</form><br>
+		<center><h1>Les résultats</h1>{winer}</center>
+	<br><center>
+	<div id="morpion">
+		<form action="req_jouer_morpion" method="GET">
+			<input type="hidden" name="pseudo" value="{pseudo}">
+			<button class="button3" type="submit" name="bouton" value="rejouer"><span>Rejouer</span></button>
+		</form>
+		<table border=1>
+			<tr>
+				<td><img height="135"src="{case00}"></td>
+				<td><img height="135"src="{case10}"></td>
+				<td><img height="135"src="{case20}"></td>
+			</tr>
+			<tr>
+				<td><img height="135"src="{case01}"></td>
+				<td><img height="135"src="{case11}"></td>
+				<td><img height="135"src="{case21}"></td>
+			</tr>
+			<tr>
+				<td><img height="135"src="{case02}"></td>
+				<td><img height="135"src="{case12}"></td>
+				<td><img height="135"src="{case22}"></td>
+			</tr>
+		</table>
+		</div>
+	</center>
+	</body>
 </html>
