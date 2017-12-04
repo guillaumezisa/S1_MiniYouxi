@@ -14,13 +14,14 @@ var position
 var trait = function (req, res, query) {
     
 
-	marqueur = fs.readFileSync("./information_plateau_morpion.json", "UTF-8")
+	marqueur = fs.readFileSync("information_plateau_morpion_" + query.pseudo + ".json", "UTF-8");
 	marqueur = JSON.parse(marqueur);
 
-	places = fs.readFileSync("./places_disponible_morpion.json")
+	console.log(query.pseudo)
+	places = fs.readFileSync("places_disponible_morpion_" + query.pseudo + ".json", "UTF-8");
 	places = JSON.parse(places);
 
-    position = fs.readFileSync("./position_morpion.json", "UTF-8");
+    position = fs.readFileSync("position_morpion_" + query.pseudo + ".json", "UTF-8");
 	position = JSON.parse(position);
 
 
@@ -317,7 +318,7 @@ var trait = function (req, res, query) {
 		}
 
 	    page = fs.readFileSync("resultat_morpion.html", "UTF-8");
-		var plateau = fs.readFileSync("information_plateau_morpion.json", "UTF-8");
+		var plateau = fs.readFileSync("information_plateau_morpion_" + query.pseudo + ".json", "UTF-8");
 
 		marqueur.place00 = plateau.case00;
 		marqueur.place10 = plateau.case10;
@@ -334,13 +335,12 @@ var trait = function (req, res, query) {
 		page = page.supplant(marqueur);
 
 		// On remet le morpion comme avant "on range le jeu"
-		var origine_marqueur = fs.readFileSync("information_plateau_morpion_origine.json", "UTF-8");
-		var origine_places = fs.readFileSync("places_disponible_morpion_origine.json", "UTF-8");
-		var origine_position = fs.readFileSync("position_morpion_origine.json", "UTF-8");
 
-		fs.writeFileSync("information_plateau_morpion.json", origine_marqueur, "UTF-8");
-		fs.writeFileSync("places_disponible_morpion.json", origine_places, "UTF-8");
-		fs.writeFileSync("position_morpion.json", origine_position, "UTF-8");
+		fs.unlinkSync("information_plateau_morpion_" + query.pseudo + ".json");
+		fs.unlinkSync("places_disponible_morpion_" + query.pseudo + ".json");
+		fs.unlinkSync("position_morpion_" + query.pseudo + ".json");
+
+		var effacer = "true"
 
     } else {
 	// on affiche le plateau
@@ -350,13 +350,13 @@ var trait = function (req, res, query) {
 	page = page.supplant(marqueur)
 
     marqueur = JSON.stringify(marqueur)
-	fs.writeFileSync("information_plateau_morpion.json", marqueur, "UTF-8");
+	fs.writeFileSync("information_plateau_morpion_" + query.pseudo + ".json", marqueur, "UTF-8");
 
 	places = JSON.stringify(places)
-	fs.writeFileSync("places_disponible_morpion.json", places, "UTF-8");
+	fs.writeFileSync("places_disponible_morpion_" + query.pseudo + ".json", places, "UTF-8");
 	
 	position = JSON.stringify(position);
-	fs.writeFileSync("position_morpion.json", position, "UTF-8");
+	fs.writeFileSync("position_morpion_" + query.pseudo + ".json", position, "UTF-8");
 
 	}
 
@@ -365,6 +365,11 @@ var trait = function (req, res, query) {
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	res.write(page);
 	res.end(); 
+
+//	if (effacer) {
+	    //fs.unlinkSync("resultat_morpion_" + query.pseudo + ".html");
+//	}
+
 }
 
 module.exports = trait;
