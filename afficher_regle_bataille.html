@@ -6,9 +6,13 @@
 		<title>Regles Bataille</title>
 	</head>
 	<body>
-	    <h1>La bataille</h1>
-
-		La bataille est un jeu qui se joue généralement a deux.
+		<form action="/req_quitter_regle_bataille" method="GET">
+		    <input type="hidden" name="pseudo" value="{pseudo}">
+			<button class="button" name="bouton_quiter" value="Retour à l'accueil">Retour à l'accueil</button>
+		</form><br>
+	    <center><h1>La bataille</h1>
+		<img height="200"src="bataille.png"><br><br>
+		<h4>La bataille est un jeu qui se joue généralement a deux.
 		<br>
 		Chaque joueure possède une parti d'un jeu de carte préalablement mélangé.
 		<br>
@@ -19,16 +23,11 @@
 		<br>
 		Si un joueur n'as plus de carte il est éliminé. Un joueur l'emporte s'il possède toutes les cartes du paquets.
 		<br>
-		<br>
-
-		<form action="/req_quitter_regle_bataille" method="GET">
-		    <input type="hidden" name="pseudo" value="{pseudo}">
-			<button class="button1" name="bouton_quiter" value="Retour à l'accueil">Retour à l'accueil</button>
-		</form>
-
+		</h4><br>
 		<form action="/req_commencer_bataille" method="GET">
 		    <input type="hidden" name="pseudo" value="{pseudo}">
-			<button class="button1" name="bouton_jouer" value="Jouer">Jouer</button>
+			<button class="button3" name="bouton_jouer" value="Jouer">Jouer</button>
 		</form>
+		</center>
 	</body>
 </html>

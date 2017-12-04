@@ -47,7 +47,10 @@ var req_tempo_rejouer = require("./req_tempo_rejouer.js");
 var req_tempo_quitter = require("./req_tempo_quitter.js");
 
 var req_solitaire_regle = require("./req_solitaire_regle.js");
-
+var req_solitaire_afficher = require("./req_solitaire_afficher.js");
+var req_solitaire_quitter = require("./req_solitaire_quitter.js");
+var req_solitaire_jouer = require("./req_solitaire_jouer.js");
+var req_solitaire_bouger = require("./req_solitaire_bouger.js");
 //-------------------------------------------------------------------------
 // FONCTION DE CALLBACK APPELLEE POUR CHAQUE REQUETE
 //-------------------------------------------------------------------------
@@ -161,6 +164,18 @@ var traite_requete = function (req, res) {
 			//Solitaire
 			case "/req_solitaire_regle":
 				req_solitaire_regle( req,res,query);
+				break;
+			case "/req_solitaire_afficher":
+				req_solitaire_afficher(req,res,query);
+				break;
+			case "/req_solitaire_quitter":
+				req_solitaire_quitter(req,res,query);
+				break;
+			case "/req_solitaire_jouer":
+				req_solitaire_jouer(req,res,query);
+				break;
+			case "/req_solitaire_bouger":
+				req_solitaire_bouger(req,res,query);
 				break;
 			default:
 				req_static(req, res, query);
