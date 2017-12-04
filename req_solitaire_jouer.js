@@ -29,6 +29,7 @@ var trait = function (req, res, query) {
 	}
 	if("place13" in query){
 		marqueur.case13 = 'solitaire_p2.png';
+
 	}
 	if("place14" in query){
 		marqueur.case14 = 'solitaire_p2.png';
@@ -119,9 +120,11 @@ var trait = function (req, res, query) {
 	if("place64" in query){
 		marqueur.case64 = 'solitaire_p2.png';
 	}
+	
+	page = page.supplant(marqueur)
+	
 	marqueur = JSON.stringify(marqueur);
 	marqueur = fs.writeFileSync("solitaire_"+query.pseudo+".json",marqueur,"utf-8")
-	page = page.supplant(marqueur)
 
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	res.write(page);
