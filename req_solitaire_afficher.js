@@ -55,7 +55,7 @@ var trait = function (req, res, query) {
 	fs.writeFileSync("solitaire_"+query.pseudo+".json", here , "UTF-8");
 	
 	var nbp = {};
-	nbp.score = "33" ;
+	nbp.score = 33 ;
 
 	here = JSON.stringify(nbp);
 	fs.writeFileSync("solitaire_nbp_"+query.pseudo+".json",here,"utf-8");
