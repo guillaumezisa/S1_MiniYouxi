@@ -8,13 +8,17 @@ var page;
 var trait = function (req, res, query) {
 	page = fs.readFileSync("solitaire_jouer.html", "UTF-8");
 	var marqueur = [];
+	var nbp;
 	marqueur.pseudo = query.pseudo;
 	marqueur = fs.readFileSync("./solitaire_"+query.pseudo+".json","UTF-8");
 	marqueur = JSON.parse(marqueur);
+	nbp = fs.readFileSync("./solitaire_nbp_"+query.pseudo+".json","UTF-8");
+	nbp = JSON.parse(nbp);
+	console.log(nbp.score);
 
-		console.log(compteur);
-	
-	//Marqueur image
+	if (nbp.score === 1){
+	}
+
 	//--Ligne 1--//
 	if("place02" in query){
 		if(marqueur.case02 === "solitaire_p1.png"){
