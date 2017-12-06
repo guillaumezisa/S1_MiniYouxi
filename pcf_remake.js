@@ -45,16 +45,26 @@ var definir_valeur_ordi = function() {
 	return [choix_ordi, estimation_ordi];
 };
 
-var affiche_page_resultat = function(choix_du_joueur, estimation_du_joueur, choix_de_ordi, estimation_de_ordi) {
+var affiche_page_resultat = function(choix_du_joueur, estimation_du_joueur, choix_de_ordi, estimation_de_ordi, winner) {
 // fonction qui efface le body pour ensuite a fficher les resultats
-	var br = document.createElement("br");
     var body = document.querySelector("body");
 	var image_joueur;
 	var image_ordi;
-    var estimation_joueur;
-	var estimation_ordi;
+	var estimation;
+	var span;
+	var bouton;
 
-	body.innerHTML = ""
+	body.innerHTML = "";
+
+	span = document.createElement("span");
+	span.innerHTML = "La main du joueur:"
+	body.appendChild(span);
+	
+	span = document.createElement("span");
+	span.innerHTML = "La main de l'ordinateur:";
+	body.appendChild(span);
+
+	body.appendChild(document.createElement("br"));
 
 	image_joueur = document.createElement("img");
 	image_joueur.setAttribute("name", "choix du joueur");
@@ -66,13 +76,50 @@ var affiche_page_resultat = function(choix_du_joueur, estimation_du_joueur, choi
 	image_ordi.setAttribute("src", "main_" + choix_de_ordi + ".png");
 	body.appendChild(image_ordi);
 
-	estimation_joueur = document.createElement("h1");
-	estimation_joueur.innerHTML = estimation_du_joueur;
-	body.appendChild(estimation_joueur);
+	estimation = document.createElement("h1");
+	estimation.innerHTML = "Le totale est de " + String(Number(choix_du_joueur) + Number(choix_de_ordi))
+	body.appendChild(estimation);
 
-	estimation_ordi = document.createElement("h1");
-	estimation_ordi.innerHTML = estimation_de_ordi;
-	body.appendChild(estimation_ordi);
+	span = document.createElement("span");
+	span.innerHTML = "L'estimation du joueur est de " + String(estimation_du_joueur) + " et l'estimation de l'ordi est de " + String(estimation_de_ordi) + ".";
+	body.appendChild(span);
+
+	// Dafuq
+	body.appendChild(document.createElement("br"));
+	body.appendChild(document.createElement("br"));
+
+	span = document.createElement("span");
+	span.innerHTML = winner;
+	body.appendChild(span);
+
+	body.appendChild(document.createElement("br"));
+	body.appendChild(document.createElement("br"));
+
+    // On fait un boutton pour que le joueur puisse faire une partue suivante
+	// et un autre pour retrourner a l'accueil membre Miniyouxi
+
+	bouton = document.createElement("button");
+	bouton.setAttribute("name", "bouton rejouer");
+	bouton.setAttribute("value", "rejouer");
+	bouton.innerHTML = "Rejouer";
+	bouton.addEventListener("click", jeu);
+
+	body.appendChild(bouton);
+
+	var form;
+	form = document.createElement("form");
+	form.setAttribute("action", "/req_quitter_pcf_remake");
+	form.setAttribute("method", "GET");
+
+	bouton = document.createElement("button");
+	bouton.setAttribute("name", "bouton accueil");
+	bouton.setAttribute("value", "accueil");
+	bouton.innerHTML = "Accueil";
+	
+	form.appendChild(bouton);
+	body.appendChild(form);
+
+
 
 	
 };
@@ -85,6 +132,7 @@ var manche_jeu = function(choix_du_joueur, estimation_du_joueur, liste) {
 	var total;
 	var equart_joueur;
 	var equart_ordi;
+	var gagnant;
 
     liste = definir_valeur_ordi();
 	choix_ordi = liste[0];
@@ -103,15 +151,18 @@ var manche_jeu = function(choix_du_joueur, estimation_du_joueur, liste) {
 
 	if (equart_joueur === equart_ordi) {
 	    console.log("egalité");
+		gagnant = "Il y a égalité.";
     } else if (equart_joueur > equart_ordi) {
 	    console.log("l'ordi gagne");
+		gagnant = "L'ordinateur gagne.";
     } else if (equart_joueur < equart_ordi) {
 	    console.log("le joueur gagne");
+		gagnant = "Vous gagnez."
 	}
 
 
-	// inserer une fonction pour afficher la page des resultas
-	affiche_page_resultat(choix_du_joueur, estimation_du_joueur, choix_ordi, estimation_ordi);
+	// fonction pour afficher la page des resultas
+	affiche_page_resultat(choix_du_joueur, estimation_du_joueur, choix_ordi, estimation_ordi, gagnant);
 	
 };
 
@@ -129,6 +180,8 @@ var jeu = function () {
 	liste_image = ["main_0.png", "main_1.png", "main_2.png", "main_3.png", "main_4.png", "main_5.png", "main_6.png"]
 	
 	body = document.querySelector("body");
+
+	body.innerHTML = "";
 
 	// On affiche les imager et on leurs donne l'attribut click
 	for (var idx = 0; idx < liste_image.length; idx += 1) {

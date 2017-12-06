@@ -32,6 +32,15 @@ var req_pose_carte_bataille = require("./req_pose_carte_bataille.js");
 var req_abandonner_bataille = require("./req_abandonner_bataille.js");
 var req_resultat_bataille = require("./req_resultat_bataille.js");
 var req_quitter_bataille = require("./req_quitter_bataille.js");
+var req_regle_pcf_remake = require("./req_regle_pcf_remake.js");
+var req_commencer_pcf_remake = require("./req_commencer_pcf_remake.js");
+var req_quitter_pcf_remake = require("./req_quitter_pcf_remake.js");
+
+
+
+
+
+
 
 var req_regle_pfc = require("./req_regle_pfc.js");
 var req_lancer_pfc = require("./req_lancer_pfc.js");
@@ -106,28 +115,42 @@ var traite_requete = function (req, res) {
 			case "/req_quitter_morpion":
 			    req_quitter_morpion(req, res, query);
 				break;
-           // bataille
-		   case "/req_regle_bataille":
-		       req_regle_bataille(req, res, query);
-			   break;
-		   case "/req_quitter_regle_bataille":
-		       req_quitter_regle_bataille(req, res, query);
-			   break;
-		   case "/req_commencer_bataille":
-		       req_commencer_bataille(req, res, query);
-			   break;
-		   case "/req_pose_carte_bataille":
-		       req_pose_carte_bataille(req, res, query);
-			   break;
-		   case "/req_abandonner_bataille":
-		       req_abandonner_bataille(req, res, query);
-			   break;
-		   case "/req_resultat_bataille":
-		       req_resultat_bataille(req, res, query);
-			   break;
-		   case "/req_quitter_bataille":
-		       req_quitter_bataille(req, res, query);
-			   break;
+		    // bataille
+		    case "/req_regle_bataille":
+		  	    req_regle_bataille(req, res, query);
+			    break;
+		    case "/req_quitter_regle_bataille":
+		        req_quitter_regle_bataille(req, res, query);
+			    break;
+		    case "/req_commencer_bataille":
+			    req_commencer_bataille(req, res, query);
+			    break;
+		    case "/req_pose_carte_bataille":
+			    req_pose_carte_bataille(req, res, query);
+			    break;
+		    case "/req_abandonner_bataille":
+			    req_abandonner_bataille(req, res, query);
+			    break;
+		    case "/req_resultat_bataille":
+			    req_resultat_bataille(req, res, query);
+			    break;
+		    case "/req_quitter_bataille":
+			    req_quitter_bataille(req, res, query);
+			    break;
+			// PCF remake
+			case "/req_regle_pcf_remake":
+			    req_regle_pcf_remake(req, res, query);
+				break;
+			case "/req_commencer_pcf_remake":
+			    req_commencer_pcf_remake(req, res, query);
+				break;
+			case "/req_quitter_pcf_remake":
+			    req_quitter_pcf_remake(req, res, query);
+				break;
+
+
+
+		   
 			//pfc
 			case "/req_regle_pfc":
 				req_regle_pfc(req, res, query);
