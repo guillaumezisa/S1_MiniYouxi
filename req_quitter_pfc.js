@@ -5,7 +5,7 @@
 remedial= ("remedial");
 var fs = require("fs");
 var page;
-var marqeur;
+var marqueur;
 
 var trait = function ( req , res , query) {
 	page = fs.readFileSync("accueil_membre_MiniYouxi.html","utf-8");
