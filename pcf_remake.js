@@ -6,8 +6,12 @@ var choix_joueur;   // Putain mais c'est vraiment trop moche de faice ça aves d
 var choix_ordi;
 var estimation_ordi;
 var estimation_joueur;
+var pseudo
 
-
+var recup_pseudo = function (pseudo_joueur) {
+// C'est moche les variables globales
+    pseudo = pseudo_joueur
+};
 
 var definir_choix_joueur = function (e) {
 
@@ -46,13 +50,14 @@ var definir_valeur_ordi = function() {
 };
 
 var affiche_page_resultat = function(choix_du_joueur, estimation_du_joueur, choix_de_ordi, estimation_de_ordi, winner) {
-// fonction qui efface le body pour ensuite a fficher les resultats
+// fonction qui efface le body pour ensuite afficher les resultats
     var body = document.querySelector("body");
 	var image_joueur;
 	var image_ordi;
 	var estimation;
 	var span;
 	var bouton;
+	var hidden;
 
 	body.innerHTML = "";
 
@@ -84,7 +89,6 @@ var affiche_page_resultat = function(choix_du_joueur, estimation_du_joueur, choi
 	span.innerHTML = "L'estimation du joueur est de " + String(estimation_du_joueur) + " et l'estimation de l'ordi est de " + String(estimation_de_ordi) + ".";
 	body.appendChild(span);
 
-	// Dafuq
 	body.appendChild(document.createElement("br"));
 	body.appendChild(document.createElement("br"));
 
@@ -111,11 +115,17 @@ var affiche_page_resultat = function(choix_du_joueur, estimation_du_joueur, choi
 	form.setAttribute("action", "/req_quitter_pcf_remake");
 	form.setAttribute("method", "GET");
 
+	hidden = document.createElement("input")
+	hidden.setAttribute("type", "hidden");
+	hidden.setAttribute("name", "pseudo");
+	hidden.setAttribute("value", pseudo);
+
 	bouton = document.createElement("button");
 	bouton.setAttribute("name", "bouton accueil");
 	bouton.setAttribute("value", "accueil");
 	bouton.innerHTML = "Accueil";
 	
+    form.appendChild(hidden);
 	form.appendChild(bouton);
 	body.appendChild(form);
 
