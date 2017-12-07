@@ -11,6 +11,26 @@ var resultat;
 var page;
 var marqueur = {}
 
+var remplacement = function(nombre) {
+    switch (nombre) {
+	    case "11":
+		    return "J";
+			break;
+		case "12":
+		    return "Q";
+			break;
+		case "13":
+		    return "K";
+			break;
+		default:
+		    return nombre;
+			break;
+		}
+};
+
+
+
+
 var choix_couleur = function(chaine) {
     switch (chaine) {
 	    case "t":
@@ -79,9 +99,9 @@ var trait = function(req, res, query) {
 	} else {
 	    page = fs.readFileSync("resultat_tour_bataille.html", "UTF-8")
 
-		marqueur.nb_ordi = String(pose_ordi[0]);
+		marqueur.nb_ordi = remplacement(String(pose_ordi[0]));
 		marqueur.couleur_ordi = choix_couleur(pose_ordi[1]);
-		marqueur.nb_joueur = String(pose_joueur[0]);
+		marqueur.nb_joueur = remplacement(String(pose_joueur[0]));
 		marqueur.couleur_joueur = choix_couleur(pose_joueur[1]);
 
 		marqueur.resultat = resultat;
