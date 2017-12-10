@@ -50,15 +50,12 @@ var trait = function (req, res, query) {
 	marqueur.case63 = 'solitaire_p1.png';
 	marqueur.case64 = 'solitaire_p1.png';
 	
+	marqueur.pion = 32;
+	marqueur.actif = "" ;
+	marqueur.pseudo = query.pseudo;
 	var here = JSON.stringify(marqueur);
-	var now = fs.writeFileSync("solitaire_"+query.pseudo+".json", here , "UTF-8");
+	var now = fs.writeFileSync("solitaire_partie_"+query.pseudo+".json", here , "UTF-8");
 	fs.writeFileSync("solitaire_"+query.pseudo+".json", here , "UTF-8");
-	
-	var nbp = {};
-	nbp.score = 33 ;
-
-	here = JSON.stringify(nbp);
-	fs.writeFileSync("solitaire_nbp_"+query.pseudo+".json",here,"utf-8");
 
 	marqueur.pseudo = query.pseudo;
 	page = page.supplant(marqueur)

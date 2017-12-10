@@ -21,15 +21,13 @@ var trait = function (req, res, query) {
 	imgl = "solitaire_l.png";
 	var ca = []; // Case active
 	console.log("Le joueur "+query.pseudo+" joue au Solitaire");
-	marqueur = fs.readFileSync("./solitaire_"+query.pseudo+".json","UTF-8");
+	marqueur = fs.readFileSync("./solitaire_partie_"+query.pseudo+".json","UTF-8");
 	marqueur = JSON.parse(marqueur);
 	marqueur.pseudo = query.pseudo;
-	nbp = fs.readFileSync("./solitaire_nbp_"+query.pseudo+".json","UTF-8");
-	nbp = JSON.parse(nbp);
-	console.log("Le nombre de pion restant au Solitaire de "+query.pseudo+" est "+nbp.score);
+	console.log("Le nombre de pion restant au Solitaire de "+query.pseudo+" est "+marqueur.pion);
 	
 	//Si nombre de pion = 1 afficher page de fin .
-	if (nbp.score === 1){
+	if (marqueur.pion === 1){
 		fs.readFileSync("solitaire_fin.html","UTF-8");
 	}
 	
@@ -52,11 +50,11 @@ var trait = function (req, res, query) {
 		marqueur["case"+coo] = imga;
 		ca = coo ;
 	}
+	marqueur.actif = ca;
 	
 	page = page.supplant(marqueur)
-	fs.writeFileSync("./solitaire_case_active_"+query.pseudo+".txt",ca,"utf-8")
 	marqueur = JSON.stringify(marqueur);
-	fs.writeFileSync("solitaire_"+query.pseudo+".json",marqueur,"utf-8")
+	fs.writeFileSync("solitaire_partie_"+query.pseudo+".json",marqueur,"utf-8")
 	
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	res.write(page);
