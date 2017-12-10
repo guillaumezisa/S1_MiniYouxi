@@ -1,0 +1,61 @@
+<!DOCTYPEhtml>
+<html>
+	<head>
+		<link rel="stylesheet" href="style.css"/>
+		<meta http-equiv="Content-Type" content ="text/html ; charset=utf-8"/>
+		<title>Jeu du Solitaire</title>
+	</head>
+	<body>
+		<form action="/req_solitaire_quitter" method="GET">
+			<input type ="hidden" name="pseudo" value ="{pseudo}">
+			<button class="button"name="action"value="Quitter"><span>Retour</span></button><br>
+		</form>
+		<center>	
+			<h1> Le jeu du Solitaire </h1><br>
+			<div id="solitaire">
+				<center><form action="req_solitaire_plateau_mouvement" method="GET">
+					<input type="hidden" name="pseudo" value="{pseudo}">
+
+					<button class="bsolitaire"name="place"value="02"><img height="50"src="{case02}"></button>
+					<button class="bsolitaire"name="place"value="03"><img height="50"src="{case03}"></button>
+					<button class="bsolitaire"name="place"value="04"><img height="50"src="{case04}"></button>
+					<br>			
+					<button class="bsolitaire"name="place"value="12"><img height="50"src="{case12}"></button>
+					<button class="bsolitaire"name="place"value="13"><img height="50"src="{case13}"></button>
+					<button class="bsolitaire"name="place"value="14"><img height="50"src="{case14}"></button>
+					<br>
+					<button class="bsolitaire"name="place"value="20"><img height="50"src="{case20}"></button>
+					<button class="bsolitaire"name="place"value="21"><img height="50"src="{case21}"></button>
+					<button class="bsolitaire"name="place"value="22"><img height="50"src="{case22}"></button>
+					<button class="bsolitaire"name="place"value="23"><img height="50"src="{case23}"></button>
+					<button class="bsolitaire"name="place"value="24"><img height="50"src="{case24}"></button>
+					<button class="bsolitaire"name="place"value="25"><img height="50"src="{case25}"></button>
+					<button class="bsolitaire"name="place"value="26"><img height="50"src="{case26}"></button>
+					<br>
+					<button class="bsolitaire"name="place"value="30"><img height="50"src="{case30}"></button>
+					<button class="bsolitaire"name="place"value="31"><img height="50"src="{case31}"></button>
+					<button class="bsolitaire"name="place"value="32"><img height="50"src="{case32}"></button>
+					<button class="bsolitaire"name="place"value="33"><img height="50"src="{case33}"></button>
+					<button class="bsolitaire"name="place"value="34"><img height="50"src="{case34}"></button>
+					<button class="bsolitaire"name="place"value="35"><img height="50"src="{case35}"></button>
+					<button class="bsolitaire"name="place"value="36"><img height="50"src="{case36}"></button>
+					<br>
+					<button class="bsolitaire"name="place"value="40"><img height="50"src="{case40}"></button>
+					<button class="bsolitaire"name="place"value="41"><img height="50"src="{case41}"></button>
+					<button class="bsolitaire"name="place"value="42"><img height="50"src="{case42}"></button>
+					<button class="bsolitaire"name="place"value="43"><img height="50"src="{case43}"></button>
+					<button class="bsolitaire"name="place"value="44"><img height="50"src="{case44}"></button>
+					<button class="bsolitaire"name="place"value="45"><img height="50"src="{case45}"></button>
+					<button class="bsolitaire"name="place"value="46"><img height="50"src="{case46}"></button>
+					<br>
+					<button class="bsolitaire"name="place"value="52"><img height="50"src="{case52}"></button>
+					<button class="bsolitaire"name="place"value="53"><img height="50"src="{case53}"></button>
+					<button class="bsolitaire"name="place"value="54"><img height="50"src="{case54}"></button>
+					<br>
+					<button class="bsolitaire"name="place"value="62"><img height="50"src="{case62}"></button>
+					<button class="bsolitaire"name="place"value="63"><img height="50"src="{case63}"></button>
+					<button class="bsolitaire"name="place"value="64"><img height="50"src="{case64}"></button>
+				</div>
+		</center>
+	</body>
+</html>
