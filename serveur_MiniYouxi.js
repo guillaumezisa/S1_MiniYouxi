@@ -53,6 +53,7 @@ var req_solitaire_quitter = require("./req_solitaire_quitter.js");
 var req_solitaire_plateau_selection=require("./req_solitaire_plateau_selection.js")
 var req_solitaire_plateau_mouvement=require("./req_solitaire_plateau_mouvement.js")
 var req_solitaire_rejouer = require("./req_solitaire_rejouer.js");
+var req_solitaire_retour = require ("./req_solitaire_retour.js");
 //-------------------------------------------------------------------------
 // FONCTION DE CALLBACK APPELLEE POUR CHAQUE REQUETE
 //-------------------------------------------------------------------------
@@ -190,6 +191,9 @@ var traite_requete = function (req, res) {
 				req_solitaire_plateau_mouvement(req,res,query);
 				break;
 			case "/req_solitaire_rejouer":
+				req_solitaire_rejouer(req,res,query);
+				break;
+			case "/req_solitaire_retour":
 				req_solitaire_rejouer(req,res,query);
 				break;
 			default:

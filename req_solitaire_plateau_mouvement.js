@@ -29,8 +29,7 @@ var trait = function (req, res, query) {
 	}
 	
 	coo = query.place;
-	console.log(marqueur.pion)
-	console.log(marqueur.pion-2);
+	
 	imgp = "solitaire_p1.png";
 	imga = "solitaire_p2.png";
 	imgl = "solitaire_l.png";
