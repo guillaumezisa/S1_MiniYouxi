@@ -123,10 +123,12 @@ var req_pendu = function(req, res, query) {
 		if(victoire === true) {
 			
 			res.write("<br><br>Vous avez gagner, le mot secret etait : " + pendu.motSec + ".");
+			fs.unlinkSync("pendu_partie" + query.pseudo + ".json");
 
 		} else {
 
 			res.write("<br><br>Vous avez perdue, le mot secret etait : " + pendu.motSec + ".");
+			fs.unlinkSync("pendu_partie" + query.pseudo + ".json");
 
 		}
 
