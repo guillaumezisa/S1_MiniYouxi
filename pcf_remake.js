@@ -60,7 +60,32 @@ var affiche_page_resultat = function(choix_du_joueur, estimation_du_joueur, choi
 	var hidden;
 
 	body.innerHTML = "";
+	
+	// et un autre pour retrourner a l'accueil membre Miniyouxi
+	var form;
+	form = document.createElement("form");
+	form.setAttribute("action", "/req_quitter_pcf_remake");
+	form.setAttribute("method", "GET");
 
+	hidden = document.createElement("input")
+	hidden.setAttribute("type", "hidden");
+	hidden.setAttribute("name", "pseudo");
+	hidden.setAttribute("value", pseudo);
+
+	bouton = document.createElement("button");
+	bouton.setAttribute("class", "button");
+	bouton.setAttribute("name", "bouton accueil");
+	bouton.setAttribute("value", "accueil");
+	bouton.innerHTML = "Accueil";
+	
+    form.appendChild(hidden);
+	form.appendChild(bouton);
+	body.appendChild(form);
+
+	body.appendChild(document.createElement("br"));
+	body.appendChild(document.createElement("br"));
+
+	// On affiche les resultats
 	span = document.createElement("span");
 	span.innerHTML = "La main du joueur:"
 	body.appendChild(span);
@@ -100,37 +125,15 @@ var affiche_page_resultat = function(choix_du_joueur, estimation_du_joueur, choi
 	body.appendChild(document.createElement("br"));
 
     // On fait un boutton pour que le joueur puisse faire une partue suivante
-	// et un autre pour retrourner a l'accueil membre Miniyouxi
 
 	bouton = document.createElement("button");
+	bouton.setAttribute("class", "button3");
 	bouton.setAttribute("name", "bouton rejouer");
 	bouton.setAttribute("value", "rejouer");
 	bouton.innerHTML = "Rejouer";
 	bouton.addEventListener("click", jeu);
 
 	body.appendChild(bouton);
-
-	var form;
-	form = document.createElement("form");
-	form.setAttribute("action", "/req_quitter_pcf_remake");
-	form.setAttribute("method", "GET");
-
-	hidden = document.createElement("input")
-	hidden.setAttribute("type", "hidden");
-	hidden.setAttribute("name", "pseudo");
-	hidden.setAttribute("value", pseudo);
-
-	bouton = document.createElement("button");
-	bouton.setAttribute("name", "bouton accueil");
-	bouton.setAttribute("value", "accueil");
-	bouton.innerHTML = "Accueil";
-	
-    form.appendChild(hidden);
-	form.appendChild(bouton);
-	body.appendChild(form);
-
-
-
 	
 };
 
@@ -208,6 +211,7 @@ var jeu = function () {
 	for (var idx = 0; idx < 13; idx += 1) {
 
 		bouton = document.createElement("button");
+		bouton.setAttribute("class", "button4");
 		bouton.setAttribute("name", "valeur " + String(idx));
 		bouton.setAttribute("value", String(idx));
 		
