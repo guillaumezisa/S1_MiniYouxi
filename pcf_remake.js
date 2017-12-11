@@ -58,11 +58,12 @@ var affiche_page_resultat = function(choix_du_joueur, estimation_du_joueur, choi
 	var span;
 	var bouton;
 	var hidden;
+	var center;
+	var form;
 
 	body.innerHTML = "";
 	
 	// et un autre pour retrourner a l'accueil membre Miniyouxi
-	var form;
 	form = document.createElement("form");
 	form.setAttribute("action", "/req_quitter_pcf_remake");
 	form.setAttribute("method", "GET");
@@ -86,46 +87,58 @@ var affiche_page_resultat = function(choix_du_joueur, estimation_du_joueur, choi
 	body.appendChild(document.createElement("br"));
 
 	// On affiche les resultats
+	center = document.createElement("center");
 	span = document.createElement("span");
-	span.innerHTML = "La main du joueur:"
-	body.appendChild(span);
+	span.innerHTML = "La main du joueur: "
+	center.appendChild(span);
 	
 	span = document.createElement("span");
-	span.innerHTML = "La main de l'ordinateur:";
-	body.appendChild(span);
+	span.innerHTML = "La main de l'ordinateur: ";
+	center.appendChild(span);
+	body.appendChild(center);
 
 	body.appendChild(document.createElement("br"));
 
+	center = document.createElement("center");
 	image_joueur = document.createElement("img");
 	image_joueur.setAttribute("name", "choix du joueur");
 	image_joueur.setAttribute("src", "main_" + choix_du_joueur + ".png");
-	body.appendChild(image_joueur);
+	center.appendChild(image_joueur);
 
 	image_ordi = document.createElement("img");
 	image_ordi.setAttribute("name", "choix de ordi");
 	image_ordi.setAttribute("src", "main_" + choix_de_ordi + ".png");
-	body.appendChild(image_ordi);
+	center.appendChild(image_ordi);
+	body.appendChild(center);
 
+	center = document.createElement("center");
 	estimation = document.createElement("h1");
 	estimation.innerHTML = "Le totale est de " + String(Number(choix_du_joueur) + Number(choix_de_ordi))
-	body.appendChild(estimation);
+	center.appendChild(estimation);
+	body.appendChild(center);
 
+	center = document.createElement("center");
 	span = document.createElement("span");
 	span.innerHTML = "L'estimation du joueur est de " + String(estimation_du_joueur) + " et l'estimation de l'ordi est de " + String(estimation_de_ordi) + ".";
-	body.appendChild(span);
+	center.appendChild(span);
+	body.appendChild(center);
+
 
 	body.appendChild(document.createElement("br"));
 	body.appendChild(document.createElement("br"));
 
+	center = document.createElement("center");
 	span = document.createElement("span");
 	span.innerHTML = winner;
-	body.appendChild(span);
+	center.appendChild(span);
+	body.appendChild(center);
 
 	body.appendChild(document.createElement("br"));
 	body.appendChild(document.createElement("br"));
 
-    // On fait un boutton pour que le joueur puisse faire une partue suivante
+    // On fait un boutton pour que le joueur puisse faire une partie suivante
 
+	center = document.createElement("center");
 	bouton = document.createElement("button");
 	bouton.setAttribute("class", "button3");
 	bouton.setAttribute("name", "bouton rejouer");
@@ -133,7 +146,8 @@ var affiche_page_resultat = function(choix_du_joueur, estimation_du_joueur, choi
 	bouton.innerHTML = "Rejouer";
 	bouton.addEventListener("click", jeu);
 
-	body.appendChild(bouton);
+	center.appendChild(bouton);
+	body.appendChild(center);
 	
 };
 
@@ -189,6 +203,7 @@ var jeu = function () {
 	var liste_image;
 	var br = document.createElement("br");
 	var bouton;
+	var center;
 
 	liste_image = ["main_0.png", "main_1.png", "main_2.png", "main_3.png", "main_4.png", "main_5.png", "main_6.png"]
 	
@@ -196,17 +211,20 @@ var jeu = function () {
 
 	body.innerHTML = "";
 
+    center = document.createElement("center");
 	// On affiche les imager et on leurs donne l'attribut click
 	for (var idx = 0; idx < liste_image.length; idx += 1) {
 		image = document.createElement("img");
 		image.setAttribute("id", String(idx));
 		image.setAttribute("src", liste_image[idx]);
-		body.appendChild(image);
+		center.appendChild(image);
 		image.addEventListener("click", definir_choix_joueur);
 	}
 
+	body.appendChild(center);
     body.appendChild(br)
 
+    center = document.createElement("center");
 	// On genere les boutons
 	for (var idx = 0; idx < 13; idx += 1) {
 
@@ -218,10 +236,11 @@ var jeu = function () {
 		// On ecris du HTML dirrectement entre les deux balises "bouton"
 		bouton.innerHTML = String(idx);
 
-		body.appendChild(bouton);
+		center.appendChild(bouton);
 		bouton.addEventListener("click", definir_valeur_estimer);
 
 	}
+	body.appendChild(center);
 };
 
 
