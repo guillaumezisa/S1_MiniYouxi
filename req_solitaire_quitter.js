@@ -9,6 +9,7 @@ var marqueur;
 var trait = function (req, res, query) {
     
 	page = fs.readFileSync("accueil_membre_MiniYouxi.html", "UTF-8");
+	fs.unlinkSync("solitaire_partie_"+query.+pseudo+".json");
 
 	marqueur = {}
 	marqueur.pseudo = query.pseudo
