@@ -113,7 +113,7 @@ var affiche_page_resultat = function(choix_du_joueur, estimation_du_joueur, choi
 
 	center = document.createElement("center");
 	estimation = document.createElement("h1");
-	estimation.innerHTML = "Le totale est de " + String(Number(choix_du_joueur) + Number(choix_de_ordi))
+	estimation.innerHTML = "Le total est de " + String(Number(choix_du_joueur) + Number(choix_de_ordi))
 	center.appendChild(estimation);
 	body.appendChild(center);
 
