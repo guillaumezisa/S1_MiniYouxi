@@ -35,16 +35,8 @@ var req_quitter_bataille = require("./req_quitter_bataille.js");
 var req_regle_pcf_remake = require("./req_regle_pcf_remake.js");
 var req_commencer_pcf_remake = require("./req_commencer_pcf_remake.js");
 var req_quitter_pcf_remake = require("./req_quitter_pcf_remake.js");
-
-
-
-
-
-
-
 var req_regle_pfc = require("./req_regle_pfc.js");
 var req_lancer_pfc = require("./req_lancer_pfc.js");
-
 
 var req_pendu = require("./req_pendu.js");
 
@@ -148,10 +140,6 @@ var traite_requete = function (req, res) {
 			case "/req_quitter_pcf_remake":
 			    req_quitter_pcf_remake(req, res, query);
 				break;
-
-
-
-		   
 			//pfc
 			case "/req_regle_pfc":
 				req_regle_pfc(req, res, query);
