@@ -6,10 +6,15 @@
 		<title>Accueil {pseudo} : Mini Youxi</title>
 	</head>
 	<body>
+		<!--INSERTION DU SCRIPT CHAT -->
 		<script>NekoType="black"</script>
 		<h1 id=nl><script src="http://webneko.net/n200504.js"></script>
 		<a href="http://webneko.net">Neko</a></h1><br>
+		
+		<!-- BANNIERE PAGE -->
 		<center><h1>Bonjour <em>{pseudo}<em> !</h1></center>
+		
+		<!-- BARRE PAGE -->
 		<div class="panel">
 			<form action="req_regle_morpion" method="GET">
 				<input type="hidden" name="pseudo" value="{pseudo}">
@@ -42,6 +47,194 @@
 			<form action="req_commencer" method="GET">
 				<button class="button1" type="submit" name="bouton" value="déconnection"><span>Déconnection</span></button>
 			</form>
+
+	<br><br><br>
+	
+		<!-- ARTICLE PAGE -->
+		<!-- JEU MORPION-->
+		<div id="articlejeux">
+			<div id="headerjeux">
+				<form action ="req_regle_morpion" method="GET">
+					<input type ="hidden" name="pseudo" value ="{pseudo}">
+					<center><b><a href="req_regle_morpion"><div id=h10>Le Morpion</div></a></b></center>
+				</form>
+			</div >
+			<div id="bodyjeux">
+				<div id="imgjeux">
+					<a href="req_regle_morpion">
+					<img height="155" src="morpion.jpg">
+					</a>
+				</div>
+				<div id="regle">
+					<h2>Regle du Morpion :</h2>
+						<p><h3>Les joueurs inscrivent tour à tour leur symbole sur une grille.<br>
+						Le premier qui parvient à aligner 3 de ses symboles horizontalement ,<br>
+						verticalement ou en diagonale gagne un point .
+					<form action="req_regle_morpion" method="GET">
+						<input type="hidden" name="pseudo" value="{pseudo}">
+						<button class="button5" type="submit" name="bouton" value="morpion"><span>Jouer</span></button>		
+					</form>
+					</h3></p><br><br><br>
+				</div>
+			</div>
+			<!-- JEU BATAILLE -->
+			<div id="articlejeux">
+				<div id="headerjeux">
+					<form action ="req_regle_bataille" method="GET">
+						<input type ="hidden" name="pseudo" value ="{pseudo}">
+						<center><b><a href="req_regle_bataille"><div id=h10>La Bataille</div></a></b></center>
+					</form>
+				</div >
+				<div id="bodyjeux">
+					<div id="imgjeux">
+						<a href="req_regle_bataille">
+						<img height="155"width="175" src="bataille.png">
+						</a>
+					</div>
+					<div id="regle">
+						<h2>Regle de la bataille :</h2>
+						<p><h3>Chaque joueur joue une carte ,le joueur qui pose la carte<br>
+						de la plus grande valeur remporte la main , la partie ce termine <br>
+						quand l'un des deux joueurs n'a plus de carte .
+						<form action="req_regle_morpion" method="GET">
+							<input type="hidden" name="pseudo" value="{pseudo}">
+							<button class="button5" type="submit" name="bouton" value="morpion"><span>Jouer</span></button>		
+						</form>
+					</h3></p><br><br><br>
+				</div>
+			</div>
+			<!-- JEU PFC REMAKE -->
+			<div id="articlejeux">
+				<div id="headerjeux">
+					<form action ="req_regle_pcf_remake" method="GET">
+						<input type ="hidden" name="pseudo" value ="{pseudo}">
+						<center><b><a href="req_regle_pcf_remake"><div id=h10>Le remake du Pierre Feuille Ciseau</div></a></b></center>
+					</form>
+				</div >
+				<div id="bodyjeux">
+					<div id="imgjeux">
+						<a href="req_regle_pcf_remake">
+						<img height="155"width="175" src="main.jpeg">
+						</a>
+					</div>
+					<div id="regle">
+						<h2>Regle du remake du Pierre Feuille Ciseau :</h2>
+						<p><h3>Chaque joueur à sa main dans son dos . Les joueurs choisisent une valeur
+						entre 0 et 5 , <br>
+						ensuite les joueurs doivent donner une estimation du totale des doigts levé . <br>
+						Le joueurs qui a l'estimation la plus proche du nombre de doigts remporte la partie .
+						
+						<form action="req_regle_pcf_remake" method="GET">
+							<input type="hidden" name="pseudo" value="{pseudo}">
+							<button class="button5" type="submit" name="bouton" value="pfc remake"><span>Jouer</span></button>		
+						</form>
+					</h3></p><br><br><br>
+				</div>
+			</div>
+			<!-- PENDU -->
+			<div id="articlejeux">
+				<div id="headerjeux">
+					<form action ="req_pendu" method="GET">
+						<input type ="hidden" name="pseudo" value ="{pseudo}">
+						<center><b><a href="req_pendu"><div id=h10>Le jeu du Pendu</div></a></b></center>
+					</form>
+				</div >
+				<div id="bodyjeux">
+					<div id="imgjeux">
+						<a href="req_pendu">
+						<img height="155"width="175" src="pendu.png">
+						</a>
+					</div>
+					<div id="regle">
+						<h2>Regle du pendu :</h2>
+						<p><h3>Il faut trouver le mot avant d'être pendu . <br>
+						Pour cela il faut proposer des lettres ,<br>
+						a chaque erreur on se rapproche de la pendaison .
+						
+						<form action="req_pendu" method="GET">
+							<input type="hidden" name="pseudo" value="{pseudo}">
+							<button class="button5" type="submit" name="bouton" value="pendu"><span>Jouer</span></button>		
+						</form>
+					</h3></p><br><br><br>
+				</div>
+			</div>
+			<!-- TEMPO -->
+			<div id="articlejeux">
+				<div id="headerjeux">
+					<form action ="req_tempo_regle" method="GET">
+						<input type ="hidden" name="pseudo" value ="{pseudo}">
+						<center><b><a href="req_tempo_regle"><div id=h10>Le jeu du Tempo</div></a></b></center>
+					</form>
+				</div >
+				<div id="bodyjeux">
+					<div id="imgjeux">
+						<a href="req_pendu">
+						<img height="155"width="175" src="tempo.jpg">
+						</a>
+					</div>
+					<div id="regle">
+						<h2>Regle du Tempo :</h2>
+						<p><h3>Un nombre de seconde est généré<br>
+						Il faut appuyer sur le bouton au bon momment pour remporté la partie <br><br>
+						
+						<form action="req_tempo_regle" method="GET">
+							<input type="hidden" name="pseudo" value="{pseudo}">
+							<button class="button5" type="submit" name="bouton" value="Tempo"><span>Jouer</span></button>		
+						</form>
+					</h3></p><br><br><br>
+				</div>
+			</div>
+			<!-- Solitaire -->
+			<div id="articlejeux">
+				<div id="headerjeux">
+					<form action ="req_solitaire_regle" method="GET">
+						<input type ="hidden" name="pseudo" value ="{pseudo}">
+						<center><b><a href="req_solitaire_regle"><div id=h10>Le jeu du solitaire</div></a></b></center>
+					</form>
+				</div >
+				<div id="bodyjeux">
+					<div id="imgjeux">
+						<a href="req_pendu">
+						<img height="155"width="175" src="solitaire.jpeg">
+						</a>
+					</div>
+					<div id="regle">
+						<h2>Regle du Solitaire :</h2>
+						<p><h3>Il y a un plateau sur le quel on a des pions il faut sauté par dessus un pion et atterire sur une case libre ,<br>
+						pour manger des pions . Pour gagner la partie il faut qu'il ne reste un seul pion <br><br>
+						<form action="req_solitaire_regle" method="GET">
+							<input type="hidden" name="pseudo" value="{pseudo}">
+							<button class="button5" type="submit" name="bouton" value="solitaire"><span>Jouer</span></button>		
+						</form>
+					</h3></p><br><br><br>
+				</div>
+			</div>
+			<!-- PFC -->
+			<div id="articlejeux">
+				<div id="headerjeux">
+					<form action ="req_regle_pfc" method="GET">
+						<input type ="hidden" name="pseudo" value ="{pseudo}">
+						<center><b><a href="req_regle_pfc"><div id=h10>Le jeu du Pierre Feuille Ciseau</div></a></b></center>
+					</form>
+				</div >
+				<div id="bodyjeux">
+					<div id="imgjeux">
+						<a href="req_regle_pfc">
+						<img height="155"width="175" src="pfc.jpeg">
+						</a>
+					</div>
+					<div id="regle">
+						<h2>Regle du pfc :</h2>
+						<p><h3>Chaque joueur doit choisir soit la pierre la feuille ou le ciseau,<br>
+						La pierre bas le ciseau , le ciseau bas la feuille , la feuille bas la pierre .<br><br>
+						<form action="req_solitaire_regle" method="GET">
+							<input type="hidden" name="pseudo" value="{pseudo}">
+							<button class="button5" type="submit" name="bouton" value="solitaire"><span>Jouer</span></button>		
+						</form>
+					</h3></p><br><br><br>
+				</div>
+			</div>
+			<!-- FIN -->
 		</div><br><br><br>
 	</body>
 </html>
