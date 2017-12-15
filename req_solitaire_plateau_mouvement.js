@@ -1,143 +1,140 @@
 // traitement de /req_solitaire_plateau_mouvement
-//VOIR POUR UNE CONDITION CLIQUE CASE LIBRE
-//VOIR BOUCLE QUI VERIFIE que le joueur peut jouer
-//OPTIMISATION DU CODE
-//FIN
 
 "use strict";
 
 var fs = require("fs");
-require("remedial")
-var trait = function (req, res, query) {
+require("remedial");
+
+var trait = function (req, res, query)  {
 	var page;
 	var marqueur = [];
 	var nbp;                      // Nombre de pion
 	var ver;                      // Vertical
 	var hor;                      // Horizontale
-	var coo;                      // Coordonée
+	var coo;                      // Coordonnées de la case cliquée
 	var pion;							//
-	var imgp;                     //Image passive
-	var imga;                     //Image active
-	var imgl;                     //Image libre
+	var now;
+	var plateau;
+	var nbPions;
+	var verPS;
+	var horPS;
+	
+	// LECTURE DU FICHIER PLATEAU
 
-	marqueur.pseudo = query.pseudo;
-	marqueur = fs.readFileSync("./solitaire_partie_"+query.pseudo+".json","UTF-8");
-	marqueur = JSON.parse(marqueur);
-	
-	//Si nombre de pion = 1 afficher page de fin .
-	if (marqueur.pion === 1){
-	}
-	
-	coo = query.place;
-	
-	imgp = "solitaire_p1.png";
-	imga = "solitaire_p2.png";
-	imgl = "solitaire_l.png";
+	now = fs.readFileSync("./solitaire_partie_"+query.pseudo+".json","UTF-8");
+	plateau  = JSON.parse(now);
 
-	pion = false ;
-	for ( ver = 0 ; ver < 7 ; ver++){
-		for ( hor = 0 ; hor < 7 ; hor++){
-			if(marqueur["img"+String(ver)+String(hor)] === imga){	
-				pion = true;
+	// SI NOMBRE DE PION = 1 AFFICHER PAGE DE FIN (INUTILE ICI)
+
+	nbPions = 0;
+	for ( ver = 0 ; ver < 7 ; ver++) {
+		for ( hor = 0 ; hor < 7 ; hor++) {
+			if (plateau[ver][hor] === 1 || plateau[ver][hor] === 2) {
+				nbPions++;
 			}
 		}
 	}
-	if (pion === true){
-		if ( marqueur["img"+coo] === imga){
-			marqueur["img"+coo] = imgp;
+
+	if (nbPions === 1) {
+		marqueur.fin = "Vous avez gagné !" ;
+	}
+	
+	// RECHERCHE DU PION A DEPLACER (PION ACTIF)
+
+	for ( ver = 0 ; ver < 7 ; ver++) {
+		for ( hor = 0 ; hor < 7 ; hor++) {
+			if(plateau[ver][hor] === 2) {
+				verPS = ver;
+				horPS = hor;
+			}
 		}
 	}
-	if( marqueur["img"+coo] === imgl){	
-		if ( coo === (marqueur.actif[0])+(String(Number(marqueur.actif[1])-2)) && marqueur["img"+(marqueur.actif[0]+(String(Number(marqueur.actif[1])-1)))] === imgp) {
-			marqueur["img"+coo] = imgp;
-			marqueur["img"+(marqueur.actif[0]+(String(Number(marqueur.actif[1])-1)))] = imgl;
-			marqueur["img"+marqueur.actif] = imgl;
-			marqueur["case"+coo] = 1;
-			marqueur["case"+(marqueur.actif[0]+(String(Number(marqueur.actif[1])-1)))] = 0;
-			marqueur["case"+marqueur.actif] = 0;
-			console.log("Solitaire|"+query.pseudo+"|Mouvement de droite a gauche");
-			marqueur.pion = Number(marqueur.pion-1);
-		}else if (coo === (String(Number(marqueur.actif[0])+2))+(String(Number(marqueur.actif[1])-2)) && marqueur["img"+(String(Number(marqueur.actif[0])+1))+(String(Number(marqueur.actif[1])-1))] === imgp){
-			marqueur["img"+coo] = imgp;
-			marqueur["img"+(String(Number(marqueur.actif[0])+1))+(String(Number(marqueur.actif[1])-1))] = imgl;
-			marqueur["img"+marqueur.actif] = imgl;
-			marqueur["case"+coo] = 1;
-			marqueur["case"+(String(Number(marqueur.actif[0])+1))+(String(Number(marqueur.actif[1])-1))] = 0;
-			marqueur["case"+marqueur.actif] = 0;
-			console.log("Solitaire|"+query.pseudo+"|Mouvement de bas gauche a haut droite");
-			marqueur.pion = Number(marqueur.pion-1);
-		}else if (coo === (String(Number(marqueur.actif[0])+2))+(marqueur.actif[1]) && marqueur["img"+(String(Number(marqueur.actif[0])+1))+(marqueur.actif[1])] === imgp ){
-			marqueur["img"+coo] = imgp;
-			marqueur["img"+(String(Number(marqueur.actif[0])+1)+(marqueur.actif[1]))] = imgl;
-			marqueur["img"+marqueur.actif] = imgl;
-			marqueur["case"+coo] = 1;
-			marqueur["case"+(String(Number(marqueur.actif[0])+1)+(marqueur.actif[1]))] = 0;
-			marqueur["case"+marqueur.actif] = 0;
-			console.log("Solitaire|"+query.pseudo+"|Mouvement de haut a bas")
-			marqueur.pion = Number(marqueur.pion-1);
-		}else if (coo === (String(Number(marqueur.actif[0])+2))+(String(Number(marqueur.actif[1])+2))&& marqueur["img"+(String(Number(marqueur.actif[0])+1))+(String(Number(marqueur.actif[1])+1))] === imgp){
-			marqueur["img"+coo] = imgp;
-			marqueur["img"+(String(Number(marqueur.actif[0])+1))+(String(Number(marqueur.actif[1])+1))] = imgl;
-			marqueur["img"+marqueur.actif] = imgl;
-			marqueur["case"+coo] = 1;
-			marqueur["case"+(String(Number(marqueur.actif[0])+1))+(String(Number(marqueur.actif[1])+1))] = 0;
-			marqueur["case"+marqueur.actif] = 0;
-			console.log("Solitaire|"+query.pseudo+"|Mouvement de haut gauche a bas droite")
-			marqueur.pion = Number(marqueur.pion-1);
-		}else if (coo === (marqueur.actif[0])+(String(Number(marqueur.actif[1])+2))&& marqueur["img"+(marqueur.actif[0])+(String(Number(marqueur.actif[1])+1))]=== imgp){
-			marqueur["img"+coo] = imgp;
-			marqueur["img"+(marqueur.actif[0]+(String(Number(marqueur.actif[1])+1)))] = imgl;
-			marqueur["img"+marqueur.actif] = imgl;
-			marqueur["case"+coo] = 1;
-			marqueur["case"+(marqueur.actif[0]+(String(Number(marqueur.actif[1])+1)))] = 0;
-			marqueur["case"+marqueur.actif] = 0;
-			console.log("Solitaire|"+query.pseudo+"|Mouvement de gauche a droite");
-			marqueur.pion = Number(marqueur.pion-1);
-		}else if (coo === (String(Number(marqueur.actif[0])-2))+(String(Number(marqueur.actif[1])+2))&& marqueur["img"+(String(Number(marqueur.actif[0])-1))+(String(Number(marqueur.actif[1])+1))] === imgp){
-			marqueur["img"+coo] = imgp;
-			marqueur["img"+(String(Number(marqueur.actif[0])-1)+(String(Number(marqueur.actif[1])+1)))] = imgl;
-			marqueur["img"+marqueur.actif] = imgl;
-			marqueur["case"+coo] = 1;
-			marqueur["case"+(String(Number(marqueur.actif[0])-1)+(String(Number(marqueur.actif[1])+1)))] = 0;
-			marqueur["case"+marqueur.actif] = 0;
-			console.log("Solitaire|"+query.pseudo+"|Mouvement de bas gauche a haut droite");
-			marqueur.pion = Number(marqueur.pion-1);
-		}else if (coo === (String(Number(marqueur.actif[0])-2))+(marqueur.actif[1]) && marqueur["img"+(String(Number(marqueur.actif[0])-1))+(marqueur.actif[1])] === imgp){
-			marqueur["img"+coo] = imgp;
-			marqueur["img"+(String(Number(marqueur.actif[0])-1))+(String(Number(marqueur.actif[1])))] = imgl;
-			marqueur["img"+marqueur.actif] = imgl;
-			marqueur["case"+coo] = 1;
-			marqueur["case"+(String(Number(marqueur.actif[0])-1))+(String(Number(marqueur.actif[1])))] = 0;
-			marqueur["case"+marqueur.actif] = 0;
-			console.log("Solitaire|"+query.pseudo+"|Mouvement de bas a haut");
-			marqueur.pion = Number(marqueur.pion-1);
-		}else if (coo === (String(Number(marqueur.actif[0])-2))+(String(Number(marqueur.actif[1])-2))&& marqueur["img"+(String(Number(marqueur.actif[0])-1))+(String(Number(marqueur.actif[1])-1))] === imgp){  
-			marqueur["img"+coo] = imgp;
-			marqueur["img"+(String(Number(marqueur.actif[0]-1))+(String(Number(marqueur.actif[1])-1)))] = imgl;
-			marqueur["img"+marqueur.actif] = imgl;
-			marqueur["case"+coo] = 1;
-			marqueur["case"+(String(Number(marqueur.actif[0]-1))+(String(Number(marqueur.actif[1])-1)))] = 0;
-			marqueur["case"+marqueur.actif] = 0;
-			console.log("Solitaire|"+query.pseudo+"|Mouvement de bas droite a haut gauche")
-			marqueur.pion = Number(marqueur.pion-1);
-		}else{
-			console.log("ERREUR");
-			console.log(coo[0] , coo[1]);
+
+	// ON EFFECTUE LE MOUVEMENT (SI POSSIBLE)
+
+	coo = query.place;
+	// SI LA CASE CONTIENT LE PION ACTIF IL DEVIENT PASSIF
+	if ( plateau[coo[0]][coo[1]] === 2) {
+		plateau[coo[0]][coo[1]] = 1;
+	// SI LA CASE CLIQUE EST LIBRE ON APPLIQUE UN MOUVEMENT
+	} else if (plateau[coo[0]][coo[1]] === 3) {	
+		if(String(verPS)+String(horPS) === String(Number(coo[0])-2)+coo[1]) {
+			// MOUVEMENT HAUT A BAS
+			plateau[coo[0]][coo[1]] = 1;
+			plateau[coo[0]-1][coo[1]]= 3;
+			plateau[verPS][horPS] = 3;
+		} else if(String(verPS)+String(horPS) === String(Number(coo[0])-2)+String(Number(coo[1])+2)) {
+			// MOUVEMENT HAUT DROITE A BAS GAUCHE
+			console.log("OMG")
+			plateau[coo[0]][coo[1]] = 1;
+			plateau[verPS+1][horPS-1] = 3;
+			plateau[verPS][horPS] = 3;
+		} else if(String(verPS)+String(horPS) === String(coo[0])+String(Number(coo[1])+2)) {
+			// MOUVEMENT DROITE A GAUCHE
+			plateau[coo[0]][coo[1]] = 1;
+			plateau[verPS][horPS-1] = 3;
+			plateau[verPS][horPS] = 3;
+		} else if(String(verPS)+String(horPS) === String(Number(coo[0])+2)+String(Number(coo[1])+2)) {
+			// MOUVEMENT BAS DROITE A HAUT GAUCHE
+			plateau[coo[0]][coo[1]] = 1;
+			plateau[verPS-1][horPS-1] = 3;
+			plateau[verPS][horPS] = 3;
+		} else if(String(verPS)+String(horPS) === String(Number(coo[0])+2)+String(coo[1])) {
+			// MOUVEMENT BAS A HAUT
+			plateau[coo[0]][coo[1]] = 1;
+			plateau[verPS-1][horPS] = 3;
+			plateau[verPS][horPS] = 3;
+		} else if(String(verPS)+String(horPS) === String(Number(coo[0])+2)+String(Number(coo[1])-2)) {
+			// MOUVEMENT BAS GAUCHE A HAUT DROITE 
+			plateau[coo[0]][coo[1]] = 1;
+			plateau[verPS-1][horPS+1] = 3;
+			plateau[verPS][horPS] = 3;
+		} else if(String(verPS)+String(horPS) === String(coo[0])+String(Number(coo[1])-2)) {
+			// MOUVEMENT GAUCHE A DROITE
+			plateau[coo[0]][coo[1]] = 1;
+			plateau[verPS][horPS+1] = 3;
+			plateau[verPS][horPS] = 3;
+		} else if(String(verPS)+String(horPS) === String(Number(coo[0])-2)+String(Number(coo[1])-2)) {
+			// MOUVEMENT HAUT GAUCHE A BAS DROITE
+			plateau[coo[0]][coo[1]] = 1;
+			plateau[verPS+1][horPS+1] = 3;
+			plateau[verPS][horPS] = 3;
 		}
-	}else{
-		console.log("POULET BWAISER")
 	}
-	console.log("Le joueur "+query.pseudo+" a cibler la img "+String (coo[0]+coo[1]));
-	console.log("La img active du joueur est "+marqueur.actif);
+		//FONCTIONNELLE
+		//plateau[verPS][horPS] = 3;
+		//plateau[coo[0]][coo[1]] = 1;
+		//FONCTIONNELLE
+	
+
+	// ENRIGISTREMENT DU FICHIER PLATEAU
+
+	now = JSON.stringify(plateau);
+	fs.writeFileSync("solitaire_partie_"+query.pseudo+".json",now,"utf-8")
+
+	// CREATION DES MARQUEURS
+
+	marqueur.pseudo = query.pseudo;
+	marqueur.fin = "";
+
+	for( ver = 0 ; ver < 7 ; ver++) {
+		for ( hor = 0 ; hor < 7 ; hor++) {
+			if( plateau[ver][hor] === 1) {
+				marqueur["img"+String(ver)+String(hor)] = "solitaire_p1.png";
+			}else if( plateau[ver][hor] === 2) {
+				marqueur["img"+String(ver)+String(hor)] = "solitaire_p2.png";
+			}else if( plateau[ver][hor] === 3) {
+				marqueur["img"+String(ver)+String(hor)] = "solitaire_l.png";
+			}
+		}
+	}
 
 	// ENVOI PAGE MISE A JOUR
 	
 	page = fs.readFileSync("solitaire_plateau_mouvement.html", "UTF-8");
 	page = page.supplant(marqueur)
-	marqueur = JSON.stringify(marqueur);
-	fs.writeFileSync("solitaire_partie_"+query.pseudo+".json",marqueur,"utf-8")
 	
-	res.writeHead(200, {'Content-Type': 'text/html'});
+	res.writeHead(200,  {'Content-Type': 'text/html'});
 	res.write(page);
 	res.end(); 
 }

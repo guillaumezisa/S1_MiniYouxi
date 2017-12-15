@@ -4,91 +4,60 @@
 
 var fs = require("fs");
 require("remedial")
-var page;
+
 var trait = function (req, res, query) {
 	var marqueur = [];
-	var ver;                     // Vertical
+	var page;
+	var lat;                     // Latéral
 	var hor;                     // Horizontale
 	var coo;                     // Coordonée
-	var pion = false ;
-	var ca = [];                 // Case active
-	var fin = false;
-	var compteur = 0 ;
-	var compteurfin = 0;
-
-	console.log("Le nombre de pion restant au Solitaire de "+query.pseudo+" est "+ marqueur.pion);
+	var ps							  // Pion Selectionner
+	var plateau ;
+	var now ;
+	var plateau ;
 	
-	marqueur = fs.readFileSync("./solitaire_partie_"+query.pseudo+".json","UTF-8");
-	marqueur = JSON.parse(marqueur);
-	page = fs.readFileSync("solitaire_plateau_selection.html", "UTF-8");
+	// CHARGEMENT DU JSON
+	now = fs.readFileSync("solitaire_partie_"+query.pseudo+".json","UTF-8");
+	plateau = JSON.parse(now);
 	
-	
-	
-	//Si nombre de pion = 1 afficher page de fin .
-	if (marqueur.pion === 1){
-		fs.readFileSync("solitaire_fin.html","UTF-8");
-		console.log("OMG OMG OMG OMG OMG C GG");
-	}
+	// SELECTIONNE OU DESELECTIONNE UN PION
 	
 	coo = query.place;
 	
-	for ( ver = 0 ; ver < 7 ; ver++){
-		for ( hor = 0 ; hor < 7 ; hor++){
-			if(marqueur["case"+String(ver)+String(hor)] === 1){
-				compteur = 0;
-				if(marqueur["case"+String(ver)+String(Number(hor)-1)] === 1){
-					}else if(marqueur["case"+String(Number(ver)-1)+String(Number(hor)+1)] === 1){
-						if(marqueur["case"+String(Number(ver)-2)+String(Number(hor)+2)] === 0){
-							fin = false;
-						}
-					}else if(marqueur["case"+String(ver)+String(Number(hor)+1)]=== 1){
-						if(marqueur["case"+String(ver)+String(Number(hor)+2)] === 0){
-							fin = false
-						}
-					}else if(marqueur["case"+String(Number(ver)+1)+String(Number(hor)+1)]=== 1){
-						if(marqueur["case"+String(Number(ver)+2)+String(Number(hor)+2)] === 0){
-							fin = false;
-						}
-					}else if(marqueur["case"+String(Number(ver)+1)+String(hor)]=== 1){
-						if(marqueur["case"+String(Number(ver)+2)+String(hor)] === 0){
-							fin = false;
-						}
-					}else if(marqueur["case"+String(Number(ver)-1)+String(Number(hor)+1)]=== 1){	
-						if(marqueur["case"+String(Number(ver)-2)+String(Number(hor)+2)] === 0){
-							fin = false;
-						}
-					}else if(marqueur["case"+String(Number(ver)-1)+String(hor)]){
-						if(marqueur["case"+String(Number(ver)-2)+String(hor)] === 0){
-							fin = false;
-						}
-					}else if(marqueur["case"+String(Number(ver)-1)+String(Number(hor)-1)]){
-						if(marqueur["case"+String(Number(ver)-2)+String(Number(hor)-2)] === 0){
-							fin=false;
-						}
-					}else{
-						fin = true;
-					}
-				}
-			}		
-		}
-	if ( fin === true ){
-		console.log("LE JOUEUR NE PEU PLUS RIEN JOUER FIN FIN FIN OMG OMG OMG GOMG OMGOMGOGMOGMOGMO");
-		fs.readFileSync("solitaire_partie_"+query.pseudo+".json","utf-8");
+	if ( plateau[coo[0]][coo[1]] === 1 ){
+		// PASSIF -> ACITF
+		plateau[coo[0]][coo[1]] = 2;
+	} else if ( plateau[coo[0]][coo[1]] === 2 ){
+		// ACTIF -> PASIF
+		plateau[coo[0]][coo[1]] = 1;
+	} else if ( plateau[coo[0]][coo[1]] === 3 ){
+		plateau[coo[0]][coo[1]] = 3;
 	}
-	if (pion === true){
-		if ( marqueur["img"+coo] === query.actif){
-			marqueur["img"+coo] = "solitaire_p1.png";
-		}
-	}else if ( marqueur["img"+coo] === "solitaire_l.png"){
-	}else if (marqueur["img"+coo] === "solitaire_p1.png"){
-		marqueur["img"+coo] = "solitaire_p2.png";
-		ca = coo ;
-	}
-	marqueur.actif = ca;
 	
+
+	// ASSIGNEMENT DES MARQUEURS
+	marqueur = {};	
+	marqueur.pseudo = query.pseudo;
+
+	for ( lat = 0 ; lat < 7 ; lat ++){
+		for ( hor = 0 ; hor < 7 ; hor++ ){
+			if(plateau[lat][hor] === 1){
+				marqueur["img"+String(lat)+String(hor)] = "solitaire_p1.png";
+			}else if(plateau[lat][hor] === 2){
+				marqueur["img"+String(lat)+String(hor)] = "solitaire_p2.png";
+			}else if(plateau[lat][hor] === 3){
+				marqueur["img"+String(lat)+String(hor)] = "solitaire_l.png";
+			}
+		}
+	}	
+
+	// MODIFICATION DU JSON
+	now  = JSON.stringify(plateau);
+	plateau =fs.writeFileSync("solitaire_partie_"+query.pseudo+".json",now,"utf-8")
+
+	// ENVOIE DE LA PAGE	
+	page = fs.readFileSync("solitaire_plateau_selection.html", "UTF-8");
 	page = page.supplant(marqueur)
-	marqueur = JSON.stringify(marqueur);
-	fs.writeFileSync("solitaire_partie_"+query.pseudo+".json",marqueur,"utf-8")
 	
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	res.write(page);
