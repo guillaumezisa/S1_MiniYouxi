@@ -10,9 +10,9 @@ html{
 	height:100%;
 	width:1024px;
 	margin:auto;
-	border-bottom:1px solid black;
-	border-left:1px solid black;
-	border-right:1px solid black;
+	border-bottom:0px solid black;
+	border-left:0px solid black;
+	border-right:0px solid black;
 	padding:25px;
 	font:18px arial;
 	overflow:hidden;
@@ -20,7 +20,7 @@ html{
 	background-repeat:no-repeat;
 }
 #connexion{
-	border : solid black 1px;
+	border : solid black 2px;
 	margin-top:20px;
 	margin-left : 30px;
 	float:right;
@@ -28,9 +28,10 @@ html{
 	height:100%;
 	padding:20px;
 	margin-left:740px;
+	border-radius
 }
 #arti{
-	border : solid black 1px;
+	border : solid black 0px;
 	width : 800px;
 }
 #fatfont{
@@ -61,6 +62,36 @@ html{
 }
 #formulaire_inscription{
 	text-align : center;
+}
+#articlejeux{
+	border : solid black 0px;
+}
+#headerjeux{
+	border : solid black 1px;
+	font-color : black;
+	font-size : 18px;
+	text-decoration : none;
+	background-color : #f80000;
+	height : 25px;
+	width : 100%;
+}
+#h10{
+	margin-top : 5px;
+}
+#regle{
+	
+}
+#bodyjeux{
+
+}
+#imgjeux{
+	float:left;
+	border : solid black 1px;
+	margin-left : 10px;
+	margin-top : -6px;
+}
+#regle{
+margin-left : 225px;
 }
 #tempo{
 	border : 1px solid black;
@@ -120,7 +151,7 @@ html{
 .button1 {
 	display: inline-block;
 	border-radius: 4px;
-	background-color: #D02628;
+	background-color: #F80000;
 	border: none;
 	color: black;
 	text-align: center;
@@ -266,6 +297,121 @@ html{
 }
 
 .button4:hover span:after {
+	opacity: 1;
+	right: 0;
+}
+.button5 {
+	display: inline-block;
+	border-radius: 4px;
+	background-color: #F80000;
+	border: none;
+	color: black;
+	text-align: center;
+	font-size: 12px;
+	padding: 7px;
+	width: 150px;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 20px;
+	border : 1px;
+	float : right;
+}
+.button5 span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+
+.button5 span:after {
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	transition: 0.5s;
+}
+
+.button5:hover span {
+	padding-right: 10px;
+}
+
+.button5:hover span:after {
+	opacity: 1;
+	right: 0;
+}
+.button6 {
+	display: inline-block;
+	border-radius: 4px;
+	background-color: #F80000;
+	border: none;
+	color: black;
+	text-align: center;
+	font-size: 12px;
+	padding: 7px;
+	width: 150px;
+	transition: all 0.5s;
+	cursor: pointer;
+	border : 1px;
+	float : right;
+}
+.button6 span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+
+.button6 span:after {
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	transition: 0.5s;
+}
+
+.button6:hover span {
+	padding-right: 10px;
+}
+
+.button6:hover span:after {
+	opacity: 1;
+	right: 0;
+}
+.button7 {
+	display: inline-block;
+	border-radius: 4px;
+	background-color: #F80000;
+	border: none;
+	color: black;
+	text-align: center;
+	font-size: 12px;
+	padding: 7px;
+	width: 120px;
+	transition: all 0.5s;
+	cursor: pointer;
+	border : 1px;
+	float : left;
+}
+.button7 span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+
+.button7 span:after {
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	transition: 0.5s;
+}
+
+.button7:hover span {
+	padding-right: 10px;
+}
+
+.button7:hover span:after {
 	opacity: 1;
 	right: 0;
 }
