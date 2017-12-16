@@ -17,6 +17,8 @@ var req_identifier = require("./req_identifier.js");
 
 var req_static = require("./req_static.js");
 var req_erreur = require("./req_erreur.js");
+var req_contact = require("./req_contact.js");
+var req_contact_quitter = require("./req_contact_quitter.js");
 
 var req_regle_morpion = require("./req_regle_morpion.js");
 var req_quitter_regle_morpion = require("./req_quitter_regle_morpion.js");
@@ -79,6 +81,12 @@ var traite_requete = function (req, res) {
 			case '/':
 			case '/req_commencer':
 				req_commencer(req, res, query);
+				break;
+			case '/req_contact_quitter':
+				req_contact_quitter(req, res, query);
+				break;
+			case '/req_contact':
+				req_contact(req, res, query);
 				break;
 			case '/req_afficher_formulaire_inscription':
 				req_afficher_formulaire_inscription(req, res, query);

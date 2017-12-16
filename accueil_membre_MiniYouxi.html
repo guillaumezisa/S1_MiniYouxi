@@ -24,8 +24,11 @@
 		<br><br>
 		<img style="margin : 0px 325px; margin-top : -50px;"width="500"height="200"src="banniere.png">
 		<center><h1>Bonjour <em>{pseudo}<em> !</h1></center><br>
+		
 		<!-- ARTICLE PAGE -->
+		
 		<!-- JEU MORPION-->
+		
 		<div id="articlejeux">
 			<div id="headerjeux">
 				<form action ="req_regle_morpion" method="GET">
@@ -36,6 +39,7 @@
 			<div id="bodyjeux">
 				<div id="imgjeux">
 					<a href="req_regle_morpion">
+						<input type ="hidden" name="pseudo" value ="{pseudo}">
 					<img height="155" src="morpion.jpg">
 					</a>
 				</div>
@@ -51,7 +55,9 @@
 					</h3></p><br><br><br>
 				</div>
 			</div>
+			
 			<!-- JEU BATAILLE -->
+			
 			<div id="articlejeux">
 				<div id="headerjeux">
 					<form action ="req_regle_bataille" method="GET">
@@ -62,6 +68,7 @@
 				<div id="bodyjeux">
 					<div id="imgjeux">
 						<a href="req_regle_bataille">
+						<input type ="hidden" name="pseudo" value ="{pseudo}">
 						<img height="155"width="175" src="bataille.jpg">
 						</a>
 					</div>
@@ -77,7 +84,9 @@
 					</h3></p><br><br><br>
 				</div>
 			</div>
+			
 			<!-- JEU PFC REMAKE -->
+			
 			<div id="articlejeux">
 				<div id="headerjeux">
 					<form action ="req_regle_pcf_remake" method="GET">
@@ -88,6 +97,7 @@
 				<div id="bodyjeux">
 					<div id="imgjeux">
 						<a href="req_regle_pcf_remake">
+						<input type ="hidden" name="pseudo" value ="{pseudo}">
 						<img height="155"width="175" src="main.jpeg">
 						</a>
 					</div>
@@ -105,7 +115,9 @@
 					</h3></p><br><br><br>
 				</div>
 			</div>
+			
 			<!-- PENDU -->
+			
 			<div id="articlejeux">
 				<div id="headerjeux">
 					<form action ="req_pendu" method="GET">
@@ -116,6 +128,7 @@
 				<div id="bodyjeux">
 					<div id="imgjeux">
 						<a href="req_pendu">
+						<input type ="hidden" name="pseudo" value ="{pseudo}">
 						<img height="155"width="175" src="pendu.png">
 						</a>
 					</div>
@@ -132,7 +145,9 @@
 					</h3></p><br><br><br>
 				</div>
 			</div>
+
 			<!-- TEMPO -->
+			
 			<div id="articlejeux">
 				<div id="headerjeux">
 					<form action ="req_tempo_regle" method="GET">
@@ -142,7 +157,8 @@
 				</div >
 				<div id="bodyjeux">
 					<div id="imgjeux">
-						<a href="req_pendu">
+						<a href="req_tempo_regle">
+						<input type ="hidden" name="pseudo" value ="{pseudo}">
 						<img height="155"width="175" src="tempo.jpg">
 						</a>
 					</div>
@@ -158,7 +174,9 @@
 					</h3></p><br><br><br>
 				</div>
 			</div>
+			
 			<!-- Solitaire -->
+			
 			<div id="articlejeux">
 				<div id="headerjeux">
 					<form action ="req_solitaire_regle" method="GET">
@@ -168,7 +186,8 @@
 				</div >
 				<div id="bodyjeux">
 					<div id="imgjeux">
-						<a href="req_pendu">
+						<a href="req_solitaire_regle">
+						<input type ="hidden" name="pseudo" value ="{pseudo}">
 						<img height="155"width="175" src="solitaire.jpeg">
 						</a>
 					</div>
@@ -183,7 +202,9 @@
 					</h3></p><br><br><br>
 				</div>
 			</div>
+			
 			<!-- PFC -->
+			
 			<div id="articlejeux">
 				<div id="headerjeux">
 					<form action ="req_regle_pfc" method="GET">
@@ -194,6 +215,7 @@
 				<div id="bodyjeux">
 					<div id="imgjeux">
 						<a href="req_regle_pfc">
+						<input type ="hidden" name="pseudo" value ="{pseudo}">
 						<img height="155"width="175" src="pfc.jpeg">
 						</a>
 					</div>
@@ -201,14 +223,16 @@
 						<h2>Regle du pfc :</h2>
 						<p><h3>Chaque joueur doit choisir soit la pierre la feuille ou le ciseau,<br>
 						La pierre bas le ciseau , le ciseau bas la feuille , la feuille bas la pierre .<br><br>
-						<form action="req_solitaire_regle" method="GET">
+						<form action="req_regle_pfc" method="GET">
 							<input type="hidden" name="pseudo" value="{pseudo}">
 							<button class="button5" type="submit" name="bouton" value="solitaire"><span>Jouer</span></button>		
 						</form>
 					</h3></p><br><br><br>
 				</div>
 			</div>
+			
 			<!-- FIN -->
+		
 		</div><br><br><br>
 	</body>
 </html>
