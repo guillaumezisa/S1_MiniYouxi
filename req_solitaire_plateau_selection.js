@@ -8,18 +8,102 @@ require("remedial")
 var trait = function (req, res, query) {
 	var marqueur = [];
 	var page;
-	var lat;                     // Latéral
+	var fin;
+	var ver;                     // VERTICAL
 	var hor;                     // Horizontale
 	var coo;                     // Coordonée
 	var ps							  // Pion Selectionner
 	var plateau ;
 	var now ;
 	var plateau ;
+	var ndpb ; 						  // NOMBRE DE PION BLOQUÉ
 	
 	// CHARGEMENT DU JSON
 	now = fs.readFileSync("solitaire_partie_"+query.pseudo+".json","UTF-8");
 	plateau = JSON.parse(now);
-	
+		
+	// VERIFIE SI LE JOUEUR A GAGNER
+
+	if (plateau[7] === 1){
+		fs.readFileSync("solitaire_gagner.html","utf-8");
+	}
+
+	// VERIFIE SI LE JOUEUR A PERDU
+	fin = 0 ;
+	ndpb = 0;
+
+	for ( ver = 0 ; ver < 7 ; ver++ ) { 
+		for ( hor = 0 ; hor < 7 ; hor++ ) {  
+			if ( plateau[String(ver)+String(hor)] === 1){
+				//	MOUVEMENT HAUT A BAS
+				if ( plateau[String(Number(ver)-1)+hor] === 1){
+					if ( plateau[String(Number(ver)-2)+hor] === 3){
+				  		fin = false
+					}	else {
+						ndpb = ndpb+1;
+					}
+				// MOUVEMENT HAUT DROITE A BAS GAUCHE
+				} else if (plateau[String(Number(ver)-1)+String(Number(hor)+1)] === 1){
+					if ( plateau[String(Number(ver)-2)+String(Number(hor)+2)] === 3){
+				  		fin = false
+					}	else {
+						ndpb = ndpb+1;
+					}
+				// MOUVEMENT DROITE A GAUCHE
+				} else if ( plateau[ver+String(Number(hor)+1)] === 1){
+					if ( plateau[ver+String(Number(hor)+2)] === 3){
+				  		fin = false
+					}	else {
+						ndpb = ndpb+1;
+					}
+				// MOUVEMENT BAS DROITE A HAUT GAUCHE
+				} else if ( plateau[String(Number(ver)+1)+String(Number(hor)+1)] === 1){
+					if ( plateau[String(Number(ver)+2)+String(Number(hor)+2)] === 3){
+				  		fin = false
+					}	else {
+						ndpb = ndpb+1;
+					}
+				// MOUVEMENT BAS A HAUT
+				} else if ( plateau[String(Number(ver)+1)+hor] === 1){
+					if ( plateau[String(Number(ver)+2)+hor] === 3){
+				  		fin = false
+					}	else {
+						ndpb = ndpb+1;
+					}
+				// MOUVEMENT BAS GAUCHE A HAUT DROITE
+				} else if ( plateau[String(Number(ver)+1)+String(Number(hor)-1)] === 1){
+					if ( plateau[String(Number(ver)+2)+String(Number(hor)-2)] === 3){
+				  		fin = false
+					}	else {
+						ndpb = ndpb+1;
+					}
+				// MOUVEMENT GAUCHE A DROITE
+				} else if ( plateau[ver+String(Number(hor)-1)] === 1){
+					if ( plateau[ver+String(Number(hor)-2)] === 3){
+				  		fin = false
+					} else {
+					ndpb = ndpb+1;
+					}
+				// MOUVEMENT HAUT GAUCHE A BAS DROITE
+				} else if ( plateau[String(Number(ver)-1)+String(Number(hor)-1)] === 1){
+					if ( plateau[String(Number(ver)-2)+String(Number(hor)-2)] === 3){
+				  		fin = false
+					}	else {
+						ndpb = ndpb+1;
+					}
+				}	else {
+					ndpb = ndpb+1;
+				}
+			} else {
+				ndpb = ndpb+1;
+			}
+		}
+	}
+	if ( ndpb  === 49){
+		fs.readFileSync("solitaire_perdu.html","utf-8");
+		console.log("OULALALALALA");
+	}
+
 	// SELECTIONNE OU DESELECTIONNE UN PION
 	
 	coo = query.place;
@@ -39,14 +123,14 @@ var trait = function (req, res, query) {
 	marqueur = {};	
 	marqueur.pseudo = query.pseudo;
 
-	for ( lat = 0 ; lat < 7 ; lat ++){
+	for ( ver = 0 ; ver < 7 ; ver ++){
 		for ( hor = 0 ; hor < 7 ; hor++ ){
-			if(plateau[lat][hor] === 1){
-				marqueur["img"+String(lat)+String(hor)] = "solitaire_p1.png";
-			}else if(plateau[lat][hor] === 2){
-				marqueur["img"+String(lat)+String(hor)] = "solitaire_p2.png";
-			}else if(plateau[lat][hor] === 3){
-				marqueur["img"+String(lat)+String(hor)] = "solitaire_l.png";
+			if(plateau[ver][hor] === 1){
+				marqueur["img"+String(ver)+String(hor)] = "solitaire_p1.png";
+			}else if(plateau[ver][hor] === 2){
+				marqueur["img"+String(ver)+String(hor)] = "solitaire_p2.png";
+			}else if(plateau[ver][hor] === 3){
+				marqueur["img"+String(ver)+String(hor)] = "solitaire_l.png";
 			}
 		}
 	}	

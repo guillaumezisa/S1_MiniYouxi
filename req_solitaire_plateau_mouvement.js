@@ -18,6 +18,7 @@ var trait = function (req, res, query)  {
 	var nbPions;
 	var verPS;
 	var horPS;
+	var fin;
 	
 	// LECTURE DU FICHIER PLATEAU
 
@@ -36,9 +37,9 @@ var trait = function (req, res, query)  {
 	}
 
 	if (nbPions === 1) {
-		marqueur.fin = "Vous avez gagné !" ;
+		fs.readFileSync("solitaire_gagner.html","utf-8");
 	}
-	
+
 	// RECHERCHE DU PION A DEPLACER (PION ACTIF)
 
 	for ( ver = 0 ; ver < 7 ; ver++) {
@@ -61,50 +62,54 @@ var trait = function (req, res, query)  {
 		if(String(verPS)+String(horPS) === String(Number(coo[0])-2)+coo[1]) {
 			// MOUVEMENT HAUT A BAS
 			plateau[coo[0]][coo[1]] = 1;
-			plateau[coo[0]-1][coo[1]]= 3;
+			plateau[verPS+1][horPS]= 3;
 			plateau[verPS][horPS] = 3;
+			plateau[7] = Number(plateau[7]-1);
 		} else if(String(verPS)+String(horPS) === String(Number(coo[0])-2)+String(Number(coo[1])+2)) {
 			// MOUVEMENT HAUT DROITE A BAS GAUCHE
 			console.log("OMG")
 			plateau[coo[0]][coo[1]] = 1;
 			plateau[verPS+1][horPS-1] = 3;
 			plateau[verPS][horPS] = 3;
+			plateau[7] = Number(plateau[7]-1);
 		} else if(String(verPS)+String(horPS) === String(coo[0])+String(Number(coo[1])+2)) {
 			// MOUVEMENT DROITE A GAUCHE
 			plateau[coo[0]][coo[1]] = 1;
 			plateau[verPS][horPS-1] = 3;
 			plateau[verPS][horPS] = 3;
+			plateau[7] = Number(plateau[7]-1);
 		} else if(String(verPS)+String(horPS) === String(Number(coo[0])+2)+String(Number(coo[1])+2)) {
 			// MOUVEMENT BAS DROITE A HAUT GAUCHE
 			plateau[coo[0]][coo[1]] = 1;
 			plateau[verPS-1][horPS-1] = 3;
 			plateau[verPS][horPS] = 3;
+			plateau[7] = Number(plateau[7]-1);
 		} else if(String(verPS)+String(horPS) === String(Number(coo[0])+2)+String(coo[1])) {
 			// MOUVEMENT BAS A HAUT
 			plateau[coo[0]][coo[1]] = 1;
 			plateau[verPS-1][horPS] = 3;
 			plateau[verPS][horPS] = 3;
+			plateau[7] = Number(plateau[7]-1);
 		} else if(String(verPS)+String(horPS) === String(Number(coo[0])+2)+String(Number(coo[1])-2)) {
 			// MOUVEMENT BAS GAUCHE A HAUT DROITE 
 			plateau[coo[0]][coo[1]] = 1;
 			plateau[verPS-1][horPS+1] = 3;
 			plateau[verPS][horPS] = 3;
+			plateau[7] = Number(plateau[7]-1);
 		} else if(String(verPS)+String(horPS) === String(coo[0])+String(Number(coo[1])-2)) {
 			// MOUVEMENT GAUCHE A DROITE
 			plateau[coo[0]][coo[1]] = 1;
 			plateau[verPS][horPS+1] = 3;
 			plateau[verPS][horPS] = 3;
+			plateau[7] = Number(plateau[7]-1);
 		} else if(String(verPS)+String(horPS) === String(Number(coo[0])-2)+String(Number(coo[1])-2)) {
 			// MOUVEMENT HAUT GAUCHE A BAS DROITE
 			plateau[coo[0]][coo[1]] = 1;
 			plateau[verPS+1][horPS+1] = 3;
 			plateau[verPS][horPS] = 3;
+			plateau[7] = Number(plateau[7]-1);
 		}
 	}
-		//FONCTIONNELLE
-		//plateau[verPS][horPS] = 3;
-		//plateau[coo[0]][coo[1]] = 1;
-		//FONCTIONNELLE
 	
 
 	// ENRIGISTREMENT DU FICHIER PLATEAU
