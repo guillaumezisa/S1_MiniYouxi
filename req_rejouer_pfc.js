@@ -11,7 +11,7 @@ var marqueur;
 
 var trait = function (req, res, query) {
 	
-	page = fs.readfileSync("pierre-feuille-ciseaux.html", "UTF-8");
+	page = fs.readFileSync("pierre-feuille-ciseaux.html", "UTF-8");
 
 	marqueur = {}
 	marqueur.pseudo = query.pseudo
