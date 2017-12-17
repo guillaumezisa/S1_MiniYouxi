@@ -6,16 +6,25 @@
 		<title>Régles Pierre Feuille Ciseaux</title>
 	</head>
 	<body>
-		<h2> Régle Du Piérre feuille ciseaux </h2><br>
-		<div id="playground">
+		<body>
+		 <script>NekoType="colourful"</script>
+		 <h1 id=nl><script src="http://webneko.net/n200504.js"></script>
+		 <a href="http://webneko.net">Neko</a></h1><br>
+		
+		<form action="req_abandonner_pfc" method="GET">
+		<input type="hidden" name="pseudo" value={pseudo}>
+		<input class="button" type="submit" name="bouton" value="Retour"><span></span></button><br>
+	 </form>
+ 	 <center>
+	 <h2> Régle Du Piérre feuille ciseaux </h2><br>
+	 <img src="pfc.jpg" height="350">
+	 <h4>Vous avez le choix entre la pierre,la feuille et le ciseaux<br>
+	 pour rappel la pierre bat le ciseaux, le ciseaux bat la feuille et <br>
+	 la feuille bat la pierre ! A vous d'étre meilleur que Youxi ! <br></h4>
 			<form action="req_jouer_pfc" method="GET">
 				<input type="hidden" name="pseudo" value={pseudo}">
-				<input type="submit" name="bouton" value="jouer au PFC">
+				<button class="button3" type="submit" name="bouton" value="jouer au PFC"><span>Play</span></button>
 			</form>
-			<form action="req_quitter_pfc" method="GET">
-				<input type="hidden" name="pseudo" value={pseudo}>
-				<input type="submit" name="bouton" value="Retour">
-			</form>
-		</div>
+		</center>
 	</body>
 </html>
