@@ -55,7 +55,6 @@ var req_solitaire_plateau_mouvement=require("./req_solitaire_plateau_mouvement.j
 var req_solitaire_rejouer = require("./req_solitaire_rejouer.js");
 var req_solitaire_retour = require ("./req_solitaire_retour.js");
 
-var req_regle_pfc = require("./req_regle_pfc.js");
 var req_analyser_pfc = require("./req_analyser_pfc.js");
 var req_jouer_pfc = require("./req_jouer_pfc.js");
 //-------------------------------------------------------------------------
@@ -152,15 +151,13 @@ var traite_requete = function (req, res) {
 			    req_quitter_pcf_remake(req, res, query);
 				break;
 			//pfc
-			case "/req_regle_pfc":
-				req_regle_pfc(req, res, query);
-				break;
 			case "/req_analyser_pfc":
 				req_analyser_pfc(req, res, query);
 				break;
 			case "/req_jouer_pfc":
 				req_jouer_pfc(req, res, query);
 				break;
+				// pendu
 			case "/req_pendu":
 				req_pendu(req, res, query);
 				break;
