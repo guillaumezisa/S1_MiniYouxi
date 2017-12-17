@@ -204,12 +204,33 @@ var jeu = function () {
 	var br = document.createElement("br");
 	var bouton;
 	var center;
+	var form;
+	var hidden;
 
 	liste_image = ["main_0.png", "main_1.png", "main_2.png", "main_3.png", "main_4.png", "main_5.png", "main_6.png"]
 	
 	body = document.querySelector("body");
 
 	body.innerHTML = "";
+
+	form = document.createElement("form");
+	form.setAttribute("action", "/req_quitter_pcf_remake");
+	form.setAttribute("method", "GET");
+
+	hidden = document.createElement("input")
+	hidden.setAttribute("type", "hidden");
+	hidden.setAttribute("name", "pseudo");
+	hidden.setAttribute("value", pseudo);
+
+	bouton = document.createElement("button");
+	bouton.setAttribute("class", "button");
+	bouton.setAttribute("name", "bouton accueil");
+	bouton.setAttribute("value", "accueil");
+	bouton.innerHTML = "Accueil";
+	
+    form.appendChild(hidden);
+	form.appendChild(bouton);
+	body.appendChild(form);
 
     center = document.createElement("center");
 	// On affiche les imager et on leurs donne l'attribut click
