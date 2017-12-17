@@ -55,8 +55,12 @@ var req_solitaire_plateau_mouvement=require("./req_solitaire_plateau_mouvement.j
 var req_solitaire_rejouer = require("./req_solitaire_rejouer.js");
 var req_solitaire_retour = require ("./req_solitaire_retour.js");
 
+var req_rejouer_pfc = require("./req_rejouer_pfc.js");
+var req_regle_pfc = require("./req_regle_pfc.js");
 var req_analyser_pfc = require("./req_analyser_pfc.js");
 var req_jouer_pfc = require("./req_jouer_pfc.js");
+var req_abandonner_pfc = require("./req_abandonner_pfc.js");
+
 //-------------------------------------------------------------------------
 // FONCTION DE CALLBACK APPELLEE POUR CHAQUE REQUETE
 //-------------------------------------------------------------------------
@@ -156,6 +160,15 @@ var traite_requete = function (req, res) {
 				break;
 			case "/req_jouer_pfc":
 				req_jouer_pfc(req, res, query);
+				break;
+			case "/req_abandonner_pfc":
+				req_abandonner_pfc(req, res, query);
+				break;
+			case "/req_regle_pfc":
+				req_regle_pfc(req, res, query);
+				break;
+			case "/req_rejouer_pfc":
+				req_rejouer_pfc(res, res, query);
 				break;
 				// pendu
 			case "/req_pendu":
