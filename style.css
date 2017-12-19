@@ -109,14 +109,10 @@ body{
 margin-left : 225px;
 }
 #tempo{
-	border : 1px solid black;
 	background : url("stargate.png");
 	background-color ; blue;
 	background-repeat:no-repeat;
 	background-position:center;	
-}
-#tempo_fin{
-	border : 1px solid black;
 }
 #solitaire{
 	border : solid black 1px;
