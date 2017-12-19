@@ -41,10 +41,10 @@
 			</div >
 			<div id="bodyjeux">
 				<div id="imgjeux">
-					<a href="req_regle_morpion">
+					<form action="req_regle_morpion" method="GET">
 						<input type ="hidden" name="pseudo" value ="{pseudo}">
-					<img height="155" src="morpion.jpg">
-					</a>
+						<button name="jeu" value="morpion"><img height="155" src="morpion.jpg"></button>
+					</form>
 				</div>
 				<div id="regle">
 					<h2>Regle du Morpion :</h2>
@@ -66,16 +66,16 @@
 					<form action ="req_regle_bataille" method="GET">
 						<input type ="hidden" name="pseudo" value ="{pseudo}">
 						<center>
-							<button class="button8" name="jeu" value="morpion">La Bataille</button>
+							<button class="button8" name="jeu" value="bataille">La Bataille</button>
 						</center>
 					</form>
 				</div >
 				<div id="bodyjeux">
 					<div id="imgjeux">
-						<a href="req_regle_bataille">
+					<form action="req_regle_bataille" method="GET">
 						<input type ="hidden" name="pseudo" value ="{pseudo}">
-						<img height="155" src="harley_quinn.png">
-						</a>
+						<button name="jeu" value="bataille"><img height="155" src="harley_quinn.png"></button>
+					</form>
 					</div>
 					<div id="regle">
 						<h2>Regle de la bataille :</h2>
@@ -84,7 +84,7 @@
 						quand l'un des deux joueurs n'a plus de carte .
 						<form action="req_regle_bataille" method="GET">
 							<input type="hidden" name="pseudo" value="{pseudo}">
-							<button class="button5" type="submit" name="bouton" value="morpion"><span>Jouer</span></button>		
+							<button class="button5" type="submit" name="bouton" value="bataille"><span>Jouer</span></button>		
 						</form>
 					</h3></p><br><br><br>
 				</div>
@@ -103,10 +103,10 @@
 				</div >
 				<div id="bodyjeux">
 					<div id="imgjeux">
-						<a href="req_regle_pcf_remake">
+					<form action="req_regle_pcf_remake" method="GET">
 						<input type ="hidden" name="pseudo" value ="{pseudo}">
-						<img height="155" width="175" src="main.jpeg">
-						</a>
+						<button name="jeu" value="pcf_remake"><img height="155" width="175" src="main.jpeg"></button>
+					</form>
 					</div>
 					<div id="regle">
 						<h2>Regle du remake du Pierre Feuille Ciseau :</h2>
@@ -136,10 +136,10 @@
 				</div >
 				<div id="bodyjeux">
 					<div id="imgjeux">
-						<a href="req_pendu">
+					<form action="req_pendu" method="GET">
 						<input type ="hidden" name="pseudo" value ="{pseudo}">
-						<img height="155"width="175" src="pendu.png">
-						</a>
+						<button name="jeu" value="pendu"><img height="155" width="175" src="pendu.png"></button>
+					</form>
 					</div>
 					<div id="regle">
 						<h2>Regle du pendu :</h2>
@@ -168,10 +168,10 @@
 				</div >
 				<div id="bodyjeux">
 					<div id="imgjeux">
-						<a href="req_tempo_regle">
+					<form action="req_tempo_regle" method="GET">
 						<input type ="hidden" name="pseudo" value ="{pseudo}">
-						<img height="155"width="175" src="tempo.jpg">
-						</a>
+						<button name="jeu" value="tempo"><img height="155" width="175" src="tempo.jpg"></button>
+					</form>
 					</div>
 					<div id="regle">
 						<h2>Regle du Tempo :</h2>
@@ -199,10 +199,10 @@
 				</div >
 				<div id="bodyjeux">
 					<div id="imgjeux">
-						<a href="req_solitaire_regle">
+					<form action="req_solitaire_regle" method="GET">
 						<input type ="hidden" name="pseudo" value ="{pseudo}">
-						<img height="155"width="175" src="solitaire.jpeg">
-						</a>
+						<button name="jeu" value="solitaire"><img height="155" width="175" src="solitaire.jpeg"></button>
+					</form>
 					</div>
 					<div id="regle">
 						<h2>Regle du Solitaire :</h2>
@@ -229,10 +229,10 @@
 				</div >
 				<div id="bodyjeux">
 					<div id="imgjeux">
-						<a href="req_regle_pfc">
+					<form action="req_regle_pfc" method="GET">
 						<input type ="hidden" name="pseudo" value ="{pseudo}">
-						<img height="155"width="175" src="pfc.jpeg">
-						</a>
+						<button name="jeu" value="PFC"><img height="155" width="175" src="pfc.jpeg"></button>
+					</form>
 					</div>
 					<div id="regle">
 						<h2>Regle du pfc :</h2>
@@ -259,7 +259,10 @@
 					</div>
 				<div id="bodyjeux">
 					<div id="imgjeux">
-						<input type ="hidden" name="pseudo" value ="{pseudo}">
+					<form action="ICI LA REQUETE" method="GET">
+					    <input type ="hidden" name="pseudo" value ="{pseudo}">
+						<button name="jeu" value="mental"><img height="155" width="175" src="ICI LE NOM DE TON IMAGE"></button>
+					</form>
 					</div>
 					<div id="regle">
 						<h2> regle du mental : </h2>
