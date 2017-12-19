@@ -120,7 +120,6 @@ var trait = function (req, res, query)  {
 	// CREATION DES MARQUEURS
 
 	marqueur.pseudo = query.pseudo;
-	marqueur.fin = "";
 
 	for( ver = 0 ; ver < 7 ; ver++) {
 		for ( hor = 0 ; hor < 7 ; hor++) {

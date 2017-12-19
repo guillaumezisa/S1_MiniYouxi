@@ -10,100 +10,19 @@ var trait = function (req, res, query) {
 	var page;
 	var fin;
 	var ver;                     // VERTICAL
-	var hor;                     // Horizontale
-	var coo;                     // Coordonée
-	var ps							  // Pion Selectionner
+	var hor;                     // HORIZONTALE
+	var dver;						  // DIRECTION VERTICALE
+	var dhor;						  // DIRECTION HORIZONTALE	
+	var coo;                     // COORDONNÉE
+	var ps							  // PION SELECTIONNER
 	var plateau ;
-	var now ;
-	var plateau ;
+	var now ;		
 	var ndpb ; 						  // NOMBRE DE PION BLOQUÉ
 	
 	// CHARGEMENT DU JSON
 	now = fs.readFileSync("solitaire_partie_"+query.pseudo+".json","UTF-8");
 	plateau = JSON.parse(now);
 		
-	// VERIFIE SI LE JOUEUR A GAGNER
-
-	if (plateau[7] === 1){
-		fs.readFileSync("solitaire_gagner.html","utf-8");
-	}
-
-	// VERIFIE SI LE JOUEUR A PERDU
-	fin = 0 ;
-	ndpb = 0;
-
-	for ( ver = 0 ; ver < 7 ; ver++ ) { 
-		for ( hor = 0 ; hor < 7 ; hor++ ) {  
-			if ( plateau[String(ver)+String(hor)] === 1){
-				//	MOUVEMENT HAUT A BAS
-				if ( plateau[String(Number(ver)-1)+hor] === 1){
-					if ( plateau[String(Number(ver)-2)+hor] === 3){
-				  		fin = false
-					}	else {
-						ndpb = ndpb+1;
-					}
-				// MOUVEMENT HAUT DROITE A BAS GAUCHE
-				} else if (plateau[String(Number(ver)-1)+String(Number(hor)+1)] === 1){
-					if ( plateau[String(Number(ver)-2)+String(Number(hor)+2)] === 3){
-				  		fin = false
-					}	else {
-						ndpb = ndpb+1;
-					}
-				// MOUVEMENT DROITE A GAUCHE
-				} else if ( plateau[ver+String(Number(hor)+1)] === 1){
-					if ( plateau[ver+String(Number(hor)+2)] === 3){
-				  		fin = false
-					}	else {
-						ndpb = ndpb+1;
-					}
-				// MOUVEMENT BAS DROITE A HAUT GAUCHE
-				} else if ( plateau[String(Number(ver)+1)+String(Number(hor)+1)] === 1){
-					if ( plateau[String(Number(ver)+2)+String(Number(hor)+2)] === 3){
-				  		fin = false
-					}	else {
-						ndpb = ndpb+1;
-					}
-				// MOUVEMENT BAS A HAUT
-				} else if ( plateau[String(Number(ver)+1)+hor] === 1){
-					if ( plateau[String(Number(ver)+2)+hor] === 3){
-				  		fin = false
-					}	else {
-						ndpb = ndpb+1;
-					}
-				// MOUVEMENT BAS GAUCHE A HAUT DROITE
-				} else if ( plateau[String(Number(ver)+1)+String(Number(hor)-1)] === 1){
-					if ( plateau[String(Number(ver)+2)+String(Number(hor)-2)] === 3){
-				  		fin = false
-					}	else {
-						ndpb = ndpb+1;
-					}
-				// MOUVEMENT GAUCHE A DROITE
-				} else if ( plateau[ver+String(Number(hor)-1)] === 1){
-					if ( plateau[ver+String(Number(hor)-2)] === 3){
-				  		fin = false
-					} else {
-					ndpb = ndpb+1;
-					}
-				// MOUVEMENT HAUT GAUCHE A BAS DROITE
-				} else if ( plateau[String(Number(ver)-1)+String(Number(hor)-1)] === 1){
-					if ( plateau[String(Number(ver)-2)+String(Number(hor)-2)] === 3){
-				  		fin = false
-					}	else {
-						ndpb = ndpb+1;
-					}
-				}	else {
-					ndpb = ndpb+1;
-				}
-			} else {
-				ndpb = ndpb+1;
-			}
-		}
-	}
-	if ( ndpb  === 49){
-		fs.readFileSync("solitaire_perdu.html","utf-8");
-		console.log("OULALALALALA");
-	}
-
 	// SELECTIONNE OU DESELECTIONNE UN PION
 	
 	coo = query.place;
@@ -122,7 +41,8 @@ var trait = function (req, res, query) {
 	// ASSIGNEMENT DES MARQUEURS
 	marqueur = {};	
 	marqueur.pseudo = query.pseudo;
-
+	marqueur.fin = "";
+	
 	for ( ver = 0 ; ver < 7 ; ver ++){
 		for ( hor = 0 ; hor < 7 ; hor++ ){
 			if(plateau[ver][hor] === 1){
@@ -134,6 +54,46 @@ var trait = function (req, res, query) {
 			}
 		}
 	}	
+	// VERIFIE SI LE JOUEUR A GAGNER & MODIFICATION DU MARQUEUR FIN
+
+	if (plateau[7] === 1){
+		marqueur.fin="Tu as gagné";
+	} else {
+		marqueur.fin ="";
+	}
+	
+	// VERIFIE SI LE JOUEUR A PERDU & MODIFICATION DU MARQUEUR FIN
+	fin = 0 ;
+	ndpb = 0;
+
+	for ( ver = 0 ; ver < 7 ; ver++ ) { 
+		for ( hor = 0 ; hor < 7 ; hor++ ) {  
+			for ( dver = -2 ; dver < 3 ; dver=dver+2 ) {
+				for ( dhor = -2 ; dhor < 3; dhor=dhor+2 ) {
+					if ( ver+dver < 0 || ver+dver > 7 || hor+dhor < 0 || hor+dhor > 7 ){
+						ndpb++;
+					}else{
+						if( plateau[ver][hor] === 1 ){
+							if ( plateau[ver+dver][hor+dhor] === 3 && plateau[ver+dver/2][hor+dhor/2] === 1 ){
+								fin = "nope"
+							}else{ 
+								ndpb++
+							}
+						}else{
+							ndpb++;		
+						}
+					}
+				}
+			}
+		}
+	}
+	console.log(fin);
+	
+	if ( fin === 0){
+		marqueur.fin = "TU AS PERDU MOUAHAHAHA";
+	} else { 
+		marqueur.fin = "";
+	}
 
 	// MODIFICATION DU JSON
 	now  = JSON.stringify(plateau);
