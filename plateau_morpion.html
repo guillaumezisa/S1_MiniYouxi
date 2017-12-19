@@ -6,6 +6,16 @@
 	<title>Jeu Morpion</title>
 </head>
 <body>
+
+<form action="req_abandonner_morpion" method="GET">
+    <input type="hidden" name="pseudo" value="{pseudo}">
+    <button class="button1" type="submit" name="bouton" value="abandonner"><span>Abandonner</span></button>
+</form>
+
+<br>
+<br>
+<br>
+
 <center><form action="req_joueur_pose_pion_morpion" method="GET">
 
     <input type="hidden" name="pseudo" value="{pseudo}">
@@ -25,11 +35,5 @@
 
 </form></center>
 
-<br>
-
-<form action="req_abandonner_morpion" method="GET">
-    <input type="hidden" name="pseudo" value="{pseudo}">
-    <button class="button1" type="submit" name="bouton" value="abandonner"><span>Abandonner</span></button>
-</form>
 </body>
 </html>
