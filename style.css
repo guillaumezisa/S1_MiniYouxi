@@ -6,6 +6,10 @@ html{
 	height : 100%;
 	color : #424242;
 }
+body{
+	width : 62.5%;
+	margin-left :18%;
+}
 #header{
 	height:100%;
 	width:1024px;
@@ -54,10 +58,8 @@ html{
 	display : inline-table;
 }
 #boite_inscription{
-	border : 2px solid black;
 }
 #boite_inscription1{
-	border : 2px solid black;
 	font-size : 18px;
 }
 #formulaire_inscription{
@@ -112,7 +114,7 @@ margin-left : 225px;
 .button {
 	display: inline-block;
 	border-radius: 4px;
-	background-color: #D02628;
+	background-color: #F80000;
 	border: none;
 	color: black;
 	text-align: center;
@@ -190,7 +192,7 @@ margin-left : 225px;
 .button2 {
 	display: inline-block;
 	border-radius: 4px;
-	background-color: #D02628;
+	background-color: #F80000;
 	border: none;
 	color: black;
 	text-align: center;
@@ -228,7 +230,7 @@ margin-left : 225px;
 }
 .button3 {
 	border-radius: 4px;
-	background-color: #D02628;
+	background-color: #F80000;
 	border: none;
 	color: black;
 	text-align: center;
@@ -265,7 +267,7 @@ margin-left : 225px;
 }
 .button4 {
 	border-radius: 4px;
-	background-color: #D02628;
+	background-color: #F80000;
 	border: none;
 	color: black;
 	text-align: center;
