@@ -12,19 +12,25 @@ body{
 }
 #header{
 	height:100%;
-	width:1024px;
-	margin:auto;
-	border-bottom:0px solid black;
-	border-left:0px solid black;
-	border-right:0px solid black;
-	padding:25px;
+	width:62,5%;
+	margin-left : 23%;
 	font:18px arial;
 	overflow:hidden;
 	background : url("banniere.png");
 	background-repeat:no-repeat;
+	background-size : 69%;
+}
+#header1{
+	height:100%;
+	width:62,5%;
+	margin-left : 23%;
+	font:18px arial;
+	overflow:hidden;
+	background : url("banniere.png");
+	background-repeat:no-repeat;
+	background-size : 69%;
 }
 #connexion{
-	border : solid black 2px;
 	margin-top:20px;
 	margin-left : 30px;
 	float:right;
@@ -57,8 +63,15 @@ body{
 #morpion{
 	display : inline-table;
 }
-#boite_inscription{
+.textbox{
+	height:25px;
+	width:200px;
 }
+#boite_inscription{
+	font-size : 24px;
+	height : 180%;
+}
+
 #boite_inscription1{
 	font-size : 18px;
 }
@@ -236,7 +249,6 @@ margin-left : 225px;
 	text-align: center;
 	font-size: 18px;
 	padding: 7px;
-	width: 120px;
 	transition: all 0.5s;
 	cursor: pointer;
 	margin: 5px;
