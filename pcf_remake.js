@@ -226,7 +226,7 @@ var jeu = function () {
 	bouton.setAttribute("class", "button");
 	bouton.setAttribute("name", "bouton accueil");
 	bouton.setAttribute("value", "accueil");
-	bouton.innerHTML = "Accueil";
+	bouton.innerHTML = "Abandonner";
 	
     form.appendChild(hidden);
 	form.appendChild(bouton);
