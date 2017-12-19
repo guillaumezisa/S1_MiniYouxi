@@ -46,6 +46,7 @@ var req_tempo_jouer = require("./req_tempo_jouer.js");
 var req_tempo_fin = require("./req_tempo_fin.js");
 var req_tempo_rejouer = require("./req_tempo_rejouer.js");
 var req_tempo_quitter = require("./req_tempo_quitter.js");
+var req_tempo_abandonner = require("./req_tempo_abandonner.js");
 
 var req_solitaire_regle = require("./req_solitaire_regle.js");
 var req_solitaire_plateau = require("./req_solitaire_plateau.js");
@@ -196,6 +197,9 @@ var traite_requete = function (req, res) {
 			case "/req_tempo_quitter":
 				req_tempo_quitter( req,res,query);
 				break;
+			case "/req_tempo_abandonner":
+				req_tempo_quitter( req,res,query);
+				break;
 			//Solitaire
 			case "/req_solitaire_regle":
 				req_solitaire_regle( req,res,query);
@@ -216,7 +220,7 @@ var traite_requete = function (req, res) {
 				req_solitaire_rejouer(req,res,query);
 				break;
 			case "/req_solitaire_retour":
-				req_solitaire_rejouer(req,res,query);
+				req_solitaire_retour(req,res,query);
 				break;
 			default:
 				req_static(req, res, query);
