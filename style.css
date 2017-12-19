@@ -82,7 +82,7 @@ body{
 	border : solid black 0px;
 }
 #headerjeux{
-	border : solid black 1px;
+	border : solid black 0px;
 	font-color : black;
 	font-size : 18px;
 	text-decoration : none;
@@ -438,3 +438,9 @@ margin-left : 225px;
 	margin: 3px;
 }
 
+.button9 {
+	border: none;
+	padding: 0px 0px;
+	background: transparent;
+	cursor: pointer;
+}
