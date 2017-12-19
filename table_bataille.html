@@ -7,15 +7,25 @@
 	</head>
 	<body>
 	    
-		<img src="carte.JPEG">
-        
+		<form action="/req_abandonner_bataille" method="GET">
+			<input type="hidden" name="pseudo" value="{pseudo}">
+			<button class="button" name="abandon" value="abandonner">Accueil</button>
+		</form>
+
+		<br>
 		<br>
 
-		Cliquez sur la carte du bas pour poser la première carte
+		<center>
+			<img src="./cartes/paquet_haut.png">
+			
+			<br>
 
-		<form action="/req_pose_carte_bataille" method="GET">
-			<input type="hidden" name="pseudo" value="{pseudo}">
-			<button name="carte_face_cache" value="pose_carte"><img src="carte.JPEG"></button>
-		</form>
+			Cliquez sur la carte du bas pour poser la première carte
+
+			<form action="/req_pose_carte_bataille" method="GET">
+				<input type="hidden" name="pseudo" value="{pseudo}">
+				<button name="carte_face_cache" value="pose_carte"><img src="./cartes/paquet_bas.png"></button>
+			</form>
+		</center>
 	</body>
 </html>

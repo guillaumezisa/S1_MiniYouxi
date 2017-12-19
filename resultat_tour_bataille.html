@@ -7,31 +7,37 @@
 	</head>
 	<body>
 
-	<img src="./carte.JPEG">
-
-	<br>
-	
-	<h1>{nb_ordi} <img src="./{couleur_ordi}.png"></h1>
-	<br>
-    {resultat}
-    <br>
-	<h1>{nb_joueur} <img src="./{couleur_joueur}.png"></h1>
-
-	<form action="/req_pose_carte_bataille" method="GET">
-		<input type="hidden" name="pseudo" value="{pseudo}">
-		<button name="carte_face_cache" value="pose_carte"><img src="./carte.JPEG"></button>
-	</form>
-	
-
 	<form action="/req_abandonner_bataille" method="GET">
 	    <input type="hidden" name="pseudo" value="{pseudo}">
-		<input type="submit" name="abandonner" value="abandon">
+		<button class="button" name="abandon" value="abandonner">Accueil</button>
 	</form>
 
-	<form action="/req_resultat_bataille" method="GET">
-	    <input type="hidden" name="pseudo" value="{pseudo}">
-		<input type="submit" name="resultat" value="afficher les resultats">
-	</form>
+	<br>
+	<br>
+
+    <center>
+		<img src="./cartes/paquet_haut.png">
+
+		<br>
+		
+		<img src="./cartes/ordi/{nb_ordi}_{couleur_ordi}.png">
+		<br>
+		{resultat}
+		<br>
+		<img src="./cartes/joueur/{nb_joueur}_{couleur_joueur}.png">
+
+		<form action="/req_pose_carte_bataille" method="GET">
+			<input type="hidden" name="pseudo" value="{pseudo}">
+			<button name="carte_face_cache" value="pose_carte"><img src="./cartes/paquet_bas.png"></button>
+		</form>
+
+		<br>
+
+		<form action="/req_resultat_bataille" method="GET">
+			<input type="hidden" name="pseudo" value="{pseudo}">
+			<button class="button3" name="affiche_resultat" value="resultat">Afficher les relustats</button>
+		</form>
+	</center>
 	</body>
 </html>
 
