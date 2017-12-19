@@ -62,6 +62,9 @@ var req_analyser_pfc = require("./req_analyser_pfc.js");
 var req_jouer_pfc = require("./req_jouer_pfc.js");
 var req_abandonner_pfc = require("./req_abandonner_pfc.js");
 
+var req_regle_mental = require("./req_regle_mental.js");
+var req_abandonner_mental = require("./req_abandonner_mental.js");
+var req_jouer_mental = require("./req_jouer_mental.js");
 //-------------------------------------------------------------------------
 // FONCTION DE CALLBACK APPELLEE POUR CHAQUE REQUETE
 //-------------------------------------------------------------------------
@@ -101,7 +104,17 @@ var traite_requete = function (req, res) {
 			case '/req_identifier':
 				req_identifier(req, res, query);
 				break;
-			// morpion
+			//mental
+			case "/req_regle_mental":
+				req_regle_mental(req, res, query);
+				break;
+			case "/req_abandonner_mental":
+				req_abandonner_mental(req, res, query);
+				break ;
+			case "/req_jouer_mental":
+				req_jouer_mental(req, res, query);
+				break ;
+				// morpion
 			case "/req_regle_morpion":
 			    req_regle_morpion(req, res, query);
 				break;
