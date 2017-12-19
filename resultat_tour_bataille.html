@@ -16,22 +16,22 @@
 	<br>
 
     <center>
-		<img src="./cartes/paquet_haut.png">
+		<img width="150px" src="./cartes/paquet_haut.png">
 
-		<br>
-		
-		<img src="./cartes/ordi/{nb_ordi}_{couleur_ordi}.png">
+		<img width="150px" src="./cartes/ordi/{nb_ordi}_{couleur_ordi}.png">
+
 		<br>
 		{resultat}
 		<br>
-		<img src="./cartes/joueur/{nb_joueur}_{couleur_joueur}.png">
+
+		<img width="150px" src="./cartes/joueur/{nb_joueur}_{couleur_joueur}.png">
 
 		<form action="/req_pose_carte_bataille" method="GET">
 			<input type="hidden" name="pseudo" value="{pseudo}">
-			<button name="carte_face_cache" value="pose_carte"><img src="./cartes/paquet_bas.png"></button>
+			<button name="carte_face_cache" value="pose_carte"><img width="150px" src="./cartes/paquet_bas.png"></button>
 		</form>
 
-		<br>
+        <br>
 
 		<form action="/req_resultat_bataille" method="GET">
 			<input type="hidden" name="pseudo" value="{pseudo}">
