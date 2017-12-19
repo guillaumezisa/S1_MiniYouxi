@@ -232,6 +232,9 @@ var jeu = function () {
 	form.appendChild(bouton);
 	body.appendChild(form);
 
+	body.appendChild(document.createElement("br"));
+	body.appendChild(document.createElement("br"));
+
     center = document.createElement("center");
 	// On affiche les imager et on leurs donne l'attribut click
 	for (var idx = 0; idx < liste_image.length; idx += 1) {
