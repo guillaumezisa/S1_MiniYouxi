@@ -8,7 +8,7 @@ var url = require("url");
 
 var req_pendu = function(req, res, query) {
 
-	var marqueurs;
+	var marqueurs = {};
 	var page;
 	var page1;
 	var page2;
@@ -97,7 +97,6 @@ var req_pendu = function(req, res, query) {
 
 		}
 
-		marqueurs = {};
 		res.writeHead(200, {'Content-Type': 'text/html'});
 		res.write("<html><head><link rel='stylesheet'href='style.css'/><title>Pendu</title></head><body>");
 
