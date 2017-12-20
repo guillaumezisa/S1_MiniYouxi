@@ -17,7 +17,17 @@
 			<br><br><br><br><br><br><br><br><br><br><br>
 		<form action="/req_tempo_fin" method="GET">
 			<input type="hidden"name="pseudo"value="{pseudo}">
-			<button class="button3"type="submit"name="bouton"value="stop"><span>STOP</span></button>
+			<button id="vache" class="button3"type="submit"name="bouton"value="stop"><span>STOP</span></button>
+
+            <script type="text/javascript">
+			    var audio = new Audio("cow_moo.mp3");
+				audio.loop = false;
+				var play_audio = function() {
+				    audio.play()
+				}
+				window.addEventListener("click", play_audio());
+			</script>
+
 		<br><br><br><br><br><br><br><br><br><br><br><br>
 		</form>
 		</div>

@@ -40,6 +40,8 @@ var req_quitter_pcf_remake = require("./req_quitter_pcf_remake.js");
 
 var req_pendu = require("./req_pendu.js");
 
+var req_puzzle = require("./req_puzzle.js");
+
 var req_tempo_regle = require("./req_tempo_regle.js");
 var req_tempo_afficher = require("./req_tempo_afficher.js");
 var req_tempo_jouer = require("./req_tempo_jouer.js");
@@ -200,6 +202,9 @@ var traite_requete = function (req, res) {
 			case "/req_quitter_pendu":
 				req_pendu(req, res, query);
 				break;
+			case "/req_abandon_pendu":
+				req_pendu(req, res, query);
+				break;
 			//TEMPO
 			case "/req_tempo_regle":
 				req_tempo_regle( req,res,query);
@@ -243,6 +248,13 @@ var traite_requete = function (req, res) {
 				break;
 			case "/req_solitaire_retour":
 				req_solitaire_retour(req,res,query);
+				break;
+			//puzzle
+			case "/req_puzzle":
+				req_puzzle(req,res,query);
+				break;
+			case "/req_quitter_puzzle":
+				req_puzzle(req,res,query);
 				break;
 			default:
 				req_static(req, res, query);

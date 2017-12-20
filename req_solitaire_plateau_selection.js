@@ -13,6 +13,8 @@ var trait = function (req, res, query) {
 	var hor;                     // HORIZONTALE
 	var dver;						  // DIRECTION VERTICALE
 	var dhor;						  // DIRECTION HORIZONTALE	
+	var x ; 							  // AXE X
+	var y ; 							  // AXE Y
 	var coo;                     // COORDONNÉE
 	var ps							  // PION SELECTIONNER
 	var plateau ;
@@ -24,25 +26,27 @@ var trait = function (req, res, query) {
 	plateau = JSON.parse(now);
 		
 	// SELECTIONNE OU DESELECTIONNE UN PION
-	
 	coo = query.place;
-	
-	if ( plateau[coo[0]][coo[1]] === 1 ){
+	if ( plateau[coo[0]][coo[1]] === 1){
 		// PASSIF -> ACITF
-		plateau[coo[0]][coo[1]] = 2;
+		if (plateau[8] == 0 ){
+			plateau[coo[0]][coo[1]] = 2;
+			plateau[8] = [coo];
+		}else if ( plateau[8].length === 1){
+			plateau[coo[0]][coo[1]] = 2;
+			plateau[8] = [coo];
+		}
 	} else if ( plateau[coo[0]][coo[1]] === 2 ){
 		// ACTIF -> PASIF
-		plateau[coo[0]][coo[1]] = 1;
+			plateau[coo[0]][coo[1]] = 1;
+			plateau[8] = [0];
 	} else if ( plateau[coo[0]][coo[1]] === 3 ){
 		plateau[coo[0]][coo[1]] = 3;
 	}
-	
 
 	// ASSIGNEMENT DES MARQUEURS
 	marqueur = {};	
 	marqueur.pseudo = query.pseudo;
-	marqueur.fin = "";
-	
 	for ( ver = 0 ; ver < 7 ; ver ++){
 		for ( hor = 0 ; hor < 7 ; hor++ ){
 			if(plateau[ver][hor] === 1){
@@ -64,32 +68,31 @@ var trait = function (req, res, query) {
 			for ( dver = -2 ; dver < 3 ; dver=dver+2 ) {
 				for ( dhor = -2 ; dhor < 3; dhor=dhor+2 ) {
 					if ( ver+dver < 0 || ver+dver > 7 || hor+dhor < 0 || hor+dhor > 7 ){
-						ndpb++;
 					}else{
-						if( plateau[ver][hor] === 1 ){
+						if( plateau[ver][hor] === 1 || plateau[ver][hor] === 2){
 							if ( plateau[ver+dver][hor+dhor] === 3 && plateau[ver+dver/2][hor+dhor/2] === 1 ){
-								fin = "nope"
+								fin = "nope";
 							}else{ 
-								ndpb++
 							}
 						}else{
-							ndpb++;		
 						}
 					}
 				}
 			}
 		}
 	}
-	console.log(fin);
 	
+	// VERIFIE SI LE PARTIE EST FINI
+
 	if ( fin === 0){
-		marqueur.fin = "<h1>TU AS PERDU !</h1><br><center><form action='req_solitaire_rejouer'method='GET'><input type='hidden' name='pseudo' value='{pseudo}'><button class='button3' name='action' value='Rejouer'><span>Rejouer</span></button></form><form action='req_solitaire_quitter'method='GET'><input type='hidden' name='pseudo' value='{pseudo}'><button class='button3' name='action' value='quitter'><span>Quitter</span></button></form></center><br><br>"
-	} else { 
-		marqueur.fin = "";
-	}
-	// VERIFIE SI LE JOUEUR A GAGNER & MODIFICATION DU MARQUEUR FIN
-	if (plateau[7] === 1){
-		marqueur.fin = "<h1>TU AS GAGNER !</h1><center><form action='req_solitaire_rejouer'method='GET'><input type='hidden' name='pseudo' value='{pseudo}'><button class='button3' name='action' value='Rejouer'><span>Rejouer</span></button></form><form action='req_solitaire_quitter'method='GET'><input type='hidden' name='pseudo' value='{pseudo}'><button class='button3' name='action' value='quitter'><span>Quitter</span></button></form></center><br><br>"
+			
+			// VERIFIE SI LE JOUEUR A GAGNER & MODIFICATION DU MARQUEUR FIN
+		if (plateau[7] === 1){
+			marqueur.fin = "<h1>TU AS GAGNER !</h1><center><form action='req_solitaire_rejouer'method='GET'><input type='hidden' name='pseudo' value='"+ query.pseudo +"'><button class='button3' name='action' value='Rejouer'><span>Rejouer</span></button></form><form action='req_solitaire_quitter'method='GET'><input type='hidden' name='pseudo' value='"+ query.pseudo +"'><button class='button3' name='action' value='quitter'><span>Quitter</span></button></form></center><br><br>"
+			// VERIFIE SI LE JOUEUR A PERDU & MODIFICATION DU MARQUEUR FIN
+		} else {
+			marqueur.fin = "<h1>TU AS PERDU !</h1><br><center><form action='req_solitaire_rejouer'method='GET'><input type='hidden' name='pseudo' value='"+ query.pseudo+"'><button class='button3' name='action' value='Rejouer'><span>Rejouer</span></button></form><form action='req_solitaire_quitter'method='GET'><input type='hidden' name='pseudo' value='"+query.pseudo+"'><button class='button3' name='action' value='quitter'><span>Quitter</span></button></form></center><br><br>"
+		}
 	} else {
 		marqueur.fin ="";
 	}

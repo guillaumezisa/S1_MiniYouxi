@@ -18,6 +18,7 @@ var trait = function (req, res, query) {
 					[0,0,1,1,1,0,0],
 					[0,0,1,1,1,0,0],
 					[32],
+					[0],
 				]; 
 	// ATTRIBUTION DES MARQUEURS DEPUIS LE PLATEAU
 	

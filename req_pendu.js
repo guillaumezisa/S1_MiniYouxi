@@ -19,6 +19,9 @@ var req_pendu = function(req, res, query) {
 	var requete = url.parse(req.url, true);
 	var pathname = requete.pathname;
 
+	pendu = JSON.parse(fs.readFileSync("pendu.json", "UTF-8"));
+	pendu.motAff = ["a","b"];
+
 	if(pathname === "/req_quitter_pendu") {
 
 		fs.unlinkSync("pendu_partie" + query.pseudo + ".json");
@@ -31,13 +34,25 @@ var req_pendu = function(req, res, query) {
 		res.write(page);
 		res.end();
 
+	} else if(pathname === "/req_abandon_pendu") {
+
+		pendu = JSON.parse(fs.readFileSync("pendu_partie" + query.pseudo + ".json", "UTF-8"));
+		console.log(pendu.motAff);
+
+		page = fs.readFileSync("abandon_pendu.html", "UTF-8");
+		marqueurs.joueur = query.pseudo;
+		marqueurs.motsecret = pendu.motSec;
+		page = page.supplant(marqueurs);
+
+		res.writeHead(200, {'Content-Type': 'text/html'});
+		res.write(page);
+		res.end();
+
 	} else {
 
 		page = fs.readFileSync("pendu.html", "UTF-8");
 		page1 = fs.readFileSync("pendu_mot.html", "UTF-8");
 		page3 = fs.readFileSync("pendu_bouton.html", "UTF-8");
-
-		pendu = JSON.parse(fs.readFileSync("pendu.json", "UTF-8"));
 
 		if(pathname === "/req_pendu") {
 			
@@ -129,6 +144,7 @@ var req_pendu = function(req, res, query) {
 			}
 			res.write("<input type = 'hidden'  name = 'pseudo' value = '" + query.pseudo + "'></form>");
 			marqueurs.action = "abandonner";
+			marqueurs.action2 = "_abandon";
 
 
 		} else {
@@ -144,6 +160,7 @@ var req_pendu = function(req, res, query) {
 			}
 
 			marqueurs.action = "rejouer";
+			marqueurs.action2 = "";
 
 		}
 
