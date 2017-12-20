@@ -46,6 +46,9 @@ var  trait = function (request, response, query) {
 	}
 	marqueur.operateur = operateur;
 	
+	var parsedData = JSON.parse(resultat);
+	fs.writeFileSync("parsedData.json", parsedData);
+
 	page = fs.readFileSync("mental.html" , "UTF-8");
 	page = page.supplant(marqueur);
 
