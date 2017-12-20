@@ -12,16 +12,25 @@
 		<div id="formulaire_inscription">
 			<h1>Créez votre compte Mini Youxi !</h1><br>
 			<div id="boite_inscription"><br>	
-				<center><form action="/req_inscrire" method="GET"><br>
-					<b>Pseudo : <br><br>
+				<center>
+				    <form action="/req_inscrire" method="GET"><br>
+					<b>Pseudo : <br>
 					<input type="text" name="pseudo" value="{pseudo}"><br><br>
-					Mot de passe : <br><br>
+					Mot de passe : <br>
 					<input type="password" name="password" value=""><br/><br>
-					Confirmation du mot de passe :<br><br>
+					Confirmation du mot de passe :<br>
 					<input type="password" name="password2" value=""><br/><br>
 					<div id="minifont1">{erreur}</div>
-					<button class="button3"name="action" value="creer">Créer compte</button><br><br>
-				</b></form></center>
+					<button class="button3"name="action" value="creer"><span>Créer compte</span></button>
+				</b></form>
+<br>
+				    <form action="req_commencer" method="GET">
+					    <button class="button3" name="action" value="accueil"><span>Page connection</span></button>
+					</form>
+
+				
+				</center>
+
 			</div>
 		</div>
 	</body>
