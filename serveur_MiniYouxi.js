@@ -65,6 +65,8 @@ var req_abandonner_pfc = require("./req_abandonner_pfc.js");
 var req_regle_mental = require("./req_regle_mental.js");
 var req_abandonner_mental = require("./req_abandonner_mental.js");
 var req_jouer_mental = require("./req_jouer_mental.js");
+var req_resultat_mental = require("./req_resultat_mental.js");
+
 //-------------------------------------------------------------------------
 // FONCTION DE CALLBACK APPELLEE POUR CHAQUE REQUETE
 //-------------------------------------------------------------------------
@@ -110,10 +112,13 @@ var traite_requete = function (req, res) {
 				break;
 			case "/req_abandonner_mental":
 				req_abandonner_mental(req, res, query);
-				break ;
+				break;
 			case "/req_jouer_mental":
 				req_jouer_mental(req, res, query);
-				break ;
+				break;
+			case "/req_resultat_mental":
+				req_resultat_mental(req, res, query)
+				break;
 				// morpion
 			case "/req_regle_morpion":
 			    req_regle_morpion(req, res, query);
@@ -124,6 +129,7 @@ var traite_requete = function (req, res) {
 			case "/req_jouer_morpion":
 			    req_jouer_morpion(req, res, query);
 				break;
+				
 			case "/easter_egg":
 			    req_easter_egg(req, res, query);
 				break;
