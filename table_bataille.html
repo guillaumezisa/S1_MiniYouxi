@@ -16,15 +16,21 @@
 		<br>
 
 		<center>
-			<img src="./cartes/paquet_haut.png">
-			
-			<br>
+			<img width="150px" src="./cartes/paquet_haut.png">
+
+			<img width="150px" src="./cartes/emplacement.png">
+
+            <h3>
 
 			Cliquez sur la carte du bas pour poser la première carte
 
-			<form action="/req_pose_carte_bataille" method="GET">
+            </h3>
+
+			<img width="150px" src="./cartes/emplacement.png">
+
+			<form style="display: inline-block" action="/req_pose_carte_bataille" method="GET">
 				<input type="hidden" name="pseudo" value="{pseudo}">
-				<button name="carte_face_cache" value="pose_carte"><img src="./cartes/paquet_bas.png"></button>
+				<button class="button9"name="carte_face_cache" value="pose_carte"><img width="150px" src="./cartes/paquet_bas.png"></button>
 			</form>
 		</center>
 	</body>
