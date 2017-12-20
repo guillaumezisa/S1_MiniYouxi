@@ -28,9 +28,6 @@
 		
 		<!-- ARTICLE PAGE -->
 
-<br><br><form action = '/req_puzzle' method = 'GET'>
-<button class="button1"name = 'puzzle' value = 'jouer'>jouer</button>
-<input type = 'hidden'  name = 'pseudo' value = {pseudo}></form>
 		
 		<!-- JEU MORPION-->
 		
@@ -154,6 +151,36 @@
 						<form action="req_pendu" method="GET">
 							<input type="hidden" name="pseudo" value="{pseudo}">
 							<button class="button5" type="submit" name="bouton" value="pendu"><span>Jouer</span></button>		
+						</form>
+					</h3></p><br><br><br>
+				</div>
+			</div>
+
+			<!-- PUZZLE -->
+			
+			<div id="articlejeux">
+				<div id="headerjeux">
+					<form action ="/req_puzzle" method="GET">
+						<input type ="hidden" name="pseudo" value ="{pseudo}">
+						<center>
+							<button class="button8" name="jeu" value="puzzle">Le jeu du Puzzle</button>
+						</center>
+					</form>
+				</div >
+				<div id="bodyjeux">
+					<div id="imgjeux">
+					<form action="/req_puzzle" method="GET">
+						<input type ="hidden" name="pseudo" value ="{pseudo}">
+						<button class="button9" name="jeu" value="puzzle"><img height="155" width="175" src="image a trouvé"></button>
+					</form>
+					</div>
+					<div id="regle">
+						<h2>Regle du Pussle :</h2>
+						<p><h3>a ecrire
+						
+						<form action="/req_puzzle" method="GET">
+							<input type="hidden" name="pseudo" value="{pseudo}">
+							<button class="button5" type="submit" name="bouton" value="puzzle"><span>Jouer</span></button>		
 						</form>
 					</h3></p><br><br><br>
 				</div>
