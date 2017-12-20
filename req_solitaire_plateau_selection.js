@@ -13,6 +13,8 @@ var trait = function (req, res, query) {
 	var hor;                     // HORIZONTALE
 	var dver;						  // DIRECTION VERTICALE
 	var dhor;						  // DIRECTION HORIZONTALE	
+	var x ; 							  // AXE X
+	var y ; 							  // AXE Y
 	var coo;                     // COORDONNÉE
 	var ps							  // PION SELECTIONNER
 	var plateau ;
@@ -24,25 +26,26 @@ var trait = function (req, res, query) {
 	plateau = JSON.parse(now);
 		
 	// SELECTIONNE OU DESELECTIONNE UN PION
-	
 	coo = query.place;
 	
-	if ( plateau[coo[0]][coo[1]] === 1 ){
+	if ( plateau[coo[0]][coo[1]] === 1){
 		// PASSIF -> ACITF
+		if (plateau[8] == 0 ){
 		plateau[coo[0]][coo[1]] = 2;
+		plateau[8] = [Number(coo)];
+		}
 	} else if ( plateau[coo[0]][coo[1]] === 2 ){
 		// ACTIF -> PASIF
 		plateau[coo[0]][coo[1]] = 1;
+		plateau[8] = [0];
 	} else if ( plateau[coo[0]][coo[1]] === 3 ){
 		plateau[coo[0]][coo[1]] = 3;
 	}
-	
 
 	// ASSIGNEMENT DES MARQUEURS
 	marqueur = {};	
 	marqueur.pseudo = query.pseudo;
 	marqueur.fin = "";
-	
 	for ( ver = 0 ; ver < 7 ; ver ++){
 		for ( hor = 0 ; hor < 7 ; hor++ ){
 			if(plateau[ver][hor] === 1){
