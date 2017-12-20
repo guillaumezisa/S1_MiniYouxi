@@ -48,25 +48,25 @@ var trait = function (req, res, query)  {
 				plateau[coo[0]][coo[1]] = 1;
 				plateau[verPS+1][horPS]= 3;
 				plateau[verPS][horPS] = 3;
-				plateau[7] = Number(plateau[7]-1);
+				plateau[7] = [plateau[7]-1];
 				plateau[8] = [0];
 			}
 		} else if(String(verPS)+String(horPS) === String(Number(coo[0])-2)+String(Number(coo[1])+2)) {
-			if ( plateau[String(Number(coo[0])-2)][String(Number(coo[1])+2)] === 1) {
+			if ( plateau[String(Number(coo[0])-1)][String(Number(coo[1])+1)] === 1) {
 				// MOUVEMENT HAUT DROITE A BAS GAUCHE
 				plateau[coo[0]][coo[1]] = 1;
 				plateau[verPS+1][horPS-1] = 3;
 				plateau[verPS][horPS] = 3;
-				plateau[7] = Number(plateau[7]-1);
+				plateau[7] = [plateau[7]-1];
 				plateau[8] = [0];
 			}
 		} else if(String(verPS)+String(horPS) === String(coo[0])+String(Number(coo[1])+2)) {
-			if ( plateau[coo[0]][String(Number(coo[1])-1)] === 1) {
+			if ( plateau[coo[0]][String(Number(coo[1])+1)] === 1) {
 				// MOUVEMENT DROITE A GAUCHE
 				plateau[coo[0]][coo[1]] = 1;
 				plateau[verPS][horPS-1] = 3;
 				plateau[verPS][horPS] = 3;
-				plateau[7] = Number(plateau[7]-1);
+				plateau[7] = [plateau[7]-1];
 				plateau[8] = [0];
 			}
 		} else if(String(verPS)+String(horPS) === String(Number(coo[0])+2)+String(Number(coo[1])+2)) {
@@ -75,7 +75,7 @@ var trait = function (req, res, query)  {
 				plateau[coo[0]][coo[1]] = 1;
 				plateau[verPS-1][horPS-1] = 3;
 				plateau[verPS][horPS] = 3;
-				plateau[7] = Number(plateau[7]-1);
+				plateau[7] = [plateau[7]-1];
 				plateau[8] = [0];
 			}
 		} else if(String(verPS)+String(horPS) === String(Number(coo[0])+2)+String(coo[1])) {
@@ -84,7 +84,7 @@ var trait = function (req, res, query)  {
 				plateau[coo[0]][coo[1]] = 1;
 				plateau[verPS-1][horPS] = 3;
 				plateau[verPS][horPS] = 3;
-				plateau[7] = Number(plateau[7]-1);
+				plateau[7] = [plateau[7]-1];
 				plateau[8] = [0];
 			}
 		} else if(String(verPS)+String(horPS) === String(Number(coo[0])+2)+String(Number(coo[1])-2)) {
@@ -93,7 +93,7 @@ var trait = function (req, res, query)  {
 				plateau[coo[0]][coo[1]] = 1;
 				plateau[verPS-1][horPS+1] = 3;
 				plateau[verPS][horPS] = 3;
-				plateau[7] = Number(plateau[7]-1);
+				plateau[7] = [plateau[7]-1];
 				plateau[8] = [0];
 			}
 		} else if(String(verPS)+String(horPS) === String(coo[0])+String(Number(coo[1])-2)) {
@@ -102,7 +102,7 @@ var trait = function (req, res, query)  {
 				plateau[coo[0]][coo[1]] = 1;
 				plateau[verPS][horPS+1] = 3;
 				plateau[verPS][horPS] = 3;
-				plateau[7] = Number(plateau[7]-1);
+				plateau[7] = [plateau[7]-1];
 				plateau[8] = [0];
 			}
 		} else if(String(verPS)+String(horPS) === String(Number(coo[0])-2)+String(Number(coo[1])-2)) {
@@ -111,7 +111,7 @@ var trait = function (req, res, query)  {
 				plateau[coo[0]][coo[1]] = 1;
 				plateau[verPS+1][horPS+1] = 3;
 				plateau[verPS][horPS] = 3;
-				plateau[7] = Number(plateau[7]-1);
+				plateau[7] = [plateau[7]-1];
 				plateau[8] = [0];
 			}
 		}
