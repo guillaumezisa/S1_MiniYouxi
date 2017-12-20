@@ -1,0 +1,24 @@
+<!DOCTYPEhtml>
+<html>
+	<head>
+		<link rel="stylesheet" href="style.css"/>
+		<meta http-equiv="Content-Type" content ="text/html ; charset=utf-8"/>
+		<title>Mental regle</title>
+	</head>
+	<body>
+		<form action="/req_tempo_quitter" method="GET">
+			<input type ="hidden" name="pseudo" value ="{pseudo}">
+			<button class="button"name="action"value="Quitter"><span>Retour à l'accueil</span></button><br>
+		</form>
+		<center>	
+			<h1> Le jeu du Mental </h1>
+			<img src="tempo_regle.png"height="350">
+			<h4>Il faut trouver la somme du calcule.<br>
+			</h4>
+			<form action="/req_jouer_mental" method="GET">
+				<input type ="hidden" name="pseudo" value ="{pseudo}">
+				<button class="button3"name="action"value="Jouer"><span>Jouer</span></button><br>
+			</form>
+		</center>
+	</body>
+</html>
