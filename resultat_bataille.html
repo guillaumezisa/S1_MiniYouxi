@@ -6,19 +6,24 @@
 		<title>Resultat Bataille</title>
 	</head>
 	<body>
-	    nombre carte joueur : {joueur}
-	    nombre carte ordi : {ordi}
-		resultat : {winer}
+		<form action="req_quitter_bataille">
+		    <input type="hidden" name="pseudo" value="{pseudo}">
+			<input type="submit" name="bouton" value="Accueil">
+		</form>
+	<center>
+	    nombre carte joueur : {joueur}<br>
+	    nombre carte ordi : {ordi}<br>
+		<br>
+		resultat : {winer}<br>
+
+		<br>
 
         <form action="req_commencer_bataille">
 		    <input type="hidden" name="pseudo" value="{pseudo}">
 			<input type="submit" name="bouton" value="Rejouer">
 		</form>
 
-		<form action="req_quitter_bataille">
-		    <input type="hidden" name="pseudo" value="{pseudo}">
-			<input type="submit" name="bouton" value="Accueil">
-		</form>
 
+	</center>
 	</body>
 </html>
