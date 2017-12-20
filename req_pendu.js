@@ -40,7 +40,7 @@ var req_pendu = function(req, res, query) {
 		console.log(pendu.motAff);
 
 		page = fs.readFileSync("abandon_pendu.html", "UTF-8");
-		marqueurs.pseudo = query.pseudo;
+		marqueurs.joueur = query.pseudo;
 		marqueurs.motsecret = pendu.motSec;
 		page = page.supplant(marqueurs);
 
