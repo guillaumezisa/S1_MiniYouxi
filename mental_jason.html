@@ -1,3 +1,23 @@
 <!DOCTYPE>
+<body>
+	<head>
+		<link rel="stylesheet" href="style.css"/>
+		<title> Résultat &mental </title>
+		<meta charset="UTF-8"</meta>
+	</head>
+
+	<center>
+	<form action="req_abandonner_mental" method="GET">
+	<input type="hidden" name="pseudo" value={pseudo}>
+	<input class="button" type="submit" name="bouton" value="Retour au Menu"><span></span></button><br>
+		</form>
  
 {reponse}
+
+	<form action="req_rejouer_mental" method="GET">
+	<input type="hidden" name="pseudo" value={pseudo}>
+	<input class="button" type="submit" name="bouton" value="Rejouer ?"><span></span></button><br>
+	</form>
+
+ </center>
+</body>
