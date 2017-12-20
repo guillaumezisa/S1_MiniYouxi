@@ -191,6 +191,9 @@ var traite_requete = function (req, res) {
 			case "/req_jouer_pendu":
 				req_pendu(req, res, query);
 				break;
+			case "/req_quitter_pendu_":
+				req_pendu(req, res, query);
+				break;
 			//TEMPO
 			case "/req_tempo_regle":
 				req_tempo_regle( req,res,query);
