@@ -3,22 +3,23 @@
 	<head>
 		<link rel="stylesheet" href="style.css"/>
 		<meta http-equiv="Content-Type" content ="text/html ; charset=utf-8"/>
-		<title>Règle de Tempo</title>
+		<title>Jeu du simon</title>
 	</head>
 	<body>
-		<form action="/req_tempo_quitter" method="GET">
+		<center>	
+			<h1> Résultats : </h1>
+			<h3>Vous avez tenu {tour} tour(s) .<br></h3>
+		</center>
+
+		<form action="/req_simon_abandonner" method="GET">
 			<input type ="hidden" name="pseudo" value ="{pseudo}">
 			<button class="button"name="action"value="Quitter"><span>Retour à l'accueil</span></button><br>
 		</form>
-		<center>	
-			<h1> Le jeu du Tempo </h1>
-			<img src="tempo_regle.png"height="350">
-			<h4>Un nombre de secondes est généré ,<br>
-			le joueur doit appuyer sur le bouton stop au bon momment<br>
-			si l'estimation du joueur est bonne il reporte la partie !<br></h4>
-			<form action="/req_tempo_afficher" method="GET">
-				<input type ="hidden" name="pseudo" value ="{pseudo}">
-				<button class="button3"name="action"value="Jouer"><span>Jouer</span></button><br>
+		<form action="/req_simon_rejouer" method="GET">
+			<input type ="hidden" name="pseudo" value ="{pseudo}">
+			<button class="button"name="action"value="Quitter"><span>Rejouer</span></button><br>
+		</form>
+
 			</form>
 		</center>
 	</body>
