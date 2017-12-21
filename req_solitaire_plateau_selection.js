@@ -88,10 +88,10 @@ var trait = function (req, res, query) {
 			
 			// VERIFIE SI LE JOUEUR A GAGNER & MODIFICATION DU MARQUEUR FIN
 		if (plateau[7] === 1){
-			marqueur.fin = "<h1>TU AS GAGNER !</h1><center><form action='req_solitaire_rejouer'method='GET'><input type='hidden' name='pseudo' value='"+ query.pseudo +"'><button class='button3' name='action' value='Rejouer'><span>Rejouer</span></button></form><form action='req_solitaire_quitter'method='GET'><input type='hidden' name='pseudo' value='"+ query.pseudo +"'><button class='button3' name='action' value='quitter'><span>Quitter</span></button></form></center><br><br>"
+			marqueur.fin = "<h1>TU AS GAGNER !</h1><center><form action='req_solitaire_rejouer'method='GET'><input type='hidden' name='pseudo' value='"+ query.pseudo +"'><button class='button3' name='action' value='Rejouer'><span>Rejouer</span></button></form><form action='req_solitaire_quitter'method='GET'><input type='hidden' name='pseudo' value='"+ query.pseudo +"'><button class='button3' name='action' value='quitter'><span>Quitter</span></button></form></center><br><br>";
 			// VERIFIE SI LE JOUEUR A PERDU & MODIFICATION DU MARQUEUR FIN
 		} else {
-			marqueur.fin = "<h1>TU AS PERDU !</h1><br><center><form action='req_solitaire_rejouer'method='GET'><input type='hidden' name='pseudo' value='"+ query.pseudo+"'><button class='button3' name='action' value='Rejouer'><span>Rejouer</span></button></form><form action='req_solitaire_quitter'method='GET'><input type='hidden' name='pseudo' value='"+query.pseudo+"'><button class='button3' name='action' value='quitter'><span>Quitter</span></button></form></center><br><br>"
+			marqueur.fin = "<h1>TU AS PERDU !</h1><br><center><form action='req_solitaire_rejouer'method='GET'><input type='hidden' name='pseudo' value='"+ query.pseudo+"'><button class='button3' name='action' value='Rejouer'><span>Rejouer</span></button></form><form action='req_solitaire_quitter'method='GET'><input type='hidden' name='pseudo' value='"+query.pseudo+"'><button class='button3' name='action' value='quitter'><span>Quitter</span></button></form></center><br><br>";
 		}
 	} else {
 		marqueur.fin ="";

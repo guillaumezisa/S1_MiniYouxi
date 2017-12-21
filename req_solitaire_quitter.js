@@ -7,9 +7,7 @@ var page;
 var marqueur;
 
 var trait = function (req, res, query) {
-    
 	page = fs.readFileSync("accueil_membre_MiniYouxi.html", "UTF-8");
-	fs.unlinkSync("solitaire_partie_"+query.pseudo+".json");
 
 	marqueur = {}
 	marqueur.pseudo = query.pseudo
@@ -18,6 +16,8 @@ var trait = function (req, res, query) {
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	res.write(page);
 	res.end(); 
+   
+	fs.unlink("solitaire_partie_"+query.pseudo+".json");
 }
 
 module.exports = trait;
