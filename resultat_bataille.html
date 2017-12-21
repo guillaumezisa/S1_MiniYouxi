@@ -8,19 +8,33 @@
 	<body>
 		<form action="req_quitter_bataille">
 		    <input type="hidden" name="pseudo" value="{pseudo}">
-			<input type="submit" name="bouton" value="Accueil">
+			<button class="button" type="submit" name="bouton"value="accueil"><span>Accueil</span></button>
 		</form>
-	<center>
-	    nombre carte joueur : {joueur}<br>
-	    nombre carte ordi : {ordi}<br>
-		<br>
-		resultat : {winer}<br>
 
+    <br>
+    <br>
+
+	<center>
+	    
+		<h1>Les résultats</h1>
+
+		<img width="500" src="bataille.jpg">
+
+		<br>
+		<br>
+
+		{winer}
+
+		<br>
+		<br>
+
+	    nombre carte(s) que vous avez : {joueur}<br>
+	    nombre carte(s) de l'ordinateur : {ordi}<br>
 		<br>
 
         <form action="req_commencer_bataille">
 		    <input type="hidden" name="pseudo" value="{pseudo}">
-			<input type="submit" name="bouton" value="Rejouer">
+		<button class="button3" type="submit" name="bouton" value="rejouer"><span>Rejouer</span></button>
 		</form>
 
 

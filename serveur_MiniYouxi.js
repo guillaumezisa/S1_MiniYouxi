@@ -76,7 +76,7 @@ var req_regle_mental = require("./req_regle_mental.js");
 var req_abandonner_mental = require("./req_abandonner_mental.js");
 var req_jouer_mental = require("./req_jouer_mental.js");
 var req_resultat_mental = require("./req_resultat_mental.js");
-
+var req_rejouer_mental = require("./req_rejouer_mental.js");
 //-------------------------------------------------------------------------
 // FONCTION DE CALLBACK APPELLEE POUR CHAQUE REQUETE
 //-------------------------------------------------------------------------
@@ -127,6 +127,9 @@ var traite_requete = function (req, res) {
 				break;
 			case "/req_resultat_mental":
 				req_resultat_mental(req, res, query)
+				break;
+			case "/req_rejouer_mental" :
+				req_rejouer_mental(req, res, query)
 				break;
 				// morpion
 			case "/req_regle_morpion":
