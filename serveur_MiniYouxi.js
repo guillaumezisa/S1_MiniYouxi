@@ -11,6 +11,7 @@ var querystring = require("querystring");
 //-------------------------------------------------------------------------
 
 var req_commencer = require("./req_commencer.js");
+
 var req_afficher_formulaire_inscription = require("./req_afficher_formulaire_inscription.js");
 var req_inscrire = require("./req_inscrire.js");
 var req_identifier = require("./req_identifier.js");
@@ -98,6 +99,7 @@ var traite_requete = function (req, res) {
 	try {
 		switch (pathname) {
 			case '/':
+			case '/req_commencer':
 				req_commencer(req, res, query);
 				break;
 			case '/req_contact_quitter':
