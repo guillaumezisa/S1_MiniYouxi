@@ -19,11 +19,12 @@ var trait = function (req, res, query) {
 	
 	// STOCKAGE DU TEMP
 
-	fs.writeFileSync("tempo_"+query.pseudo+".json",partie,"utf-8");
-	page = fs.readFileSync("tempo_jouer.html", "UTF-8");
+	fs.writeFileSync("tempo_partie_"+query.pseudo+".json",partie,"utf-8");
 	
 	// CREATION DES MARQUEURS
 
+	page = fs.readFileSync("tempo_jouer.html", "UTF-8");
+	
 	marqueur = {}
 	marqueur.pseudo = query.pseudo;
 	marqueur.x = x;

@@ -1,4 +1,5 @@
-// traitement de /req_tempo_afficher
+// traitement de /req_simon_abandonner
+
 "use strict";
 
 var fs = require("fs");
@@ -7,16 +8,19 @@ var page;
 var marqueur;
 
 var trait = function (req, res, query) {
- 	fs.unlinkSync("tempo_partie_"+query.string+".json");   
-	page = fs.readFileSync("tempo_afficher.html", "UTF-8");
+    
+	page = fs.readFileSync("accueil_membre_MiniYouxi.html", "UTF-8");
 
 	marqueur = {}
 	marqueur.pseudo = query.pseudo
 	page = page.supplant(marqueur)
 
+	//fs.unlinkFile("simon_partie_"+query.string+".json");
+
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	res.write(page);
 	res.end(); 
+
 }
 
 module.exports = trait;

@@ -9,7 +9,7 @@ var marqueur;
 var trait = function (req, res, query) {
 	
 	// CHARGEMENT DU JSON 
-	var extract = fs.readFileSync("tempo_"+query.pseudo+".json","UTF-8");
+	var extract = fs.readFileSync("tempo_partie_"+query.pseudo+".json","UTF-8");
 	var load = JSON.parse(extract);
 	
 	// COMPARAISON ENTRE LE TEMPS DU JSON ET LE NOUVEAU TEMP
@@ -25,15 +25,18 @@ var trait = function (req, res, query) {
 	if ( x === nb ) {
 		marqueur.fin = "<center>Vous avez gagner !<br><br><img src='tempo_win.png'width='250'></center>";
 		marqueur.com ="";
+		fs.unlinkSync("tempo_partie_"+query.pseudo+".json");
 	}else{
 		if ( x < nb ){
 			var calc = nb-x ;
 			marqueur.com = "<center>Vous avez attendu "+calc+" secondes de trop !</center>";	
 			marqueur.fin = "<center>Vous avez perdu !<br><br><img src='tempo_loose.jpg'width='350'></center>";
+		fs.unlinkSync("tempo_partie_"+query.pseudo+".json");
 		}else if ( x > nb){
 			var calc = x-nb ;
 			marqueur.com = "<center>Vous avez été trop rapide de "+calc+" secondes </center>";
 			marqueur.fin = "<center>Vous avez perdu !<br><br><img src='tempo_loose.jpg'width='350'></center>";
+		fs.unlinkSync("tempo_partie_"+query.pseudo+".json");
 		}
 	}
 	
