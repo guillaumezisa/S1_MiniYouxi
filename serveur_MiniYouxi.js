@@ -11,6 +11,7 @@ var querystring = require("querystring");
 //-------------------------------------------------------------------------
 
 var req_commencer = require("./req_commencer.js");
+
 var req_afficher_formulaire_inscription = require("./req_afficher_formulaire_inscription.js");
 var req_inscrire = require("./req_inscrire.js");
 var req_identifier = require("./req_identifier.js");
@@ -55,8 +56,16 @@ var req_solitaire_plateau = require("./req_solitaire_plateau.js");
 var req_solitaire_quitter = require("./req_solitaire_quitter.js");
 var req_solitaire_plateau_selection=require("./req_solitaire_plateau_selection.js")
 var req_solitaire_plateau_mouvement=require("./req_solitaire_plateau_mouvement.js")
-var req_solitaire_rejouer = require("./req_solitaire_rejouer.js");
+var req_solitaire_rejouer = require ("./req_solitaire_rejouer.js");
 var req_solitaire_retour = require ("./req_solitaire_retour.js");
+
+var req_simon_regle=require("./req_simon_regle.js");
+var req_simon_phase_memorisation=require("./req_simon_phase_memorisation.js");
+var req_simon_phase_repetition=require("./req_simon_phase_repetition.js");
+var req_simon_fin=require("./req_simon_fin.js");
+var req_simon_quitter=require("./req_simon_quitter.js");
+var req_simon_abandonner=require("./req_simon_abandonner");
+var req_simon_rejouer=require("./req_simon_rejouer");
 
 var req_rejouer_pfc = require("./req_rejouer_pfc.js");
 var req_regle_pfc = require("./req_regle_pfc.js");
@@ -77,7 +86,7 @@ var traite_requete = function (req, res) {
 
 	var ressource;
 	var requete;
-	var pathname;;
+	var pathname;
 	var query;
 
 	console.log("URL reçue : " + req.url);
@@ -252,7 +261,7 @@ var traite_requete = function (req, res) {
 			case "/req_solitaire_retour":
 				req_solitaire_retour(req,res,query);
 				break;
-			//puzzle
+			//PUZZLE
 			case "/req_puzzle":
 				req_puzzle(req,res,query);
 				break;
@@ -261,6 +270,28 @@ var traite_requete = function (req, res) {
 				break;
 			default:
 				req_static(req, res, query);
+				break;
+			//SIMON
+			case "/req_simon_regle":
+				req_simon_regle( req,res,query);
+				break;
+			case "/req_simon_phase_memorisation":
+				req_simon_phase_memorisation(req,res,query);
+				break;
+			case "/req_simon_phase_repetition":
+				req_simon_phase_repetition(req,res,query);
+				break;
+			case "/req_simon_quitter":
+				req_simon_quitter(req,res,query);
+				break;
+			case "/req_simon_abandonner":
+				req_simon_abandonner(req,res,query);
+				break;
+			case "/req_simon_fin":
+				req_solitaire_fin(req,res,query);
+				break;
+			case "/req_simon_rejouer":
+				req_solitaire_rejouer(req,res,query);
 				break;
 		}
 	} catch (e) {
