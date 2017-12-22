@@ -39,15 +39,6 @@ var trait = function (req, res, query) {
 	}
 	console.log(liste);	
 	
-	for ( i = 0 ; i < tour+1 ; i++ ){
-		console.log("BOUCLE2");
-		if (i === 0){
-			image = liste[i];
-		} else {
-			image = image+liste[i];
-		}
-	} 
-	 console.log(image);
 	// CREATION DES MARQUEURS
 	
 	marqueur = {}
@@ -57,29 +48,29 @@ var trait = function (req, res, query) {
 		//BOUCLE 2
 		if ( liste[i] === 1 ){
 			if ( i === 0){
-				image = "<img src='simon_bleu.png'>";
+				image = "<img width='50' src='simon_bleu.png'>";
 			}else{
-				image = image+"<img src='simon_bleu.png'>";
+				image = image+"<img width='50'src='simon_bleu.png'>";
 			}	
 		}else if ( liste[i] === 2 ){
 			if ( i === 0){
-				image = "<img src='simon_rouge.png'>";
+				image = "<img width='50' src='simon_rouge.png'>";
 			}else{
-				image = image+"<img src='simon_rouge.png'>";
+				image = image+"<img width='50'src='simon_rouge.png'>";
 			}	
 		
 		}else if ( liste[i] === 3 ){
 			if ( i === 0){
-				image = "<img src='simon_vert.png'>";
+				image = "<img width='50'src='simon_vert.png'>";
 			}else{
-				image = image+"<img src='simon_vert.png'>";
+				image = image+"<img width='50'src='simon_vert.png'>";
 			}	
 		
 		}else if ( liste[i] === 4 ){
 			if ( i === 0){
-				image = "<img src='simon_jaune.png'>";
+				image = "<img width='50' src='simon_jaune.png'>";
 			}else{
-				image = image+"<img src='simon_jaune.png'>";
+				image = image+"<img width='50' src='simon_jaune.png'>";
 			}	
 
 		}
