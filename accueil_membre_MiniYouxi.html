@@ -249,6 +249,38 @@
 				</div>
 			</div>
 			
+			<!--SIMON-->
+			
+			<div id="articlejeux">
+				<div id = "headerjeux">
+					<form action="req_simon_regle" method="GET">
+						<input type="hidden" name ="pseudo" value="{pseudo}">
+						<center>
+							<button class="button8" name="jeu" value="Simon"></button>
+						</center>
+					</form>
+					</div>
+				<div id="bodyjeux">
+					<div id="imgjeux">
+					<form action="req_simon_regle" method="GET">
+					    <input type ="hidden" name="pseudo" value ="{pseudo}">
+						<button class="button9" name="jeu" value="simon"><img height="155" width="175" src=".png"></button>
+					</form>
+					</div>
+					<div id="regle">
+						<h2> Regle du Simon : </h2>
+						<p><h3> Il faut retenir les couleurs dans le bonne ordre <br>
+						puis les repeters , si on fait une erreur on a perdu <br></h3>
+
+						<form action="req_simon_regle" method="GET">
+						<input type="hidden" name="pseudo" value="{pseudo}">
+						<button class="button5" type="submit" name="bouton" value="simon"><span>Jouer</span></button>
+						</form>
+					</h3></p><br><br><br>
+				</div>
+			</div>
+
+			
 			<!-- PFC -->
 			
 			<div id="articlejeux">
