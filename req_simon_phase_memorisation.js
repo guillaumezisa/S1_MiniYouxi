@@ -12,13 +12,13 @@ var trait = function (req, res, query) {
 	var couleur ;		// NUMERO D'UN COULEUR ALEATOIRE
 	var tour ;			// NOMBRE DE TOURS
 	var image ;			// LISTE RECONVERTIE EN STRING DE BOUTON
+	var liste ;
 	var i;				
 
 	// CHARGEMENT DU JSON
    
 	partie = fs.readFileSync("simon_partie_"+query.pseudo+".json");
 	partie = JSON.parse( partie );
-	
 	
 	// GENERATION D'UNE COULEUR ALEATOIRE
 	
@@ -32,13 +32,19 @@ var trait = function (req, res, query) {
 	console.log("PARTIE DU TOUR "+partie[1][tour]);
 	
 	// DECHARGEMENT DE LA LISTE DANS UNE STRING 
+	liste = [] ;
+	for ( i = 0 ; i < tour+1 ; i++ ){
+		console.log("BOUCLE1");
+		liste.push(partie[1][i]);
+	}
+	console.log(liste);	
 	
 	for ( i = 0 ; i < tour+1 ; i++ ){
 		console.log("BOUCLE2");
 		if (i === 0){
-			image = partie[1][i];
+			image = liste[i];
 		} else {
-			image = image+partie[1][i];
+			image = image+liste[i];
 		}
 	} 
 	 console.log(image);
@@ -46,6 +52,38 @@ var trait = function (req, res, query) {
 	
 	marqueur = {}
 	marqueur.pseudo = query.pseudo
+	
+	for ( i = 0 ; i < tour+1 ; i++ ){
+		//BOUCLE 2
+		if ( liste[i] === 1 ){
+			if ( i === 0){
+				image = "<img src='simon_bleu.png'>";
+			}else{
+				image = image+"<img src='simon_bleu.png'>";
+			}	
+		}else if ( liste[i] === 2 ){
+			if ( i === 0){
+				image = "<img src='simon_rouge.png'>";
+			}else{
+				image = image+"<img src='simon_rouge.png'>";
+			}	
+		
+		}else if ( liste[i] === 3 ){
+			if ( i === 0){
+				image = "<img src='simon_vert.png'>";
+			}else{
+				image = image+"<img src='simon_vert.png'>";
+			}	
+		
+		}else if ( liste[i] === 4 ){
+			if ( i === 0){
+				image = "<img src='simon_jaune.png'>";
+			}else{
+				image = image+"<img src='simon_jaune.png'>";
+			}	
+
+		}
+	}
 	marqueur.couleur = image ;
 	
 	// ENREGISTREMENT DU JSON
