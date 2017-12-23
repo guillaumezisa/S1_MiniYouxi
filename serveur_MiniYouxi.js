@@ -62,6 +62,7 @@ var req_solitaire_retour = require ("./req_solitaire_retour.js");
 var req_simon_regle=require("./req_simon_regle.js");
 var req_simon_phase_memorisation=require("./req_simon_phase_memorisation.js");
 var req_simon_phase_repetition=require("./req_simon_phase_repetition.js");
+var req_simon_phase_analyse=require("./req_simon_phase_analyse.js");
 var req_simon_fin=require("./req_simon_fin.js");
 var req_simon_quitter=require("./req_simon_quitter.js");
 var req_simon_abandonner=require("./req_simon_abandonner");
@@ -280,6 +281,9 @@ var traite_requete = function (req, res) {
 				break;
 			case "/req_simon_phase_repetition":
 				req_simon_phase_repetition(req,res,query);
+				break;
+			case "/req_simon_phase_analyse":
+				req_simon_phase_analyse(req,res,query);
 				break;
 			case "/req_simon_quitter":
 				req_simon_quitter(req,res,query);
