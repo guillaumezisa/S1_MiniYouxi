@@ -13,8 +13,20 @@
 		<center>	
 			<h1> Phase de Répétition </h1>
 			<h3> Selectionez les couleurs puis appuyer sur valider </h3><br>
-			{buttoncouleur}<br>
-			{buttonvalider}<br> <!-- si la liste est === le jeu continue sinon fin-->
+			
+			<form action="req_simon_phase_repetition" method="GET">
+			
+			<div id="simon1">
+			<button name="button" value="blue" ><img src="simon_bouton_bleu.png"></button>
+			<button name="button" value="red" ><img src="simon_bouton_rouge.png"></button><br>
+			<button name="button" value="green" ><img src="simon_bouton_vert.png"></button>
+			<button name="button" value="yellow" ><img src="simon_bouton_jaune.png"></button>
+			
+			</div>
+		<form action="/req_simon_phase_analyse" method="GET">
+			<input type ="hidden" name="pseudo" value ="{pseudo}">
+			<button class="button6"name="action"value="Quitter"><span>Valider</span></button><br>
+			
 			</form>
 		</center>
 	</body>

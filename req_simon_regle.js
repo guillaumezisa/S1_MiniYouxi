@@ -15,6 +15,7 @@ var trait = function (req, res, query) {
 	partie = [
 					[0],										// NOMBRE DE TOURS
 					[0,0,0,0,0,0,0,0,0,0,0,0,0,0],	// LES COULEURS
+					[0],										// NOMBRE DE REPETITION
 					[0,0,0,0,0,0,0,0,0,0,0,0,0,0],	// LES COULEURS JOUÉ PAR LE JOUEUR
 				] ;
 	
