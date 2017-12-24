@@ -9,7 +9,7 @@ var marqueur;
 
 var trait = function (req, res, query) {
     
-	page = fs.readFileSync("simon_regle.html", "UTF-8");
+	page = fs.readFileSync("simon_regle.html","UTF-8");
 
 	marqueur = {}
 	marqueur.pseudo = query.pseudo
