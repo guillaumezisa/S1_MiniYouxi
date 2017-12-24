@@ -20,6 +20,11 @@ var trait = function (req, res, query) {
 	partie = fs.readFileSync("simon_partie_"+query.pseudo+".json");
 	partie = JSON.parse( partie );
 	
+	// SUPRESSION DU JEU DU JOUEUR
+
+	partie[2] = [0];
+	partie[3] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+	
 	// GENERATION D'UNE COULEUR ALEATOIRE
 	
 	tour = partie[0];
@@ -76,10 +81,10 @@ var trait = function (req, res, query) {
 		}
 	}
 	marqueur.couleur = image ;
-	
+	console.log(typeof partie[0]+"wazaaaabi");
 	// ENREGISTREMENT DU JSON
 	
-	partie[0] = [Number(partie[0]+1)];	
+	partie[0] = [Number(partie[0])+1];	
 	partie =JSON.stringify(partie);
 	fs.writeFileSync("simon_partie_"+query.pseudo+".json",partie,"UTF-8");
 	

@@ -8,27 +8,21 @@ var page;
 var marqueur;
 
 var trait = function (req, res, query) {
-   var partie ;
-	var bouton ;
+   var partie ; 		// DECOMPRESSION DU JSON
+	var redirection;	// REQUETE REDIRIGER
+	var bouton ;		
+	var i;
 
 	// LECTURE DU JSON
 
 	partie = fs.readFileSync("simon_partie_"+query.pseudo+".json");
 	partie = JSON.parse(partie);
 	
-	if ( partie[0] === 1){
-		partie[2] = [0];
-	}
-	
-	
+
 	// RECUPERATION DU QUERY BUTTON & ASSIGNEMENT DES COULEURS JOUER
 	
-	console.log(partie[2]);
-
-
-	partie[2] = [Number(partie[2])+1];
-	bouton = query.button ; 
-
+	bouton = query.button ;
+	
 	if ( bouton === "blue" ){
 		partie[3][partie[2]] = 1;
 		partie[2] = [Number(partie[2])+1];
@@ -42,13 +36,39 @@ var trait = function (req, res, query) {
 		partie[3][partie[2]] = 4;
 		partie[2] = [Number(partie[2])+1];
 	}
-	console.log(partie[2]);
 	
+	// NEW => COMRARAISON DES COULEURS GENERER ET COULEURS JOUER
+	
+	console.log("TourG = "+ partie[0]);
+	console.log("TourJ = "+ partie[2]);
+	if ( Number(partie[0]) === Number(partie[2])){
+		console.log("CA RENTRE ?")
+		redirection = 1;
+		
+		console.log("partie[2] ="+partie[2]);
+		
+		for ( i = 0 ; i < partie[2] ; i++){
+			if (partie[1][i] !== partie[3][i]){
+				redirection = 0;
+			}
+		}
+	}
+	console.log(redirection+"waza");
+
 	// CREATION DES MARQUEURS 
 
-	marqueur = {}
-	marqueur.pseudo = query.pseudo
+	marqueur = {};
+	marqueur.pseudo = query.pseudo;
 	
+	if ( redirection === 0 ){
+		marqueur.button ="<form action ='req_simon_fin' method='GET'><input type='hidden' name='pseudo' value ='"+query.pseudo+"'><button class='button6'name='action'value='jeu'><span>Valider</span></button><br>";
+	} else if ( redirection === 1 ){
+		marqueur.button ="<form action ='req_simon_phase_memorisation' method='GET'><input type='hidden' name='pseudo' value ='"+query.pseudo+"'><button class='button6'name='action'value='jeu'><span>Valider</span></button><br>";
+	} else {
+		marqueur.button = "";
+	}
+
+
 	// ENREGISTREMENT DU JSON
 	
 	partie = JSON.stringify(partie);
