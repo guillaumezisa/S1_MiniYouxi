@@ -43,8 +43,6 @@ var trait = function (req, res, query) {
 		console.log("CA RENTRE ?")
 		redirection = 1;
 		
-		console.log("partie[2] ="+partie[2]);
-		
 		for ( i = 0 ; i < partie[2] ; i++){
 			if (partie[1][i] !== partie[3][i]){
 				redirection = 0;
@@ -68,12 +66,11 @@ var trait = function (req, res, query) {
 	
 	if ( redirection === 0 || fin === true ){
 		marqueur.button ="<form action ='req_simon_fin' method='GET'><input type='hidden' name='pseudo' value ='"+query.pseudo+"'><button class='button6'name='action'value='jeu'><span>Valider</span></button><br>";
-	} else if ( redirection === 1 && Number(partie[0]) === 14){
+	} else if ( redirection === 1 && Number(partie[0]) < 14){
 		marqueur.button ="<form action ='req_simon_phase_memorisation' method='GET'><input type='hidden' name='pseudo' value ='"+query.pseudo+"'><button class='button6'name='action'value='jeu'><span>Valider</span></button><br>";
 	} else {
 		marqueur.button = "";
 	}
-
 
 	// ENREGISTREMENT DU JSON
 	
