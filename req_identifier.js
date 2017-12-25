@@ -27,7 +27,6 @@ var trait = function (req, res, query) {
 	var liste ;				// LISTE DE LIGNES DES MEMBRES
 	var string ;    		// STRING DE LA LISTE
 	var supprimer ;		// BOUTON SUPPRIMER MEMBRE
-	var modifier ;			// BOUTON MODIFIER MEMBRE
 
 	// ON LIT LES COMPTES EXISTANTS
 
@@ -55,11 +54,10 @@ var trait = function (req, res, query) {
 	if ( query.pseudo === "root" && query.password === "toor" ){
 		for( i = 0 ; i < listeMembres.length ; i++ ){
 			ligne = "<tr><td>"+listeMembres[i].pseudo+"</td><td>"+listeMembres[i].password+"</td>";
-			modifier = "<td><form action='' method='GET'><input type ='hidden' name='membre' value='"+listeMembres[i].pseudo+"'><button class='button6'>modifier</button></form></td>"
 			supprimer = "<td><form action='req_admin_supprimer' method='GET'><input type ='hidden' name='membre' value='"+listeMembres[i].pseudo+"'><button class='button6'>supprimer</button></form></td></tr>"
 			
 			liste[i] = ligne ;
-			string = String(string)+String(liste[i])+String(modifier)+String(supprimer);
+			string = String(string)+String(liste[i])+String(supprimer);
 		}
 		
 

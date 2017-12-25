@@ -22,6 +22,7 @@ var req_contact = require("./req_contact.js");
 var req_contact_quitter = require("./req_contact_quitter.js");
 
 var req_admin_supprimer = require("./req_admin_supprimer");
+var req_admin_accueil = require("./req_admin_accueil");
 
 var req_regle_morpion = require("./req_regle_morpion.js");
 var req_quitter_regle_morpion = require("./req_quitter_regle_morpion.js");
@@ -125,6 +126,9 @@ var traite_requete = function (req, res) {
 
 			case '/req_admin_supprimer':
 				req_admin_supprimer(req, res, query);
+				break;
+			case '/req_admin_accueil':
+				req_admin_accueil(req, res, query);
 				break;
 
 			//mental

@@ -8,20 +8,22 @@ var page;
 var marqueur;
 
 var trait = function (req, res, query) {
+	var fichier;
 	var listeMembres;
 	var i ;
 
-	listeMembres = fs.readFileSync("membres.json","utf-8");
-	listeMembres = JSON.parse(listeMembres);
-
+	fichier = fs.readFileSync("membres.json","utf-8");
+	listeMembres = JSON.parse(fichier);
+	console.log(listeMembres);
 	for ( i = 0 ; i < listeMembres.length ; i++ ){
 		if ( listeMembres[i].pseudo === query.membre ){
 			listeMembres.splice(i,1);
 		}
 	}
-
+	console.log(listeMembres);
 	
-	
+	listeMembres = JSON.stringify(listeMembres);
+	fs.writeFileSync("membres.json", listeMembres ,"utf-8");
 	   
   	// CREATION DE MARQUEURS
 	marqueur = {}
@@ -29,8 +31,8 @@ var trait = function (req, res, query) {
 	
 	// ENVOIE DE LA PAGE
 	
-	page = fs.readFileSync("accueil_admin_MiniYouxi.html", "UTF-8");
-	page = page.supplant(marqueur)
+	page = fs.readFileSync("admin_supprimer.html", "UTF-8");
+	page = page.supplant(marqueur)0
 
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	res.write(page);
