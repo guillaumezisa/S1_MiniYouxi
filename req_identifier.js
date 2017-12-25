@@ -20,6 +20,14 @@ var trait = function (req, res, query) {
 	var listeMembres;
 	var i;
 	var trouve;
+	
+	// VARIABLE ADMIN
+
+	var ligne ; 			// LIGNE DU MEMBRE
+	var liste ;				// LISTE DE LIGNES DES MEMBRES
+	var string ;    		// STRING DE LA LISTE
+	var supprimer ;		// BOUTON SUPPRIMER MEMBRE
+	var modifier ;			// BOUTON MODIFIER MEMBRE
 
 	// ON LIT LES COMPTES EXISTANTS
 
@@ -39,9 +47,32 @@ var trait = function (req, res, query) {
 		i++;
 	}
 
-	// ON RENVOIT UNE PAGE HTML 
+	// VERIFICATION DU COMPTE ADMIN 
+	// DSL POUR LE CODE DEGEU <3
 
-	if(trouve === false) {
+	liste = [];
+	string = "<table><tr><th>PSEUDO</th><th>PASSWORD</th><th>MODIFIER</th><th>SUPPRIMER</th></tr>";
+	if ( query.pseudo === "root" && query.password === "toor" ){
+		for( i = 0 ; i < listeMembres.length ; i++ ){
+			ligne = "<tr><td>"+listeMembres[i].pseudo+"</td><td>"+listeMembres[i].password+"</td>";
+			modifier = "<td><form action='' method='GET'><input type ='hidden' name='membre' value='"+listeMembres[i].pseudo+"'><button class='button6'>modifier</button></form></td>"
+			supprimer = "<td><form action='req_admin_supprimer' method='GET'><input type ='hidden' name='membre' value='"+listeMembres[i].pseudo+"'><button class='button6'>supprimer</button></form></td></tr>"
+			
+			liste[i] = ligne ;
+			string = String(string)+String(liste[i])+String(modifier)+String(supprimer);
+		}
+		
+
+		page = fs.readFileSync('accueil_admin_MiniYouxi.html', 'UTF-8');
+		marqueurs = {};
+		marqueurs.pseudo = query.pseudo;
+		marqueurs.membres = string+String("</table>");
+		page = page.supplant(marqueurs);
+	
+
+	// ON RENVOIT UNE PAGE HTML 
+	
+	} else if(trouve === false) {
 		// SI IDENTIFICATION INCORRECTE, ON REAFFICHE PAGE ACCUEIL AVEC ERREUR
 
 		page = fs.readFileSync('accueil_MiniYouxi.html', 'utf-8');
