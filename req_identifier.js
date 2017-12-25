@@ -50,7 +50,7 @@ var trait = function (req, res, query) {
 	// DSL POUR LE CODE DEGEU <3
 
 	liste = [];
-	string = "<table><tr><th>PSEUDO</th><th>PASSWORD</th><th>MODIFIER</th><th>SUPPRIMER</th></tr>";
+	string = "<table><tr><th>PSEUDO</th><th>PASSWORD</th><th>SUPPRIMER</th></tr>";
 	if ( query.pseudo === "root" && query.password === "toor" ){
 		for( i = 0 ; i < listeMembres.length ; i++ ){
 			ligne = "<tr><td>"+listeMembres[i].pseudo+"</td><td>"+listeMembres[i].password+"</td>";

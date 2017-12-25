@@ -32,7 +32,7 @@ var trait = function (req, res, query) {
 	// ENVOIE DE LA PAGE
 	
 	page = fs.readFileSync("admin_supprimer.html", "UTF-8");
-	page = page.supplant(marqueur)0
+	page = page.supplant(marqueur);
 
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	res.write(page);
