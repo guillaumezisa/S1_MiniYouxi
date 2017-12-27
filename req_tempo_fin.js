@@ -7,7 +7,9 @@ require("remedial")
 var page;
 var marqueur;
 var trait = function (req, res, query) {
-	
+var fichier ;
+var membre ;	
+var i ;
 	// CHARGEMENT DU JSON 
 	var extract = fs.readFileSync("tempo_partie_"+query.pseudo+".json","UTF-8");
 	var load = JSON.parse(extract);
@@ -25,6 +27,21 @@ var trait = function (req, res, query) {
 	if ( x === nb ) {
 		marqueur.fin = "<center>Vous avez gagner !<br><br><img src='tempo_win.png'width='250'></center>";
 		marqueur.com ="";
+		
+		// ASSIGNEMENT DE POINT
+		fichier = fs.readFileSync("membres.json",'UTF-8');
+		membre = JSON.parse(fichier);
+
+		for ( i = 0 ; i < membre.length ; i++){
+			if ( membre[i].pseudo === query.pseudo){
+				membre[i].score = Number(membre[i].score)+10;
+			}
+		}
+		membre = JSON.stringify( membre );
+		fichier = fs.writeFileSync("membres.json",membre ,'UTF-8');
+		
+		
+		// SUPPRESSION DU JSON DE PARTIE
 		fs.unlinkSync("tempo_partie_"+query.pseudo+".json");
 	}else{
 		if ( x < nb ){
