@@ -20,7 +20,7 @@ var trait = function (req, res, query) {
 	var listeMembres;
 	var i;
 	var trouve;
-	
+
 	// VARIABLE ADMIN
 
 	var ligne ; 			// LIGNE DU MEMBRE
@@ -33,61 +33,47 @@ var trait = function (req, res, query) {
 	contenu_fichier = fs.readFileSync("membres.json", 'utf-8');    
 	listeMembres = JSON.parse(contenu_fichier);
 
-	// ON VERIFIE QUE LE PSEUDO/PASSWORD EXISTE
-
-	trouve = false;
-	i = 0;
-	while(i<listeMembres.length && trouve === false) {
-		if(listeMembres[i].pseudo === query.pseudo) {
-			if(listeMembres[i].password === query.password) {
-				trouve = true;
-			}
-		}
-		i++;
-	}
-
-	// VERIFICATION DU COMPTE ADMIN 
-	// DSL POUR LE CODE DEGEU <3
-
-	liste = [];
-	string = "<table><tr><th>PSEUDO</th><th>PASSWORD</th><th>SUPPRIMER</th></tr>";
-	if ( query.pseudo === "root" && query.password === "toor" ){
-		for( i = 0 ; i < listeMembres.length ; i++ ){
-			ligne = "<tr><td>"+listeMembres[i].pseudo+"</td><td>"+listeMembres[i].password+"</td>";
-			supprimer = "<td><form action='req_admin_supprimer' method='GET'><input type ='hidden' name='membre' value='"+listeMembres[i].pseudo+"'><button class='button6'>supprimer</button></form></td></tr>"
-			
-			liste[i] = ligne ;
-			string = String(string)+String(liste[i])+String(supprimer);
-		}
-		
-
-		page = fs.readFileSync('accueil_admin_MiniYouxi.html', 'UTF-8');
-		marqueurs = {};
-		marqueurs.pseudo = query.pseudo;
-		marqueurs.membres = string+String("</table>");
-		page = page.supplant(marqueurs);
-	
-
-	// ON RENVOIT UNE PAGE HTML 
-	
-	} else if(trouve === false) {
-		// SI IDENTIFICATION INCORRECTE, ON REAFFICHE PAGE ACCUEIL AVEC ERREUR
-
-		page = fs.readFileSync('accueil_MiniYouxi.html', 'utf-8');
-
-		marqueurs = {};
-		marqueurs.erreur = "ERREUR : compte ou mot de passe incorrect";
-		marqueurs.pseudo = query.pseudo;
-		page = page.supplant(marqueurs);
-
+	// On vérifie le compte admin
+	if (query.pseudo === "root" && query.password === "toor") {
+		var req_afficher_page_admin = require("./req_afficher_page_admin.js");
+		page = req_afficher_page_admin(req, res, query);
 	} else {
-		// SI IDENTIFICATION OK, ON ENVOIE PAGE ACCUEIL MEMBRE
 
-		page = fs.readFileSync('accueil_membre_MiniYouxi.html', 'UTF-8');
+		// ON VERIFIE QUE LE PSEUDO/PASSWORD EXISTE
 
-		marqueurs = {};
-		marqueurs.pseudo = query.pseudo;
-		page = page.supplant(marqueurs);
+		trouve = false;
+		i = 0;
+		while(i<listeMembres.length && trouve === false) {
+			if(listeMembres[i].pseudo === query.pseudo) {
+				if(listeMembres[i].password === query.password) {
+					trouve = true;
+				}
+			}
+			i++;
+		}
+
+
+		// ON RENVOIT UNE PAGE HTML 
+
+		if(trouve === false) {
+			// SI IDENTIFICATION INCORRECTE, ON REAFFICHE PAGE ACCUEIL AVEC ERREUR
+
+			page = fs.readFileSync('accueil_MiniYouxi.html', 'utf-8');
+
+			marqueurs = {};
+			marqueurs.erreur = "ERREUR : compte ou mot de passe incorrect";
+			marqueurs.pseudo = query.pseudo;
+			page = page.supplant(marqueurs);
+
+		} else {
+			// SI IDENTIFICATION OK, ON ENVOIE PAGE ACCUEIL MEMBRE
+
+			page = fs.readFileSync('accueil_membre_MiniYouxi.html', 'UTF-8');
+
+			marqueurs = {};
+			marqueurs.pseudo = query.pseudo;
+			page = page.supplant(marqueurs);
+		}
 	}
 
 
