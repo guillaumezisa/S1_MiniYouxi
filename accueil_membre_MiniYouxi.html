@@ -11,7 +11,9 @@
 		<h1 id=nl><script src="http://webneko.net/n200504.js"></script>
 		<a href="http://webneko.net">Neko</a></h1>
 		<br>
+		
 		<!-- BANNIERE PAGE -->
+		
 		<div class="panel">
 			<form action="req_contact" method="GET">
 				<input type="hidden" name="pseudo" value="{pseudo}">
@@ -177,7 +179,7 @@
 					</div>
 					<div id="regle">
 						<h2>Regle du Puzzle :</h2>
-						<p><h3>a ecrire
+						<p><h3>Le but est de mettre les images dans le bonne ordre<br><br><br>
 						
 						<form action="/req_puzzle" method="GET">
 							<input type="hidden" name="pseudo" value="{pseudo}">
@@ -202,7 +204,7 @@
 					<div id="imgjeux">
 					<form action="req_tempo_regle" method="GET">
 						<input type ="hidden" name="pseudo" value ="{pseudo}">
-						<button class="button9" name="jeu" value="tempo"><img height="155" width="175" src="vache.png"></button>
+						<button class="button9" name="jeu" value="tempo"><img height="155" width="175" src="tempo.jpg"></button>
 					</form>
 					</div>
 					<div id="regle">
@@ -248,6 +250,38 @@
 					</h3></p><br><br><br>
 				</div>
 			</div>
+			
+			<!--SIMON-->
+			
+			<div id="articlejeux">
+				<div id = "headerjeux">
+					<form action="req_simon_regle" method="GET">
+						<input type="hidden" name ="pseudo" value="{pseudo}">
+						<center>
+							<button class="button8" name="jeu" value="Simon"> Le jeu du Simon</button>
+						</center>
+					</form>
+					</div>
+				<div id="bodyjeux">
+					<div id="imgjeux">
+					<form action="req_simon_regle" method="GET">
+					    <input type ="hidden" name="pseudo" value ="{pseudo}">
+						<button class="button9" name="jeu" value="simon"><img height="155" width="175" src="simon.png"></button>
+					</form>
+					</div>
+					<div id="regle">
+						<h2> Regle du Simon : </h2>
+						<p><h3> Il faut retenir les couleurs dans le bonne ordre <br>
+						puis les repeters , si on fait une erreur on a perdu <br></h3>
+
+						<form action="req_simon_regle" method="GET">
+						<input type="hidden" name="pseudo" value="{pseudo}">
+						<button class="button5" type="submit" name="bouton" value="simon"><span>Jouer</span></button>
+						</form>
+					</h3></p><br><br><br><br>
+				</div>
+			</div>
+
 			
 			<!-- PFC -->
 			

@@ -21,6 +21,9 @@ var req_erreur = require("./req_erreur.js");
 var req_contact = require("./req_contact.js");
 var req_contact_quitter = require("./req_contact_quitter.js");
 
+var req_admin_supprimer = require("./req_admin_supprimer");
+var req_admin_accueil = require("./req_admin_accueil");
+
 var req_regle_morpion = require("./req_regle_morpion.js");
 var req_quitter_regle_morpion = require("./req_quitter_regle_morpion.js");
 var req_jouer_morpion = require("./req_jouer_morpion.js");
@@ -28,6 +31,7 @@ var req_easter_egg = require("./easter_egg.js");
 var req_abandonner_morpion = require("./req_abandonner_morpion.js");
 var req_joueur_pose_pion_morpion = require("./req_joueur_pose_pion_morpion.js");
 var req_quitter_morpion = require("./req_quitter_morpion.js");
+
 var req_regle_bataille = require("./req_regle_bataille.js");
 var req_quitter_regle_bataille = require("./req_quitter_regle_bataille.js");
 var req_commencer_bataille = require("./req_commencer_bataille.js");
@@ -35,6 +39,7 @@ var req_pose_carte_bataille = require("./req_pose_carte_bataille.js");
 var req_abandonner_bataille = require("./req_abandonner_bataille.js");
 var req_resultat_bataille = require("./req_resultat_bataille.js");
 var req_quitter_bataille = require("./req_quitter_bataille.js");
+
 var req_regle_pcf_remake = require("./req_regle_pcf_remake.js");
 var req_commencer_pcf_remake = require("./req_commencer_pcf_remake.js");
 var req_quitter_pcf_remake = require("./req_quitter_pcf_remake.js");
@@ -117,6 +122,15 @@ var traite_requete = function (req, res) {
 			case '/req_identifier':
 				req_identifier(req, res, query);
 				break;
+			// ADMIN
+
+			case '/req_admin_supprimer':
+				req_admin_supprimer(req, res, query);
+				break;
+			case '/req_admin_accueil':
+				req_admin_accueil(req, res, query);
+				break;
+
 			//mental
 			case "/req_regle_mental":
 				req_regle_mental(req, res, query);
@@ -231,7 +245,7 @@ var traite_requete = function (req, res) {
 				req_tempo_fin(req ,res,query);
 				break;
 			case "/req_tempo_rejouer":
-				req_tempo_rejouer( req,res,query);
+				req_tempo_rejouer(req,res,query);
 				break;
 			case "/req_tempo_quitter":
 				req_tempo_quitter( req,res,query);
@@ -288,10 +302,10 @@ var traite_requete = function (req, res) {
 				req_simon_abandonner(req,res,query);
 				break;
 			case "/req_simon_fin":
-				req_solitaire_fin(req,res,query);
+				req_simon_fin(req,res,query);
 				break;
 			case "/req_simon_rejouer":
-				req_solitaire_rejouer(req,res,query);
+				req_simon_rejouer(req,res,query);
 				break;
 		}
 	} catch (e) {

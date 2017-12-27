@@ -96,8 +96,8 @@ body{
 #regle{
 	
 }
-#bodyjeux{
-
+#simon1{
+	display : block;
 }
 #imgjeux{
 	float:left;
@@ -115,7 +115,15 @@ margin-left : 225px;
 	background-position:center;	
 }
 #solitaire{
-	border : solid black 1px;
+	border : solid black 0px;
+}
+#simonb1 {
+	display : inline-block;
+	float : left;
+}
+#simonb2 {
+	display : inline;
+	float : right;
 }
 #panel {
 	border : solid black 2px
