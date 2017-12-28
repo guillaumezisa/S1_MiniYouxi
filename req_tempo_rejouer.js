@@ -7,7 +7,6 @@ var page;
 var marqueur;
 
 var trait = function (req, res, query) {
- 	fs.unlinkSync("tempo_partie_"+query.string+".json");   
 	page = fs.readFileSync("tempo_afficher.html", "UTF-8");
 
 	marqueur = {}
