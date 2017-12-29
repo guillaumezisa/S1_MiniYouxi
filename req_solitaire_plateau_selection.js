@@ -20,7 +20,9 @@ var trait = function (req, res, query) {
 	var plateau ;
 	var now ;		
 	var ndpb ; 						  // NOMBRE DE PION BLOQUÉ
-	
+	var fichier ;
+	var membre ;
+
 	// CHARGEMENT DU JSON
 	now = fs.readFileSync("solitaire_partie_"+query.pseudo+".json","UTF-8");
 	plateau = JSON.parse(now);
@@ -88,10 +90,25 @@ var trait = function (req, res, query) {
 			
 			// VERIFIE SI LE JOUEUR A GAGNER & MODIFICATION DU MARQUEUR FIN
 		if (plateau[7] === 1){
-			marqueur.fin = "<h1>TU AS GAGNER !</h1><center><form action='req_solitaire_rejouer'method='GET'><input type='hidden' name='pseudo' value='"+ query.pseudo +"'><button class='button3' name='action' value='Rejouer'><span>Rejouer</span></button></form><form action='req_solitaire_quitter'method='GET'><input type='hidden' name='pseudo' value='"+ query.pseudo +"'><button class='button3' name='action' value='quitter'><span>Quitter</span></button></form></center><br><br>";
+			marqueur.fin = "<h1>TU AS GAGNER !</h1><br><center><img src='solitaire_gagner.jpeg'><form action='req_solitaire_rejouer'method='GET'><input type='hidden' name='pseudo' value='"+ query.pseudo +"'><button class='button3' name='action' value='Rejouer'><span>Rejouer</span></button></form><form action='req_solitaire_quitter'method='GET'><input type='hidden' name='pseudo' value='"+ query.pseudo +"'><button class='button3' name='action' value='quitter'><span>Quitter</span></button></form></center><br><br>";
+
+			// ASSIGNEMENT DE POINTS 
+
+			fichier = fs.readFileSYnc("membres.json","UTF-8");
+			membre = JSON.parse(fichier);
+
+			for ( i = 0 ; i < membre.length ; i++){
+				if (membre[i].pseudo === query.pseudo){
+					membre[i].score === Number(membre[i].score) + 100 ;
+				}
+			}
+
+			membre = JSON.stringify( membre );
+			fichier = fs.writeFileSync("membre.json",membre,'utf-8');
+
 			// VERIFIE SI LE JOUEUR A PERDU & MODIFICATION DU MARQUEUR FIN
 		} else {
-			marqueur.fin = "<h1>TU AS PERDU !</h1><br><center><form action='req_solitaire_rejouer'method='GET'><input type='hidden' name='pseudo' value='"+ query.pseudo+"'><button class='button3' name='action' value='Rejouer'><span>Rejouer</span></button></form><form action='req_solitaire_quitter'method='GET'><input type='hidden' name='pseudo' value='"+query.pseudo+"'><button class='button3' name='action' value='quitter'><span>Quitter</span></button></form></center><br><br>";
+			marqueur.fin = "<h1>TU AS PERDU !</h1><br><center><img src='solitaire_perdu.jpeg'><form action='req_solitaire_rejouer'method='GET'><input type='hidden' name='pseudo' value='"+ query.pseudo+"'><button class='button3' name='action' value='Rejouer'><span>Rejouer</span></button></form><form action='req_solitaire_quitter'method='GET'><input type='hidden' name='pseudo' value='"+query.pseudo+"'><button class='button3' name='action' value='quitter'><span>Quitter</span></button></form></center><br><br>";
 		}
 	} else {
 		marqueur.fin ="";

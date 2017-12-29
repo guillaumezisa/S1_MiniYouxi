@@ -16,17 +16,14 @@ var trait = function (req, res, query) {
 	partie = JSON.parse(partie);
 
 	// CREATION DES MARQUEURS
-	console.log(partie[4]);
-	console.log(typeof partie[4]);
+	
 	marqueur = {}
 	marqueur.pseudo = query.pseudo
 	
-	if ( Number(partie[4]) === 0 ){
-		marqueur.fin = "Vous avez perdu , Vous avez tenus "+partie[0]+"tours de jeu";
-	} else if ( Number(partie[4]) === 1 ){
-		marqueur.fin = "Vous avez gagné !!! Vous avez une bonne mémoire !!";
+	if ( partie[4] === "v" ){
+		marqueur.fin = "<center>Vous avez gagné !!! Vous avez une bonne mémoire !<br><img src='simon_gagner.jpg'></center>";
 	} else {
-		marqueur.fin = "";
+		marqueur.fin = "<center>Vous avez perdu , Vous avez tenus "+partie[0]+" tours de jeu<br><img src='simon_perdu.png'></center>";
 	}
 
 	// ENVOIE DE LA PAGE 
