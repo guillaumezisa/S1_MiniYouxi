@@ -14,13 +14,11 @@ var trait = function (req, res, query) {
 
 	fichier = fs.readFileSync("membres.json","utf-8");
 	listeMembres = JSON.parse(fichier);
-	console.log(listeMembres);
 	for ( i = 0 ; i < listeMembres.length ; i++ ){
 		if ( listeMembres[i].pseudo === query.membre ){
 			listeMembres.splice(i,1);
 		}
 	}
-	console.log(listeMembres);
 	
 	listeMembres = JSON.stringify(listeMembres);
 	fs.writeFileSync("membres.json", listeMembres ,"utf-8");

@@ -27,7 +27,6 @@ var trait = function (req, res, query) {
 		marqueurs.membres = string+String("</table>");
 		page = page.supplant(marqueurs);
 
-		console.log("¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤");
 	}
     return page;
 
