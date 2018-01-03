@@ -50,10 +50,10 @@
 					</form>
 				</div>
 				<div id="regle">
-					<h2>Regle du Morpion :</h2>
+					<h2>Règle du Morpion :</h2>
 						<p><h3>Les joueurs inscrivent tour à tour leur symbole sur une grille.<br>
-						Le premier qui parvient à aligner 3 de ses symboles horizontalement ,<br>
-						verticalement ou en diagonale gagne un point .
+						Le premier qui parvient à aligner 3 de ses symboles horizontalement, <br>
+						verticalement ou en diagonale gagne un point.
 					<form action="req_regle_morpion" method="GET">
 						<input type="hidden" name="pseudo" value="{pseudo}">
 						<button class="button5" type="submit" name="bouton" value="morpion"><span>Jouer</span></button>		
@@ -82,9 +82,9 @@
 					</div>
 					<div id="regle">
 						<h2>Regle de la bataille :</h2>
-						<p><h3>Chaque joueur joue une carte ,le joueur qui pose la carte<br>
-						de la plus grande valeur remporte la main , la partie ce termine <br>
-						quand l'un des deux joueurs n'a plus de carte .
+						<p><h3>Chaque joueur joue une carte, le joueur qui pose la carte<br>
+						de la plus grande valeur remporte la main, la partie se termine <br>
+						quand l'un des deux joueurs n'a plus de carte.
 						<form action="req_regle_bataille" method="GET">
 							<input type="hidden" name="pseudo" value="{pseudo}">
 							<button class="button5" type="submit" name="bouton" value="bataille"><span>Jouer</span></button>		
@@ -112,11 +112,10 @@
 					</form>
 					</div>
 					<div id="regle">
-						<h2>Regle du remake du Pierre Feuille Ciseau :</h2>
-						<p><h3>Chaque joueur à sa main dans son dos . Les joueurs choisisent une valeur
-						entre 0 et 5 , <br>
-						ensuite les joueurs doivent donner une estimation du totale des doigts levé . <br>
-						Le joueurs qui a l'estimation la plus proche du nombre de doigts remporte la partie .
+						<h2>Règle du remake du Pierre Feuille Ciseau: </h2>
+						<p><h3>Chaque joueur à sa main dans son dos. <br> 
+						Les joueurs choisissent une valeurentre 0 et 5, ensuite les joueurs doivent donner une estimation du totale des doigts levé. 
+						Le joueurs qui a l'estimation la plus proche du nombre de doigts remporte la partie.
 						
 						<form action="req_regle_pcf_remake" method="GET">
 							<input type="hidden" name="pseudo" value="{pseudo}">
@@ -145,10 +144,10 @@
 					</form>
 					</div>
 					<div id="regle">
-						<h2>Regle du pendu :</h2>
-						<p><h3>Il faut trouver le mot avant d'être pendu . <br>
-						Pour cela il faut proposer des lettres ,<br>
-						a chaque erreur on se rapproche de la pendaison .
+						<h2>Règle du pendu:</h2>
+						<p><h3>Il faut trouver le mot avant d'être pendu. <br>
+						Pour cela il faut proposer des lettres,<br>
+						a chaque erreur on se rapproche de la pendaison.
 						
 						<form action="req_pendu" method="GET">
 							<input type="hidden" name="pseudo" value="{pseudo}">
@@ -178,8 +177,8 @@
 					</form>
 					</div>
 					<div id="regle">
-						<h2>Regle du Puzzle :</h2>
-						<p><h3>Le but est de mettre les images dans le bonne ordre<br><br><br>
+						<h2>Règle du Puzzle:</h2>
+						<p><h3>Le but est de mettre les images dans le bonne ordre.<br><br><br>
 						
 						<form action="/req_puzzle" method="GET">
 							<input type="hidden" name="pseudo" value="{pseudo}">
@@ -208,9 +207,9 @@
 					</form>
 					</div>
 					<div id="regle">
-						<h2>Regle du Tempo :</h2>
-						<p><h3>Un nombre de seconde est généré<br>
-						Il faut appuyer sur le bouton au bon momment pour remporté la partie <br><br>
+						<h2>Règle du Tempo: </h2>
+						<p><h3>Un nombre de seconde est généré,<br>
+						Il faut appuyer sur le bouton au bon moment pour remporter la partie.<br><br>
 						
 						<form action="req_tempo_regle" method="GET">
 							<input type="hidden" name="pseudo" value="{pseudo}">
@@ -235,14 +234,13 @@
 					<div id="imgjeux">
 					<form action="req_solitaire_regle" method="GET">
 						<input type ="hidden" name="pseudo" value ="{pseudo}">
-						<button class="button9" name="jeu"
-						value="solitaire"><img height="155" width="175" src="solitaire.png"></button>
+						<button class="button9" name="jeu"value="solitaire"><img height="155" width="175" src="solitaire.png"></button>
 					</form>
 					</div>
 					<div id="regle">
-						<h2>Regle du Solitaire :</h2>
-						<p><h3>Il y a un plateau sur le quel on a des pions il faut sauté par dessus un pion et atterire sur une case libre ,<br>
-						pour manger des pions . Pour gagner la partie il faut qu'il ne reste un seul pion <br><br>
+						<h2>Règle du Solitaire:</h2>
+						<p><h3>Il y a un plateau sur lequel on a des pions il faut sauté par dessus un pion et atterrir sur une case libre, pour manger des pions.
+						<br>Pour gagner la partie il faut qu'il ne reste un seul pion.
 						<form action="req_solitaire_regle" method="GET">
 							<input type="hidden" name="pseudo" value="{pseudo}">
 							<button class="button5" type="submit" name="bouton" value="solitaire"><span>Jouer</span></button>		
@@ -258,7 +256,7 @@
 					<form action="req_simon_regle" method="GET">
 						<input type="hidden" name ="pseudo" value="{pseudo}">
 						<center>
-							<button class="button8" name="jeu" value="Simon"> Le jeu du Simon</button>
+							<button class="button8" name="jeu" value="Simon">Le jeu du Simon</button>
 						</center>
 					</form>
 					</div>
@@ -270,9 +268,9 @@
 					</form>
 					</div>
 					<div id="regle">
-						<h2> Regle du Simon : </h2>
-						<p><h3> Il faut retenir les couleurs dans le bonne ordre <br>
-						puis les repeters , si on fait une erreur on a perdu <br></h3>
+						<h2> Règle du Simon: </h2>
+						<p><h3>Il faut retenir les couleurs dans le bonne ordre <br>
+						puis les repeters, si on fait une erreur on a perdu.<br></h3>
 
 						<form action="req_simon_regle" method="GET">
 						<input type="hidden" name="pseudo" value="{pseudo}">
@@ -302,9 +300,9 @@
 					</form>
 					</div>
 					<div id="regle">
-						<h2>Regle du pfc :</h2>
+						<h2>Règle du pfc:</h2>
 						<p><h3>Chaque joueur doit choisir soit la pierre la feuille ou le ciseau,<br>
-						La pierre bas le ciseau , le ciseau bas la feuille , la feuille bas la pierre .<br><br>
+						La pierre bat le ciseau, le ciseau bat la feuille, la feuille bat la pierre. <br><br>
 						<form action="req_regle_pfc" method="GET">
 							<input type="hidden" name="pseudo" value="{pseudo}">
 							<button class="button5" type="submit" name="bouton" value="PFC"><span>Jouer</span></button>		
@@ -332,8 +330,8 @@
 					</form>
 					</div>
 					<div id="regle">
-						<h2> regle du &mental : </h2>
-						<p><h3> Bienvenue au &mental qui va vous faire travailler les méninge <br>
+						<h2> Règle du &mental: </h2>
+						<p><h3>Bienvenue au &mental qui va vous faire travailler les méninges ! <br>
 						Addition Soustraction qui sais sur quoi vous allez tomber ? <br><br></h3>
 
 
