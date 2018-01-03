@@ -21,9 +21,9 @@ var trait = function (req, res, query) {
 	marqueur.pseudo = query.pseudo
 	
 	if ( partie[4] === "v" ){
-		marqueur.fin = "<center>Vous avez gagné !!! Vous avez une bonne mémoire !<br><img src='simon_gagner.jpg'></center>";
+		marqueur.fin = "<center>Vous avez gagné !!! Vous avez une bonne mémoire !<br><br><img src='simon_gagner.jpg'></center>";
 	} else {
-		marqueur.fin = "<center>Vous avez perdu , Vous avez tenus "+partie[0]+" tours de jeu<br><img src='simon_perdu.png'></center>";
+		marqueur.fin = "<center>Vous avez perdu , Vous avez tenus "+partie[0]+" tours de jeu<br><br><img src='simon_perdu.png'></center>";
 	}
 
 	// ENVOIE DE LA PAGE 
