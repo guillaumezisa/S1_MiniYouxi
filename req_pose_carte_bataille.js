@@ -28,9 +28,6 @@ var remplacement = function(nombre) {
 		}
 };
 
-
-
-
 var choix_couleur = function(chaine) {
     switch (chaine) {
 	    case "t":
@@ -49,7 +46,7 @@ var choix_couleur = function(chaine) {
 }
 
 var trait = function(req, res, query) {
-    
+
 	mains = fs.readFileSync("mains_bataille_" + query.pseudo + ".json", "UTF-8");
 	mains = JSON.parse(mains);
 
@@ -59,6 +56,7 @@ var trait = function(req, res, query) {
 	pose_ordi = mains.ordi[0];
 	mains.ordi.splice(0, 1);
 
+	// On compare les cartes
 	if (pose_joueur[0] === pose_ordi[0]) {
 	    resultat = "Égalité";
 		mains.joueur.push(pose_joueur);
@@ -70,35 +68,31 @@ var trait = function(req, res, query) {
 	    resultat = "L'ordi l'emporte."
 		mains.ordi.push(pose_joueur, pose_ordi);
 	}
-    
-	
-	if (mains.joueur.length === 0 || mains.ordi.length == 0) {
-	// Si un des deux joueurs a perdu
 
-	    // On définis les marqueurs
+
+	// On détermine la fin de la partie si un des deux joueurs a perdu
+	if (mains.joueur.length === 0 || mains.ordi.length === 0) {
+
+	    // On définit les marqueurs
 	    marqueur.pseudo = query.pseudo
 	    marqueur.joueur = mains.joueur.length
         marqueur.ordi = mains.ordi.length
 
 		if (mains.joueur.length === mains.ordi.length) {
+		    // Ne peut pas arriver
 		    marqueur.winer = "Egalité, vous avez le même nombre de carte"
         } else if (mains.joueur.length > mains.ordi.length) {
 		    marqueur.winer = "le gagnant est " + query.pseudo
 		} else if (mains.joueur.length < mains.ordi.length) {
 		    marqueur.winer = "le gagnant est ordi"
 		}
-		
-		// On va renvoyé la page
+
+		// On définit la variable page qui seras renvoyé
 		page = fs.readFileSync("resultat_bataille.html", "UTF-8");
-	    page = page.supplant(marqueur);
-		     
-		res.writeHead(200, {"Content-Type": "text/html"});
-		res.write(page);
-		res.end();
 
 	} else {
-	    page = fs.readFileSync("resultat_tour_bataille.html", "UTF-8")
 
+		// On définit les marqueurs
 		marqueur.nb_ordi = remplacement(String(pose_ordi[0]));
 		marqueur.couleur_ordi = choix_couleur(pose_ordi[1]);
 		marqueur.nb_joueur = remplacement(String(pose_joueur[0]));
@@ -107,16 +101,21 @@ var trait = function(req, res, query) {
 		marqueur.resultat = resultat;
 		marqueur.pseudo = query.pseudo
 
-		page = page.supplant(marqueur)
+		// On définit la variable page qui seras renvoyé
+	    page = fs.readFileSync("resultat_tour_bataille.html", "UTF-8")
 
-		res.writeHead(200, {"Content-Type": "text/html"});
-		res.write(page);
-		res.end();
 	}
 
 	// On ré-écris les mains dans un fichier
 	mains = JSON.stringify(mains)
 	fs.writeFileSync("mains_bataille_" + query.pseudo + ".json", mains, "UTF-8");
+
+	page = page.supplant(marqueur)
+
+	// On renvoie la page
+	res.writeHead(200, {"Content-Type": "text/html"});
+	res.write(page);
+	res.end();
 }
 
 module.exports = trait;
