@@ -13,12 +13,13 @@ body{
 #header{
 	height:100%;
 	width:62,5%;
-	margin-left : 23%;
+	margin-left : 14%;
+	margin-top : 3%;
 	font:18px arial;
 	overflow:hidden;
 	background : url("banniere.png");
 	background-repeat:no-repeat;
-	background-size : 69%;
+	background-size : 70%;
 }
 #header1{
 	height:100%;
@@ -31,14 +32,15 @@ body{
 	background-size : 69%;
 }
 #connexion{
-	margin-top:20px;
-	margin-left : 30px;
+	margin-top:-40px;
 	float:right;
-	width:170px;
+	width:165px;
 	height:100%;
-	padding:20px;
+	padding:25px;
 	margin-left:740px;
-	border-radius
+}
+#header ,#connexion {
+ margin-left : 5%
 }
 #arti{
 	border : solid black 0px;
