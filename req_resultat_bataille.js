@@ -19,11 +19,11 @@ var trait = function(req, res, query) {
 	marqueur.ordi = mains.ordi.length
 
 	if (mains.joueur.length === mains.ordi.length) {
-	    marqueur.winer = "Egalité, vous avez le même nombre de carte"
+	    marqueur.winer = "Egalité, vous avez le même nombre de carte !"
 	} else if (mains.joueur.length > mains.ordi.length) {
-	    marqueur.winer = "le gagnant est " + query.pseudo
+	    marqueur.winer = "Le gagnant est " + query.pseudo + " ! ";
 	} else if (mains.joueur.length < mains.ordi.length) {
-	    marqueur.winer = "le gagnant est ordi"
+	    marqueur.winer = "Le gagnant est ordi ! " 
 	}
 
 	// On va renvoyé la page
