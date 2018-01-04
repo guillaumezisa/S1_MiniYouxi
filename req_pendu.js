@@ -155,7 +155,7 @@ var req_pendu = function(req, res, query) {
 
 			} else {
 
-				res.write("<br><br>Vous avez perdue, le mot secret etait : " + pendu.motSec + ".");
+				res.write("<br><br>Vous avez perdu, le mot secret etait : " + pendu.motSec + ".");
 
 			}
 
