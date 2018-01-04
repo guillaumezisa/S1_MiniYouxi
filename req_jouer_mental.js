@@ -3,12 +3,9 @@
 
 "use strict";
 
-var fs = require ("fs");
-require ('remedial') ;
-
-
-var  trait = function (request, response, query) {
-
+	var fs = require ("fs");
+	require ('remedial') ;
+	var  trait = function (request, response, query) {
 	var page;
 	var marqueur = {} ;
 	var comparaison;
@@ -46,9 +43,9 @@ var  trait = function (request, response, query) {
 	}
 	marqueur.operateur = operateur;
 	
-	var parsedData = JSON.parse(resultat);
-	fs.writeFileSync("parsedData.json", parsedData);
-
+	var parsedData = JSON.stringify(resultat);
+	fs.writeFileSync("parsedData.json", reponse ,"utf-8");
+	marqueur.pseudo = query.pseudo
 	page = fs.readFileSync("mental.html" , "UTF-8");
 	page = page.supplant(marqueur);
 
