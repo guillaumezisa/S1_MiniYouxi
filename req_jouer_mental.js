@@ -3,12 +3,9 @@
 
 "use strict";
 
-var fs = require ("fs");
-require ('remedial') ;
-
-
-var  trait = function (request, response, query) {
-
+	var fs = require ("fs");
+	require ('remedial') ;
+	var  trait = function (request, response, query) {
 	var page;
 	var marqueur = {} ;
 	var comparaison;
@@ -20,7 +17,7 @@ var  trait = function (request, response, query) {
 	var operateur;
 
 	nb_A = Math.floor(Math.random()*10)+1
-		nb_B = Math.floor(Math.random()*10)+1
+	nb_B = Math.floor(Math.random()*10)+1
 
 	marqueur.nb_A = nb_A;
 	marqueur.nb_B = nb_B;
@@ -36,7 +33,7 @@ var  trait = function (request, response, query) {
 			resultat = nb_A * nb_B;
 			break;
 		case 2 :
-			operateur = "-";
+			operateur =  "-";
 			resultat = nb_A - nb_B;
 			break;
 		case 3 :
@@ -45,10 +42,10 @@ var  trait = function (request, response, query) {
 			break;
 	}
 	marqueur.operateur = operateur;
-	
-	var parsedData = JSON.parse(resultat);
-	fs.writeFileSync("parsedData.json", parsedData);
-
+	marqueur.reponse = reponse;
+	var parsedData = JSON.stringify(resultat);
+	fs.writeFileSync("parsedData.json",resultat,"utf-8");
+	marqueur.pseudo = query.pseudo
 	page = fs.readFileSync("mental.html" , "UTF-8");
 	page = page.supplant(marqueur);
 

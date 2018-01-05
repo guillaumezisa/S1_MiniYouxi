@@ -42,7 +42,7 @@ if (CO === 1 ){
 }
 
 
-
+marqueurs.pseudo = query.pseudo
 page = fs.readFileSync("resulta_pfc.html","utf-8");
 page = page.supplant(marqueurs)
 
