@@ -26,10 +26,11 @@ var victoire = function() {
 
 	div.innerHTML = ""
 
-	button = document.createElement("input");
-	button.setAttribute("type", "submit");
+	button = document.createElement("button");
+	button.setAttribute("class", "button2");
 	button.setAttribute("name", "lol");
 	button.setAttribute("value", "rejouer");
+	button.innerHTML = "Rejouer";
 
 	button.addEventListener("click", rejouer);
 
@@ -344,6 +345,7 @@ var aff_puzzle = function (e) {
 var mon_script = function () {
 
 	var body = document.querySelector("body");
+	var br = body.querySelector("br");
 	var div;
 	var img;
 
@@ -361,7 +363,7 @@ var mon_script = function () {
 
 	}
 
-	body.appendChild(div);
+	body.insertBefore(div, br);
 
 }
 
