@@ -8,13 +8,13 @@
 </head>
 
 <body>
-	<img src = "pendu11.png"><br>
+	<form action = '/req_quitter_pendu' method = 'GET'>
+	<button class="button"name = 'quitter' value = 'vtff'>Accueil</button>
+	<input type = 'hidden'  name = 'pseudo' value = {joueur}></form>
+	<br><br><center><img src = "pendu11.png"><br>
 	Vous avez abandonnez, le mot secret etait {motsecret}.
 	<br><br><form action = '/req_pendu' method = 'GET'>
-	<button class="button2"name = rejouer value = 'pendu'>rejouer</button>
-	<input type = 'hidden'  name = 'pseudo' value = {joueur}></form>
-	<br><br><form action = '/req_quitter_pendu' method = 'GET'>
-	<button class="button2"name = 'quitter' value = 'vtff'>quitter</button>
+	<button class="button2"name = rejouer value = 'pendu'>Rejouer</button>
 	<input type = 'hidden'  name = 'pseudo' value = {joueur}></form>
 </body>
 

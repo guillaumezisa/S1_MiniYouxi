@@ -115,17 +115,50 @@ var req_pendu = function(req, res, query) {
 		res.writeHead(200, {'Content-Type': 'text/html'});
 		res.write("<html><head><link rel='stylesheet'href='style.css'/><title>Pendu</title></head><body>");
 
+		marqueurs.joueur = query.pseudo;
+
+		fs.writeFileSync("pendu_partie" + query.pseudo + ".json", JSON.stringify(pendu), "UTF-8");
+
+			
+		if(victoire === true || victoire === false) {
+
+			marqueurs.action = "Rejouer";
+			marqueurs.action2 = "";
+
+		} else {
+
+			marqueurs.action = "Abandonner";
+			marqueurs.action2 = "_abandon";
+
+		}
+
+		page3 = page3.supplant(marqueurs);
+		res.write(page3);
+
 		if(victoire !== true) {
 			marqueurs.pendu = pendu.image[pendu.erreurs];
-			marqueurs.motSec = pendu.motAff.join(" ");
-			res.write(page);
+			marqueurs.motSec = "";
+
+			if(victoire !== false) {
+
+				marqueurs.motSec = pendu.motAff.join(" ");
+				res.write(page);
+
+			}
+
 			page1 = page1.supplant(marqueurs);
 			res.write(page1);
 		}
 
-		marqueurs.joueur = query.pseudo;
+		if(victoire === true) {
+				
+			res.write("<br><br><center>Vous avez gagner, le mot secret etait : " + pendu.motSec + ".");
 
-		fs.writeFileSync("pendu_partie" + query.pseudo + ".json", JSON.stringify(pendu), "UTF-8");
+		} else if(victoire === false) {
+
+			res.write("<center>Vous avez perdu, le mot secret etait : " + pendu.motSec + ".");
+
+		}
 
 		if(victoire !== true && victoire !== false) {
 
@@ -142,30 +175,11 @@ var req_pendu = function(req, res, query) {
 				}
 
 			}
-			res.write("<input type = 'hidden'  name = 'pseudo' value = '" + query.pseudo + "'></form>");
-			marqueurs.action = "abandonner";
-			marqueurs.action2 = "_abandon";
-
-
-		} else {
-			
-			if(victoire === true) {
-				
-				res.write("<br><br>Vous avez gagner, le mot secret etait : " + pendu.motSec + ".");
-
-			} else {
-
-				res.write("<br><br>Vous avez perdu, le mot secret etait : " + pendu.motSec + ".");
-
-			}
-
-			marqueurs.action = "rejouer";
-			marqueurs.action2 = "";
 
 		}
 
-		page3 = page3.supplant(marqueurs);
-		res.write(page3);
+			res.write("<input type = 'hidden'  name = 'pseudo' value = '" + query.pseudo + "'></form>");
+
 		res.write("</body></html>");
 		res.end();
 		
