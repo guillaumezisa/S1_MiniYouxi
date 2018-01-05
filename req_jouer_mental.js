@@ -17,7 +17,7 @@
 	var operateur;
 
 	nb_A = Math.floor(Math.random()*10)+1
-		nb_B = Math.floor(Math.random()*10)+1
+	nb_B = Math.floor(Math.random()*10)+1
 
 	marqueur.nb_A = nb_A;
 	marqueur.nb_B = nb_B;
@@ -33,7 +33,7 @@
 			resultat = nb_A * nb_B;
 			break;
 		case 2 :
-			operateur = "-";
+			operateur =  "-";
 			resultat = nb_A - nb_B;
 			break;
 		case 3 :
@@ -42,9 +42,9 @@
 			break;
 	}
 	marqueur.operateur = operateur;
-	
+	marqueur.reponse = reponse;
 	var parsedData = JSON.stringify(resultat);
-	fs.writeFileSync("parsedData.json", reponse ,"utf-8");
+	fs.writeFileSync("parsedData.json",resultat,"utf-8");
 	marqueur.pseudo = query.pseudo
 	page = fs.readFileSync("mental.html" , "UTF-8");
 	page = page.supplant(marqueur);

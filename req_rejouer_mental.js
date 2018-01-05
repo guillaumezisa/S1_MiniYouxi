@@ -42,7 +42,7 @@
 	marqueur.operateur = operateur;
 	
 	var parsedData = JSON.stringify(resultat);
-	fs.writeFileSync("parsedData.json", reponse , "utf-8");
+	fs.writeFileSync("parsedData.json",resultat, "utf-8");
 
 	page = fs.readFileSync("mental.html", "UTF-8");
 	marqueur.pseudo = query.pseudo
