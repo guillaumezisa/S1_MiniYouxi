@@ -7,7 +7,6 @@
 	require ('remedial') ;
 	var  trait = function (request, response, query) {
 	var page;
-	var marqueur = {} ;
 	var comparaison;
 	var nb_A;
 	var nb_B;
@@ -15,35 +14,37 @@
 	var resultat;
 	var no;
 	var operateur;
-
+	var reponse_utilisateur;
+	var nb_joueur;
 	nb_A = Math.floor(Math.random()*10)+1
 	nb_B = Math.floor(Math.random()*10)+1
-
-	marqueur.nb_A = nb_A;
-	marqueur.nb_B = nb_B;
 
 	no = Math.floor(Math.random()*5);
 	switch (no) {
 		case 0:
-			operateur = "+";
+			operateur =  " + ";
 			resultat = nb_A + nb_B;
 			break;
 		case 1 :
-			operateur = "*";
+			operateur =  " \* ";
 			resultat = nb_A * nb_B;
 			break;
 		case 2 :
-			operateur =  "-";
+			operateur =   " - ";
 			resultat = nb_A - nb_B;
 			break;
 		case 3 :
-			operateur ="/";
+			operateur =" / ";
 			resultat = nb_A / nb_B;
 			break;
 	}
+	
+	var marqueur = {} ;
+	marqueur.nb_A = nb_A;
+	marqueur.nb_B = nb_B;
 	marqueur.operateur = operateur;
-	marqueur.reponse = reponse;
 	var parsedData = JSON.stringify(resultat);
+	
 	fs.writeFileSync("parsedData.json",resultat,"utf-8");
 	marqueur.pseudo = query.pseudo
 	page = fs.readFileSync("mental.html" , "UTF-8");
