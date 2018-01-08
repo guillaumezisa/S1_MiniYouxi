@@ -10,10 +10,16 @@ var rejouer = function() {
 
 	var body = document.querySelector("body");
 	var form = body.querySelector("form");
+	var br = document.createElement("br");
+	var br1 = document.createElement("br");
+	var p = document.createElement("p");
 
 	body.innerHTML = "";
 
-	body.appendChild(form);
+	body.appendChild(p);
+	body.insertBefore(br, p);
+	body.insertBefore(br1, br);
+	body.insertBefore(form, br1);
 	
 	mon_script();
 }
@@ -345,7 +351,8 @@ var aff_puzzle = function (e) {
 var mon_script = function () {
 
 	var body = document.querySelector("body");
-	var br = body.querySelector("br");
+	var p = body.querySelector("p");
+	var center
 	var div;
 	var img;
 
@@ -363,7 +370,11 @@ var mon_script = function () {
 
 	}
 
-	body.insertBefore(div, br);
+	body.insertBefore(div, p);
+
+	center = document.createElement("center");
+
+	body.insertBefore(center, div);
 
 }
 
