@@ -21,8 +21,8 @@ var trait = function (request, response, query){
 		page = "faux";
 	}
 
-	reponse  = fs.readFileSync("parsedData.json" ,"UTF-8");
-
+	reponse  = fs.readFileSync("jouer_mental_"+ query.pseudo +".json",resultat ,"UTF-8") 
+	
 	marqueur = {}
 	marqueur.reponse_utilisateur = query.userInput
 	marqueur.reponse = reponse
