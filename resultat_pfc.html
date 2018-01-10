@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<link rel="stylesheet" href="style.css"/>
+		<title>Resultat</title>
+		<meta charset="UTF-8"/>
+	</head>
+	<body>
+	<form action="req_abandonner_pfc" method="GET">
+	<input type="hidden" name="pseudo" value="{pseudo}">
+	<button class="button" type="submit" name="boutton" value="acceuil"><span>accueil</span></button><br>
+	</form>
+	<h2> Résultat Partie </h2>
+	<img src ="{img_ordi}"  height="250" >
+	<img src="{img_joueur}" height="250" ><br>
+	<br> 
+		Vainqueur : {gagnant}
+	<form action="req_rejouer_pfc" method="GET">
+	<input type="hidden" name="pseudo" value="{pseudo}">
+	<button class="button3" type="submit" name="boutton" value="jouer"><span>rejouer</span></button>
+	</form>
+	
+	</body>
+</html>
