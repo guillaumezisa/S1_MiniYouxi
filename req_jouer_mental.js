@@ -19,7 +19,7 @@
 	nb_A = Math.floor(Math.random()*10)+1
 	nb_B = Math.floor(Math.random()*10)+1
 	
-	no = Math.floor(Math.random()*5);
+	no = Math.floor(Math.random()*4);
 	switch (no) {
 		case 0:
 			operateur =  " + ";
