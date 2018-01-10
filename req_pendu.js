@@ -136,7 +136,7 @@ var req_pendu = function(req, res, query) {
 		res.write(page3);
 
 		if(victoire !== true) {
-			marqueurs.pendu = pendu.image[pendu.erreurs];
+			marqueurs.pendu = "pendu" + pendu.erreurs + ".png";
 			marqueurs.motSec = "";
 
 			if(victoire !== false) {
