@@ -2,7 +2,7 @@
 
 li {
 display:inline-block;
-		 text-align: center;
+		text-align: center;
 }
 img {
 padding: 10px;
@@ -13,3 +13,4 @@ margin: 15px;
 audio {
 width: 150px;
 }
+

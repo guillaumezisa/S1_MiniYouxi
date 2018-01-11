@@ -23,27 +23,27 @@ if (CJ === CO ){
 	marqueurs.gagnant = "Bien jouer le joueur"
 } else if ((CO === 1 && CJ === 3) || (CO === 2 && CJ === 1) || (CO === 3 && CO === 2)){
 	marqueurs.gagnant = "Perdu Bien jouer Ordi"
-}
+} console.log(CO, CJ)
 
 if (CJ === 1){
-	marqueurs.img_joueur = "index.jpeg"
+	marqueurs.img_joueur = "racailloux.png"
 } else if (CJ === 2){
-	marqueurs.img_joueur = "feuille.jpg"
+	marqueurs.img_joueur = "feuille.png"
 } else if (CJ === 3) {
-	marqueurs.img_joueur = "ciseaux.jpg"
+	marqueurs.img_joueur = "ciseaux.png"
 }
 
 if (CO === 1 ){
-	marqueurs.img_ordi = "index.jpeg"
-} else if (CJ === 2){
-	marqueurs.img_ordi = "feuille.jpg"
-} else if (CJ === 3){ 
-	marqueurs.img_ordi = "ciseaux.jpg"
+	marqueurs.img_ordi = "racailloux.png"
+} else if (CO === 2){
+	marqueurs.img_ordi = "feuille.png"
+} else if (CO === 3){ 
+	marqueurs.img_ordi = "ciseaux.png"
 }
 
 
 marqueurs.pseudo = query.pseudo
-page = fs.readFileSync("resulta_pfc.html","utf-8");
+page = fs.readFileSync("resultat_pfc.html","utf-8");
 page = page.supplant(marqueurs)
 
 response.writeHead(200,{"Content-Type" : " text/html"});
