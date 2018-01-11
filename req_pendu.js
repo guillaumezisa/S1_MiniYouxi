@@ -54,6 +54,7 @@ var req_pendu = function(req, res, query) {
 		page1 = fs.readFileSync("pendu_mot.html", "UTF-8");
 		page3 = fs.readFileSync("pendu_bouton.html", "UTF-8");
 
+		//initialisation de la partie
 		if(pathname === "/req_pendu") {
 			
 			pendu.motAff = [];
@@ -67,8 +68,10 @@ var req_pendu = function(req, res, query) {
 
 			}
 
+		//jeu + victoire/défaite
 		} else if(pathname === "/req_jouer_pendu"){
 
+		//vérification lettres/conditions victoire/défaite
 			var présence = false;
 
 			pendu = JSON.parse(fs.readFileSync("pendu_partie" + query.pseudo + ".json", "UTF-8"));
@@ -119,7 +122,7 @@ var req_pendu = function(req, res, query) {
 
 		fs.writeFileSync("pendu_partie" + query.pseudo + ".json", JSON.stringify(pendu), "UTF-8");
 
-			
+		//affichage bouton
 		if(victoire === true || victoire === false) {
 
 			marqueurs.action = "Rejouer";
@@ -135,6 +138,7 @@ var req_pendu = function(req, res, query) {
 		page3 = page3.supplant(marqueurs);
 		res.write(page3);
 
+		//affichage jeu
 		if(victoire !== true) {
 			marqueurs.pendu = "pendu" + pendu.erreurs + ".png";
 			marqueurs.motSec = "";
@@ -148,16 +152,6 @@ var req_pendu = function(req, res, query) {
 
 			page1 = page1.supplant(marqueurs);
 			res.write(page1);
-		}
-
-		if(victoire === true) {
-				
-			res.write("<br><br><center>Vous avez gagner, le mot secret etait : " + pendu.motSec + ".");
-
-		} else if(victoire === false) {
-
-			res.write("<center>Vous avez perdu, le mot secret etait : " + pendu.motSec + ".");
-
 		}
 
 		if(victoire !== true && victoire !== false) {
@@ -176,7 +170,17 @@ var req_pendu = function(req, res, query) {
 
 			}
 
+		//message victoire/défaite
+		} else if(victoire === true) {
+				
+			res.write("<br><br><center>Vous avez gagner, le mot secret etait : " + pendu.motSec + ".");
+
+		} else if(victoire === false) {
+
+			res.write("<center>Vous avez perdu, le mot secret etait : " + pendu.motSec + ".");
+
 		}
+
 
 			res.write("<input type = 'hidden'  name = 'pseudo' value = '" + query.pseudo + "'></form>");
 
