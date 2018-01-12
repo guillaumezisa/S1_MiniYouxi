@@ -27,10 +27,19 @@ var rejouer = function() {
 var victoire = function() {
 
 	var body = document.querySelector("body");
-	var div = body.querySelector("div");
+	var center = body.querySelector("center");
+	var div = center.querySelector("div");
+	var img = div.querySelector("img");
+	var lul = img.getAttribute("src");
+	var br = document.createElement("br");
 	var button;
 
+	lul = lul.substring(0,8);
+
 	div.innerHTML = ""
+
+	img = document.createElement("img");
+	img.setAttribute("src", lul + ".jpg");
 
 	button = document.createElement("button");
 	button.setAttribute("class", "button2");
@@ -41,17 +50,21 @@ var victoire = function() {
 	button.addEventListener("click", rejouer);
 
 	div.appendChild(button);
+	div.insertBefore(img, button);
+	div.insertBefore(br, button);
 
 }
 
 var vider = function() {
 
 	var body;
+	var center;
 	var div;
 	var image;
 
 	body = document.querySelector("body");
-	div = body.querySelector("div");
+	center = body.querySelector("center");
+	div = center.querySelector("div");
 	image = div.querySelectorAll("img");
 
 	for(i = 0; i < image.length; i++) {
@@ -69,12 +82,14 @@ var vider = function() {
 var verif_victoire = function() {
 
 	var body;
+	var center;
 	var div;
 	var image;
 	var vrai;
 
 	body = document.querySelector("body");
-	div = body.querySelector("div");
+	center = body.querySelector("center");
+	div = center.querySelector("div");
 	image = div.querySelectorAll("img");
 
 	i = 1;
@@ -106,6 +121,7 @@ var verif_victoire = function() {
 var exchange = function(image) {
 
 	var body;
+	var center;
 	var div;
 	var temp = {};
 	var id;
@@ -275,7 +291,8 @@ var aff_puzzle = function (e) {
 	var b;
 	var c;
 	var body = document.querySelector("body");
-	var div = body.querySelector("div");
+	var center = body.querySelector("center");
+	var div = center.querySelector("div");
 	var j;
 	var k;
 	var l;
@@ -324,7 +341,7 @@ var aff_puzzle = function (e) {
 
 		puzzleA = document.createElement("img");
 		puzzleA.setAttribute("id", "i" + (j - 1) + l);
-		puzzleA.setAttribute("src", "pendu" + b + ".png");
+		puzzleA.setAttribute("src", "puzzle30" + b + ".jpg");
 		puzzleA.setAttribute("data-statut", "unselected");
 		puzzleA.setAttribute("data-order", bite[i]);
 
@@ -370,11 +387,12 @@ var mon_script = function () {
 
 	}
 
-	body.insertBefore(div, p);
 
 	center = document.createElement("center");
 
-	body.insertBefore(center, div);
+	body.insertBefore(center, p);
+
+	center.appendChild(div);
 
 }
 
