@@ -10,9 +10,6 @@ var req_pendu = function(req, res, query) {
 
 	var marqueurs = {};
 	var page;
-	var page1;
-	var page2;
-	var page3;
 	var i;
 	var pendu;
 	var victoire;
@@ -51,8 +48,6 @@ var req_pendu = function(req, res, query) {
 	} else {
 
 		page = fs.readFileSync("pendu.html", "UTF-8");
-		page1 = fs.readFileSync("pendu_mot.html", "UTF-8");
-		page3 = fs.readFileSync("pendu_bouton.html", "UTF-8");
 
 		//initialisation de la partie
 		if(pathname === "/req_pendu") {
@@ -115,10 +110,9 @@ var req_pendu = function(req, res, query) {
 
 		}
 
-		res.writeHead(200, {'Content-Type': 'text/html'});
-		res.write("<html><head><link rel='stylesheet'href='style.css'/><title>Pendu</title></head><body>");
 
 		marqueurs.joueur = query.pseudo;
+		marqueurs.lettre = "";
 
 		fs.writeFileSync("pendu_partie" + query.pseudo + ".json", JSON.stringify(pendu), "UTF-8");
 
@@ -135,36 +129,26 @@ var req_pendu = function(req, res, query) {
 
 		}
 
-		page3 = page3.supplant(marqueurs);
-		res.write(page3);
-
 		//affichage jeu
 		if(victoire !== true) {
 			marqueurs.pendu = "pendu" + pendu.erreurs + ".png";
-			marqueurs.motSec = "";
 
 			if(victoire !== false) {
 
 				marqueurs.motSec = pendu.motAff.join(" ");
-				res.write(page);
 
 			}
 
-			page1 = page1.supplant(marqueurs);
-			res.write(page1);
 		}
 
 		if(victoire !== true && victoire !== false) {
 
-			res.write("<br><br><form action = '/req_jouer_pendu' method = 'GET'>");
+
 			for(i = 0; i < pendu.lettre.length; i++) {
 
 				if(pendu.lettre[i].use === false) {
 
-					page2 = fs.readFileSync("pendu_lettre.html", "UTF-8");
-					marqueurs.lettre = pendu.lettre[i].l;
-					page2 = page2.supplant(marqueurs);
-					res.write(page2);
+					marqueurs.lettre = marqueurs.lettre + "<button class= 'button4' name = 'lettre' value = '" + pendu.lettre[i].l + "'>" + pendu.lettre[i].l + "</button>";
 
 				}
 
@@ -173,18 +157,19 @@ var req_pendu = function(req, res, query) {
 		//message victoire/défaite
 		} else if(victoire === true) {
 				
-			res.write("<br><br><center>Vous avez gagner, le mot secret etait : " + pendu.motSec + ".");
+			marqueurs.pendu = 'victoire_pendu.png';
+			marqueurs.motSec = "Vous avez gagner, le mot secret etait : " + pendu.motSec + "."
 
-		} else if(victoire === false) {
+		} else {
 
-			res.write("<center>Vous avez perdu, le mot secret etait : " + pendu.motSec + ".");
+			marqueurs.motSec = "Vous avez perdu, le mot secret etait : " + pendu.motSec + "."
 
 		}
 
+		page = page.supplant(marqueurs);
 
-			res.write("<input type = 'hidden'  name = 'pseudo' value = '" + query.pseudo + "'></form>");
-
-		res.write("</body></html>");
+		res.writeHead(200, {'Content-Type': 'text/html'});
+		res.write(page);
 		res.end();
 		
 	}
