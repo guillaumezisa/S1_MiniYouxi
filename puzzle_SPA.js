@@ -2,9 +2,9 @@
 
 var i;
 var puzzle = {};
-puzzle.P3 = ["puzzle30","puzzle31","puzzle32"];
-puzzle.P4 = ["puzzle40","puzzle41","puzzle42","puzzle43"];
-puzzle.P5 = ["puzzle50","puzzle51","puzzle52","puzzle53","puzzle54"];
+puzzle.P3 = ["puzzle30"];
+puzzle.P4 = ["puzzle40"];
+puzzle.P5 = ["puzzle50"];
 
 var rejouer = function() {
 
@@ -341,7 +341,7 @@ var aff_puzzle = function (e) {
 
 		puzzleA = document.createElement("img");
 		puzzleA.setAttribute("id", "i" + (j - 1) + l);
-		puzzleA.setAttribute("src", "puzzle30" + b + ".jpg");
+		puzzleA.setAttribute("src", puzzleJ + b + ".jpg");
 		puzzleA.setAttribute("data-statut", "unselected");
 		puzzleA.setAttribute("data-order", bite[i]);
 
@@ -380,7 +380,7 @@ var mon_script = function () {
 		img = document.createElement("img");
 
 		img.setAttribute("id", i);
-		img.setAttribute("src", /*"p" + i + ".png"*/"pendu" + i + ".png");
+		img.setAttribute("src", "p" + i + ".jpg");
 
 		img.addEventListener("click", aff_puzzle);
 		div.appendChild(img);
