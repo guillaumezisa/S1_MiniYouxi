@@ -15,8 +15,8 @@
 <button class="button"name = {action} value = 'pendu'>{action}</button>
 <input type = 'hidden'  name = 'pseudo' value = {joueur}></form><br><br>
 
-<h1><center>Le Pendu</h1></center>
-<center><h4>Vous devez trouver le mot secret avant d'etre pendu.<br></h4></center>
+<h1><center>{titre}</h1></center>
+<center><h4>{règle}<br></h4></center>
 <center><img src = {pendu}>
 <h2>{motSec}</h2></center><br><br>
 <form action = '/req_jouer_pendu' method = 'GET'>

@@ -63,11 +63,17 @@ var req_pendu = function(req, res, query) {
 
 			}
 
+			marqueurs.titre = "Le Pendu";
+			marqueurs.règle = "Vous devez trouver le mot secret avant d'etre pendu.";
+
 		//jeu + victoire/défaite
 		} else if(pathname === "/req_jouer_pendu"){
 
 		//vérification lettres/conditions victoire/défaite
 			var présence = false;
+
+			marqueurs.titre = "Le Pendu";
+			marqueurs.règle = "Vous devez trouver le mot secret avant d'etre pendu.";
 
 			pendu = JSON.parse(fs.readFileSync("pendu_partie" + query.pseudo + ".json", "UTF-8"));
 
@@ -119,6 +125,8 @@ var req_pendu = function(req, res, query) {
 		//affichage bouton
 		if(victoire === true || victoire === false) {
 
+			marqueurs.titre = "";
+			marqueurs.règle = "";
 			marqueurs.action = "Rejouer";
 			marqueurs.action2 = "";
 
@@ -137,18 +145,13 @@ var req_pendu = function(req, res, query) {
 
 				marqueurs.motSec = pendu.motAff.join(" ");
 
-			}
+				for(i = 0; i < pendu.lettre.length; i++) {
 
-		}
+					if(pendu.lettre[i].use === false) {
 
-		if(victoire !== true && victoire !== false) {
+						marqueurs.lettre = marqueurs.lettre + "<button class= 'button4' name = 'lettre' value = '" + pendu.lettre[i].l + "'>" + pendu.lettre[i].l + "</button>";
 
-
-			for(i = 0; i < pendu.lettre.length; i++) {
-
-				if(pendu.lettre[i].use === false) {
-
-					marqueurs.lettre = marqueurs.lettre + "<button class= 'button4' name = 'lettre' value = '" + pendu.lettre[i].l + "'>" + pendu.lettre[i].l + "</button>";
+					}
 
 				}
 
@@ -157,7 +160,7 @@ var req_pendu = function(req, res, query) {
 		//message victoire/défaite
 		} else if(victoire === true) {
 				
-			marqueurs.pendu = 'victoire_pendu.png';
+			marqueurs.pendu = 'victoire_pendu.jpg';
 			marqueurs.motSec = "Vous avez gagner, le mot secret etait : " + pendu.motSec + "."
 
 		} else {
