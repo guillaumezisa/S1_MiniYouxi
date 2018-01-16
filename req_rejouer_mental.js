@@ -41,8 +41,8 @@
 	}
 	marqueur.operateur = operateur;
 	
-	var parsedData = JSON.stringify(resultat);
-	fs.writeFileSync("parsedData.json",resultat, "utf-8");
+	var mental_jouer = JSON.stringify(resultat);
+	fs.writeFileSync("jouer_mental_"+ query.pseudo + ".json",resultat, "utf-8");
 
 	page = fs.readFileSync("mental.html", "UTF-8");
 	marqueur.pseudo = query.pseudo
