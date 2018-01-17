@@ -21,9 +21,9 @@ if (CJ === CO ){
 	marqueurs.gagnant = "égalité"
 } else if ((CJ === 1 && CO === 3) || (CJ === 2 && CO === 1) || (CJ === 3 && CO === 2)){
 	marqueurs.gagnant = "Bien jouer le joueur"
-} else if ((CO === 1 && CJ === 3) || (CO === 2 && CJ === 1) || (CO === 3 && CO === 2)){
+} else if ((CO === 1 && CJ === 3) || (CO === 2 && CJ === 1) || (CO === 3 && CJ === 2)){
 	marqueurs.gagnant = "Perdu Bien jouer Ordi"
-} console.log(CO, CJ)
+} console.log(CO , CJ)
 
 if (CJ === 1){
 	marqueurs.img_joueur = "racailloux.png"
