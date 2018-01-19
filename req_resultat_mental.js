@@ -12,20 +12,24 @@ var trait = function (request, response, query){
 	var comparaison ;
 	var jason;
 	var reponse;
+	var fichier;
 
 
-
-	if (query.userInput == reponse) {
-		page = "vrai"; 
-	} else {
-		page = "faux";
-	}
-
-	reponse  = fs.readFileSync("jouer_mental_"+ query.pseudo +".json","UTF-8") 
 	
-	marqueur = {}
+	fichier = fs.readFileSync("jouer_mental_"+ query.pseudo +".json","UTF-8") 
+	console.log(fichier)
+	reponse = JSON.parse(fichier) 
+	console.log(reponse)
+	
+	
+		marqueur = {}
+	if (fichier === query.userInput){
+		marqueur.ziza = "Bien jouer"
+		}
+	else {marqueur.ziza = "ah tu as rater" 
+		}
 	marqueur.reponse_utilisateur = query.userInput
-	marqueur.reponse = reponse
+		marqueur.reponse = reponse
 		marqueur.pseudo = query.pseudo
 		page = fs.readFileSync("mental_jason.html", "utf-8");
 	page = page.supplant (marqueur) ; 
