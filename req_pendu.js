@@ -157,13 +157,15 @@ var req_pendu = function(req, res, query) {
 
 			}
 
+		}
+
 		//message victoire/défaite
-		} else if(victoire === true) {
+		if(victoire === true) {
 				
 			marqueurs.pendu = 'victoire_pendu.jpg';
 			marqueurs.motSec = "Vous avez gagner, le mot secret etait : " + pendu.motSec + "."
 
-		} else {
+		} else if(victoire === false) {
 
 			marqueurs.motSec = "Vous avez perdu, le mot secret etait : " + pendu.motSec + "."
 
