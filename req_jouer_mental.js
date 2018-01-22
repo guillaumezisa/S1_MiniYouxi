@@ -39,7 +39,7 @@
 			break;
 	}
 
-
+	
 	
 	var marqueur = {} ;
 	marqueur.nb_A = nb_A;
