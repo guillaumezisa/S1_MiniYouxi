@@ -64,7 +64,7 @@ var req_pendu = function(req, res, query) {
 			}
 
 			marqueurs.titre = "Le Pendu";
-			marqueurs.règle = "Vous devez trouver le mot secret avant d'etre pendu.";
+			marqueurs.règle = "Vous devez trouver le mot secret avant d'être pendu.";
 
 		//jeu + victoire/défaite
 		} else if(pathname === "/req_jouer_pendu"){
@@ -73,7 +73,7 @@ var req_pendu = function(req, res, query) {
 			var présence = false;
 
 			marqueurs.titre = "Le Pendu";
-			marqueurs.règle = "Vous devez trouver le mot secret avant d'etre pendu.";
+			marqueurs.règle = "Vous devez trouver le mot secret avant d'être pendu.";
 
 			pendu = JSON.parse(fs.readFileSync("pendu_partie" + query.pseudo + ".json", "UTF-8"));
 
@@ -163,11 +163,11 @@ var req_pendu = function(req, res, query) {
 		if(victoire === true) {
 				
 			marqueurs.pendu = 'victoire_pendu.jpg';
-			marqueurs.motSec = "Vous avez gagner, le mot secret etait : " + pendu.motSec + "."
+			marqueurs.motSec = "Vous avez gagner, le mot secret était : " + pendu.motSec + "."
 
 		} else if(victoire === false) {
 
-			marqueurs.motSec = "Vous avez perdu, le mot secret etait : " + pendu.motSec + "."
+			marqueurs.motSec = "Vous avez perdu, le mot secret était : " + pendu.motSec + "."
 
 		}
 
